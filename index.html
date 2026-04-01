@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paladugu Ganesh Naidu | Offensive Security Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Paladugu Ganesh Naidu - aspiring offensive security professional focused on automation, vulnerability assessment, and practical security tooling."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Orbitron:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a" aria-hidden="true"></div>
+    <div class="bg-orb orb-b" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#hero">GN</a>
+      <nav class="site-nav" aria-label="Primary Navigation">
+        <a href="#skills">Skills</a>
+        <a href="#tools">Tools</a>
+        <a href="#projects">Projects</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="section hero-section">
+        <div class="hero-content glass-card">
+          <div class="hero-layout">
+            <div class="hero-copy">
+              <p class="eyebrow">Offensive Security Portfolio</p>
+              <h1>
+                <span class="hero-line">Hello, I am</span>
+                <span id="typed-name" class="typed-name" aria-live="polite"></span>
+              </h1>
+              <p class="hero-summary">
+                Aspiring offensive security professional building practical automation
+                that speeds up reconnaissance, vulnerability analysis, and reporting.
+              </p>
+              <div class="hero-metrics">
+                <div class="metric glass-card">
+                  <span class="metric-value">Top 7%</span>
+                  <span class="metric-label">TryHackMe</span>
+                </div>
+                <div class="metric glass-card">
+                  <span class="metric-value">61</span>
+                  <span class="metric-label">LeetCode Solved</span>
+                </div>
+                <div class="metric glass-card">
+                  <span class="metric-value">70%</span>
+                  <span class="metric-label">Scan Time Reduced</span>
+                </div>
+              </div>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#projects">View Projects</a>
+                <a
+                  class="btn btn-secondary"
+                  href="mailto:paladuguganeshnaidu@gmail.com"
+                  >Contact Me</a
+                >
+              </div>
+            </div>
+
+            <figure class="hero-photo-frame">
+              <img
+                src="images/profile/gane.jpg"
+                alt="Portrait of Paladugu Ganesh Naidu"
+                class="hero-photo"
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+          </div>
+        </div>
+
+        <button
+          id="scroll-indicator"
+          class="scroll-indicator"
+          type="button"
+          aria-label="Scroll to skills section"
+        >
+          <span>Scroll</span>
+          <i class="fa-solid fa-angles-down" aria-hidden="true"></i>
+        </button>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Technical Stack</p>
+          <h2>Core Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+          <article
+            class="glass-card skill-card"
+            tabindex="0"
+            data-tooltip="Systems-level programming for security tools"
+          >
+            <i class="devicon-c-plain colored" aria-hidden="true"></i>
+            <h3>C</h3>
+            <p>Performance-first tooling and concurrency work.</p>
+            <div class="skill-extra">
+              <p>
+                Built security tooling with process-level control and efficient
+                memory handling for faster scan workflows.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card"
+            tabindex="0"
+            data-tooltip="Core OOP and DSA practice"
+          >
+            <i class="devicon-java-plain colored" aria-hidden="true"></i>
+            <h3>Java</h3>
+            <p>Foundational problem solving and object-oriented design.</p>
+            <div class="skill-extra">
+              <p>
+                Applied Java for structured logic, class design, and DSA
+                practice that improves implementation discipline.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card"
+            tabindex="0"
+            data-tooltip="Automation scripts and rapid prototyping"
+          >
+            <i class="devicon-python-plain colored" aria-hidden="true"></i>
+            <h3>Python</h3>
+            <p>Automation and scripting support for security workflows.</p>
+            <div class="skill-extra">
+              <p>
+                Used for rapid scripting, task automation, and proof-of-concept
+                helpers during recon and validation.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card"
+            tabindex="0"
+            data-tooltip="Query design and data extraction with MySQL"
+          >
+            <i class="devicon-mysql-plain colored" aria-hidden="true"></i>
+            <h3>SQL</h3>
+            <p>Relational analysis and database-driven reporting.</p>
+            <div class="skill-extra">
+              <p>
+                Wrote optimized queries for extraction, filtering, and
+                result-based reporting in security datasets.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card"
+            tabindex="0"
+            data-tooltip="Node.js automation and recon scripts"
+          >
+            <i class="devicon-javascript-plain colored" aria-hidden="true"></i>
+            <h3>JavaScript</h3>
+            <p>ReconX backend automation and workflow acceleration.</p>
+            <div class="skill-extra">
+              <p>
+                Leveraged async and parallel request handling to speed endpoint
+                discovery and reduce manual recon time.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="tools" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Offensive Usage</p>
+          <h2>Tools</h2>
+        </div>
+
+        <div class="skills-grid">
+          <article
+            class="glass-card skill-card tool-card"
+            tabindex="0"
+            data-tooltip="Web interception, request tampering, and vulnerability validation"
+          >
+            <div class="tool-logo-wrap" aria-hidden="true">
+              <img
+                class="tool-logo"
+                src="logos/cropped/burpsuite.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Burp Suite</h3>
+            <p>Primary toolkit for web security testing workflows.</p>
+            <div class="skill-extra">
+              <p>
+                Used for interception, repeater testing, and parameter-level
+                validation in web vulnerability assessments.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card tool-card"
+            tabindex="0"
+            data-tooltip="Exploit framework usage for controlled security testing"
+          >
+            <div class="tool-logo-wrap" aria-hidden="true">
+              <img
+                class="tool-logo"
+                src="logos/cropped/metasploit.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Metasploit</h3>
+            <p>Used for proof-of-concept and exploitation validation.</p>
+            <div class="skill-extra">
+              <p>
+                Supports controlled exploit simulation and post-exploitation
+                checks in lab-focused offensive scenarios.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card tool-card"
+            tabindex="0"
+            data-tooltip="Host discovery, service enumeration, and scan profiling"
+          >
+            <div class="tool-logo-wrap" aria-hidden="true">
+              <img
+                class="tool-logo"
+                src="logos/cropped/nmap.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Nmap</h3>
+            <p>Network mapping and vulnerability-focused enumeration.</p>
+            <div class="skill-extra">
+              <p>
+                Applied for host discovery, service version detection, and
+                script-based reconnaissance automation.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card tool-card"
+            tabindex="0"
+            data-tooltip="Directory and DNS brute-force style enumeration"
+          >
+            <div class="tool-logo-wrap" aria-hidden="true">
+              <img
+                class="tool-logo"
+                src="logos/cropped/Gobuster.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Gobuster</h3>
+            <p>Fast discovery of hidden paths and resources.</p>
+            <div class="skill-extra">
+              <p>
+                Used for directory, DNS, and virtual host brute-force style
+                enumeration during recon stages.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card tool-card"
+            tabindex="0"
+            data-tooltip="High-speed fuzzing for endpoints, params, and content discovery"
+          >
+            <div class="tool-logo-wrap" aria-hidden="true">
+              <img
+                class="tool-logo"
+                src="logos/cropped/fuzz.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>FFUF</h3>
+            <p>Rapid fuzzing to accelerate reconnaissance coverage.</p>
+            <div class="skill-extra">
+              <p>
+                Handles high-speed endpoint and parameter fuzzing to surface
+                hidden attack paths quickly.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="tools-subhead">Operating Systems</h3>
+        <p class="tools-subtext">
+          Comfortable usage across Kali Linux, Ubuntu, and Windows.
+        </p>
+
+        <div class="os-grid">
+          <article
+            class="glass-card skill-card tool-card"
+            tabindex="0"
+            data-tooltip="Primary offensive security environment"
+          >
+            <div class="tool-logo-wrap" aria-hidden="true">
+              <img
+                class="tool-logo"
+                src="logos/cropped/kali.jpg"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Kali Linux</h3>
+            <p>Preferred setup for penetration testing workflows.</p>
+            <div class="skill-extra">
+              <p>
+                Daily environment for offensive tooling, automation scripts,
+                and reproducible security labs.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card tool-card"
+            tabindex="0"
+            data-tooltip="Comfortable Linux environment for development and tooling"
+          >
+            <i class="devicon-ubuntu-plain colored tool-icon-fallback" aria-hidden="true"></i>
+            <h3>Ubuntu</h3>
+            <p>Reliable platform for scripts and lab environments.</p>
+            <div class="skill-extra">
+              <p>
+                Comfortable for development workflows, CLI tooling, and
+                lightweight virtual lab setups.
+              </p>
+            </div>
+          </article>
+
+          <article
+            class="glass-card skill-card tool-card"
+            tabindex="0"
+            data-tooltip="Comfortable usage for desktop, tooling, and compatibility checks"
+          >
+            <i class="fa-brands fa-windows tool-icon-fallback" aria-hidden="true"></i>
+            <h3>Windows</h3>
+            <p>Used for daily workflows and cross-platform testing.</p>
+            <div class="skill-extra">
+              <p>
+                Used for documentation, testing compatibility, and mixed
+                environment execution.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Featured Build Work</p>
+          <h2>Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+          <article class="glass-card project-card">
+            <span class="project-number">01</span>
+            <h3>NmapAnalyzer</h3>
+            <p>
+              C-based automation framework integrating Nmap and SQLite,
+              reducing scan time by 70% across 200+ hosts and cutting analysis
+              effort by 85%.
+            </p>
+            <ul class="tech-list" aria-label="Technologies used">
+              <li><i class="devicon-c-plain colored" aria-hidden="true"></i></li>
+              <li><i class="fa-solid fa-network-wired" aria-hidden="true"></i></li>
+              <li><i class="devicon-sqlite-plain colored" aria-hidden="true"></i></li>
+            </ul>
+            <div class="card-actions">
+              <a
+                class="btn btn-small"
+                href="https://github.com/paladuguganeshnaidu/nmapanalyzer"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
+          </article>
+
+          <article class="glass-card project-card">
+            <span class="project-number">02</span>
+            <h3>ReconX</h3>
+            <p>
+              Web reconnaissance automation tool using Node.js, FFUF, and
+              Gobuster that discovered 50+ hidden endpoints and reduced
+              reconnaissance time from 2 hours to 30 minutes.
+            </p>
+            <ul class="tech-list" aria-label="Technologies used">
+              <li>
+                <i class="devicon-javascript-plain colored" aria-hidden="true"></i>
+              </li>
+              <li><i class="devicon-nodejs-plain colored" aria-hidden="true"></i></li>
+              <li><i class="fa-solid fa-bolt" aria-hidden="true"></i></li>
+            </ul>
+            <div class="card-actions">
+              <a
+                class="btn btn-small"
+                href="https://github.com/paladuguganeshnaidu/ReconX"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </div>
+          </article>
+
+          <article class="glass-card project-card">
+            <span class="project-number">03</span>
+            <h3>ToriiWeb Vulnerability Disclosure</h3>
+            <p>
+              Identified and responsibly reported a real-world vulnerability in
+              ToriiWeb, demonstrating practical exploitation analysis and
+              security reporting discipline.
+            </p>
+            <ul class="tech-list" aria-label="Technologies used">
+              <li><i class="fa-solid fa-bug" aria-hidden="true"></i></li>
+              <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></li>
+              <li><i class="fa-solid fa-file-shield" aria-hidden="true"></i></li>
+            </ul>
+            <div class="card-actions">
+              <a
+                class="btn btn-small"
+                href="mailto:paladuguganeshnaidu@gmail.com?subject=ToriiWeb%20Report%20Request"
+                >Request Report</a
+              >
+            </div>
+          </article>
+
+          <article class="glass-card project-card">
+            <span class="project-number">04</span>
+            <h3>Algorithm and SQL Practice Track</h3>
+            <p>
+              Built consistent problem-solving depth through 61 LeetCode
+              solutions in C, MySQL, and Java, including streak-based practice
+              and contest participation.
+            </p>
+            <ul class="tech-list" aria-label="Technologies used">
+              <li><i class="devicon-c-plain colored" aria-hidden="true"></i></li>
+              <li><i class="devicon-mysql-plain colored" aria-hidden="true"></i></li>
+              <li><i class="devicon-java-plain colored" aria-hidden="true"></i></li>
+            </ul>
+            <div class="card-actions">
+              <a
+                class="btn btn-small"
+                href="https://leetcode.com/u/paladuguganeshnaidu"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LeetCode</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="highlights" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Hover to Reveal</p>
+          <h2>Security Journey Highlights</h2>
+        </div>
+
+        <div class="reveal-grid">
+          <article class="glass-card reveal-card" tabindex="0">
+            <h3>Security Automation Builder</h3>
+            <p class="reveal-summary">
+              I focus on building tooling that makes repeated security tasks
+              faster and more reliable.
+            </p>
+            <div class="reveal-body">
+              <p>
+                From NmapAnalyzer in C to ReconX in Node.js, my approach is to
+                convert manual, error-prone reconnaissance into measurable,
+                scriptable workflows.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card reveal-card" tabindex="0">
+            <h3>Hands-on Offensive Learner</h3>
+            <p class="reveal-summary">
+              Practical labs and real systems are my main way to grow in
+              offensive security.
+            </p>
+            <div class="reveal-body">
+              <p>
+                I am ranked in the top 7% on TryHackMe and use challenge-based
+                environments to sharpen enumeration, vulnerability validation,
+                and attack path thinking.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card reveal-card" tabindex="0">
+            <h3>Consistent Problem Solver</h3>
+            <p class="reveal-summary">
+              Algorithmic and database problem solving supports my security
+              mindset.
+            </p>
+            <div class="reveal-body">
+              <p>
+                LeetCode practice in C, SQL, and Java helps me reason about edge
+                cases, optimize logic, and write cleaner automation under
+                constraints.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="education" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Academic Track</p>
+          <h2>Education Timeline</h2>
+        </div>
+
+        <div class="timeline-grid">
+          <article class="glass-card timeline-card">
+            <h3>B.E. Computer Science</h3>
+            <p>Nagarjuna College of Engineering and Technology (VTU, AICTE)</p>
+            <p>Sep 2024 - Aug 2028</p>
+            <p>CGPA: 6.7</p>
+          </article>
+          <article class="glass-card timeline-card">
+            <h3>Intermediate (MPC)</h3>
+            <p>Narayana Junior College, Anantapur</p>
+            <p>Sep 2022 - Mar 2024</p>
+            <p>Score: 74%</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="achievements" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Recognition</p>
+          <h2>Achievements and Certifications</h2>
+        </div>
+
+        <div class="awards-grid">
+          <article class="glass-card award-card">
+            <h3>TryHackMe Top 7%</h3>
+            <p>
+              Ranked among top learners through hands-on offensive security
+              practice.
+            </p>
+            <a
+              class="text-link"
+              href="https://tryhackme.com/p/paladuguganeshnaidu"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Profile</a
+            >
+          </article>
+
+          <article class="glass-card award-card">
+            <h3>Cisco Ethical Hacker</h3>
+            <p>
+              Formal certification by cisco validating ethical hacking fundamentals and
+              practical security concepts.
+            </p>
+            <a
+              class="text-link"
+              href="https://www.credly.com/badges/921b523f-5da0-4b22-aaec-1277e93bfca8/public_url"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Badge</a
+            >
+          </article>
+
+          <article class="glass-card award-card">
+            <h3>Real-World Vulnerability Report</h3>
+            <p>
+              Reported a real vulnerability in Torii portal with responsible
+              disclosure and structured documentation.
+            </p>
+            <a
+              class="text-link"
+              href="mailto:paladuguganeshnaidu@gmail.com?subject=Vulnerability%20Report%20Discussion"
+              >Discuss Details</a
+            >
+          </article>
+          <article class="glass-card award-card">
+            <h3>Internz Learn Training</h3>
+            <p>
+              Completed cybersecurity internship projects, demonstrated dedication and enthusiasm.
+            </p>
+            <a
+              class="text-link"
+              href="https://drive.google.com/drive/folders/1xi0fnEaLVbtPyT_BBmonaWBrZuUHBq3N?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Details</a
+            >
+          </article>
+
+        </div>
+      </section>
+         
+
+      <section id="contact" class="section contact-section">
+        <div class="glass-card contact-card">
+          <p class="eyebrow">Contact</p>
+          <h2>Open to Security Internships and Collaborations</h2>
+          <p>
+            I am actively building practical offensive security skills and
+            security automation systems. Reach out for internships, project
+            collaboration, or security-focused opportunities.
+          </p>
+          <ul class="contact-list" aria-label="Contact information">
+            <li>
+              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:paladuguganeshnaidu@gmail.com"
+                >paladuguganeshnaidu@gmail.com</a
+              >
+            </li>
+            <li>
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <a href="tel:+917815872759">+91 7815872759</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              <span>India (Anantapur / Bengaluru area)</span>
+            </li>
+          </ul>
+
+          <div class="social-links" aria-label="Professional links">
+            <a href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a
+            >
+            <a
+              href="https://linkedin.com/in/paladuguganeshnaidu"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a
+            >
+            <a
+              href="https://tryhackme.com/p/paladuguganeshnaidu"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fa-solid fa-user-secret" aria-hidden="true"></i> TryHackMe</a
+            >
+            <a
+              href="https://leetcode.com/u/paladuguganeshnaidu"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fa-solid fa-code" aria-hidden="true"></i> LeetCode</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        <span id="year"></span> Paladugu Ganesh Naidu - Built for security-focused opportunities.
+      </p>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
