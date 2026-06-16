@@ -89,6 +89,31 @@ function setupKeyboardRevealCards() {
   });
 }
 
+function setupScrollReveal() {
+  const revealTargets = document.querySelectorAll("[data-reveal]");
+
+  if (!revealTargets.length) return;
+
+  if (!("IntersectionObserver" in window)) {
+    revealTargets.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add("is-visible");
+        currentObserver.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.18, rootMargin: "0px 0px -8% 0px" },
+  );
+
+  revealTargets.forEach((element) => observer.observe(element));
+}
+
 function setupCurrentYear() {
   if (!footerYear) return;
   footerYear.textContent = String(new Date().getFullYear());
@@ -97,4 +122,5 @@ function setupCurrentYear() {
 runTypewriter();
 setupScrollIndicator();
 setupKeyboardRevealCards();
+setupScrollReveal();
 setupCurrentYear();
