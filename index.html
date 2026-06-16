@@ -75,8 +75,32 @@
     <div class="bg-grid" aria-hidden="true"></div>
 
     <header class="site-header">
-      <a class="brand" href="#hero">GN</a>
-      <nav class="site-nav" aria-label="Primary Navigation">
+      <a class="brand" href="#hero" aria-label="Go to hero section">GN</a>
+      <button
+        id="nav-toggle"
+        class="nav-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-controls="site-nav"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary Navigation">
+        <div class="nav-panel-head">
+          <a class="nav-brand" href="#hero">GN</a>
+          <p>Navigate the portfolio or jump to GitHub.</p>
+        </div>
+        <button
+          id="nav-close"
+          class="nav-close"
+          type="button"
+          aria-label="Close navigation menu"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
         <a href="#skills">Skills</a>
         <a href="#tools">Tools</a>
         <a href="#projects">Projects</a>
@@ -84,8 +108,18 @@
         <a href="#highlights">Highlights</a>
         <a href="#completion">Completion</a>
         <a href="#contact">Contact</a>
+        <a
+          class="nav-github-link"
+          href="https://github.com/paladuguganeshnaidu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          GitHub
+        </a>
       </nav>
     </header>
+    <div id="nav-backdrop" class="nav-backdrop" aria-hidden="true"></div>
 
     <main>
       <section id="hero" class="section hero-section">
@@ -334,7 +368,7 @@
                 decoding="async"
               />
             </div>
-            <h3>Github Copilot</h3>
+            <h3>GitHub Copilot</h3>
             <p>Rapid coding and refactoring.</p>
             <div class="skill-extra">
               <p>

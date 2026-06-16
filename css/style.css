@@ -134,11 +134,84 @@ main {
   padding: 0.55rem 0.95rem;
 }
 
+.nav-panel-head {
+  display: none;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(144, 239, 223, 0.18);
+  background: rgba(9, 20, 36, 0.7);
+  font-family: "Space Grotesk", "Orbitron", "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #e8fcff;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding-right: 0.8rem;
+}
+
+.nav-toggle,
+.nav-close {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.nav-toggle {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(9, 20, 36, 0.7);
+  border: 1px solid rgba(144, 239, 223, 0.22);
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e8fcff, #88dfd1);
+}
+
+.nav-toggle span + span {
+  margin-top: 4px;
+}
+
+.nav-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: rgba(9, 20, 36, 0.76);
+  border: 1px solid rgba(144, 239, 223, 0.18);
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-backdrop {
+  display: none;
+}
+
+body.nav-open {
+  overflow: hidden;
 }
 
 .site-nav a {
@@ -154,6 +227,10 @@ main {
 .site-nav a:focus-visible {
   color: #ffffff;
   transform: translateY(-1px);
+}
+
+.nav-github-link i {
+  font-size: 1rem;
 }
 
 .section {
@@ -1251,14 +1328,118 @@ h2 {
 
 @media (max-width: 900px) {
   .site-header {
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    inset: 0 auto auto 0;
+    pointer-events: none;
+  }
+
+  .site-header::before,
+  .site-header .brand {
+    display: none;
   }
 
   .site-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(82vw, 320px);
+    height: 100vh;
+    padding: 1.2rem 1rem 1.2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+    background:
+      linear-gradient(180deg, rgba(7, 14, 25, 0.98), rgba(7, 14, 25, 0.92)),
+      radial-gradient(circle at top, rgba(102, 240, 209, 0.14), transparent 38%);
+    border-left: 1px solid rgba(144, 239, 223, 0.18);
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.45);
+    transform: translateX(105%);
+    transition: transform var(--duration-mid) var(--ease-emphatic);
+    z-index: 60;
+    pointer-events: none;
+  }
+
+  .nav-panel-head {
+    display: grid;
+    gap: 0.55rem;
+    width: 100%;
+    padding-right: 3.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .nav-panel-head p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  .site-nav.is-open {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .site-nav a {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    background: rgba(13, 25, 43, 0.45);
+    border: 1px solid transparent;
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus-visible {
+    border-color: rgba(102, 240, 209, 0.22);
+  }
+
+  .nav-github-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: #dffbff;
+    border-color: rgba(102, 240, 209, 0.26);
+    background: linear-gradient(130deg, rgba(39, 113, 255, 0.36), rgba(102, 240, 209, 0.18));
+  }
+
+  .nav-toggle,
+  .nav-close {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 65;
+    pointer-events: auto;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+  }
+
+  body.nav-open .nav-toggle {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(1, 5, 10, 0.56);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-mid) ease;
+    z-index: 55;
+  }
+
+  .nav-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .hero-metrics {
