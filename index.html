@@ -52,7 +52,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;700;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -70,6 +70,12 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div id="page-loader" class="page-loader" aria-hidden="true">
+      <div class="page-loader-mark">GN</div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true">
+      <span id="scroll-progress-bar"></span>
+    </div>
     <div class="bg-orb orb-a" aria-hidden="true"></div>
     <div class="bg-orb orb-b" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
@@ -216,7 +222,7 @@
           <h2>Core Skills</h2>
         </div>
 
-        <div class="skills-grid">
+          <div class="skills-grid">
           <article
             class="glass-card skill-card"
             tabindex="0"
@@ -314,7 +320,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/Claude.jpg"
+                src="logos/claude.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -338,7 +344,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/Antigravity.jpg"
+                src="logos/Antigravity.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -362,7 +368,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/GC.jpg"
+                src="logos/copilot.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -386,7 +392,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/deepseek.jpg"
+                src="logos/Deepseek logo.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -402,13 +408,13 @@
             </div>
           </article>
         </div>
-        <section id="tools" class="section">
-        <div class="section-head">
-          <p class="eyebrow">Offensive Usage</p>
-          <h2>Tools</h2>
-        </div>
+        <div class="tool-cluster">
+          <div class="section-head">
+            <p class="eyebrow">Offensive Usage</p>
+            <h2>Tools</h2>
+          </div>
 
-        <div class="skills-grid">
+          <div class="skills-grid">
           <article
             class="glass-card skill-card tool-card"
             tabindex="0"
@@ -417,7 +423,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/burpsuite.jpg"
+                src="logos/burpsuite.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -441,7 +447,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/metasploit.jpg"
+                src="logos/metasploit.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -465,7 +471,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/nmap.jpg"
+                src="logos/nmap.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -489,7 +495,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/Gobuster.jpg"
+                src="logos/Gobuster.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -512,7 +518,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/fuzz.jpg"
+                src="logos/fuzz.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -527,15 +533,15 @@
               </p>
             </div>
           </article>
-        </div>
+          </div>
 
-        <h3 class="tools-subhead">Operating Systems</h3>
-        <p class="tools-subtext">
-          Comfortable usage across Kali Linux, Ubuntu, and Windows.
-        </p>
+          <h3 class="tools-subhead">Operating Systems</h3>
+          <p class="tools-subtext">
+            Comfortable usage across Kali Linux, Ubuntu, and Windows.
+          </p>
 
-        <div class="os-grid">
-          <article
+          <div class="os-grid">
+            <article
             class="glass-card skill-card tool-card"
             tabindex="0"
             data-tooltip="Primary offensive security environment"
@@ -543,7 +549,7 @@
             <div class="tool-logo-wrap" aria-hidden="true">
               <img
                 class="tool-logo"
-                src="logos/cropped/kali.jpg"
+                src="logos/kali.jpg"
                 alt=""
                 loading="lazy"
                 decoding="async"
@@ -557,7 +563,7 @@
                 and reproducible security labs.
               </p>
             </div>
-          </article>
+            </article>
 
           <article
             class="glass-card skill-card tool-card"
@@ -590,6 +596,7 @@
               </p>
             </div>
           </article>
+          </div>
         </div>
       </section>
 
@@ -1088,6 +1095,15 @@
         </div>
       </section>
     </main>
+
+    <button
+      id="back-to-top"
+      class="back-to-top"
+      type="button"
+      aria-label="Back to top"
+    >
+      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
     <footer class="site-footer">
       <p>
