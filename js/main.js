@@ -9,6 +9,7 @@ const navBackdrop = document.getElementById("nav-backdrop");
 const scrollProgressBar = document.getElementById("scroll-progress-bar");
 const backToTopButton = document.getElementById("back-to-top");
 const pageLoader = document.getElementById("page-loader");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let currentIndex = 0;
 let deleting = false;
@@ -69,7 +70,7 @@ function updateBackToTop() {
 function setupScrollIndicator() {
   if (scrollIndicator) {
     scrollIndicator.addEventListener("click", () => {
-      document.getElementById("skills")?.scrollIntoView({
+      document.getElementById("about")?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
@@ -171,15 +172,14 @@ function setupKeyboardRevealCards() {
 
 function markRevealTargets() {
   const selectors = [
-    ".section-head",
     ".hero-metrics .metric",
+    ".about-pillars-grid .about-pillar",
     ".skills-grid .skill-card",
     ".projects-grid .project-card",
     ".experience-grid .experience-card",
     ".reveal-grid .reveal-card",
     ".timeline-grid .timeline-card",
     ".awards-grid .award-card",
-    ".completion-grid .completion-card",
     ".contact-card",
   ];
 
@@ -188,7 +188,7 @@ function markRevealTargets() {
       if (element.hasAttribute("data-reveal")) return;
 
       element.setAttribute("data-reveal", "");
-      element.style.setProperty("--reveal-delay", `${Math.min(index * 70, 320)}ms`);
+      element.style.setProperty("--reveal-delay", `${Math.min(index * 60, 300)}ms`);
     });
   });
 }
@@ -221,9 +221,7 @@ function setupActiveNavLinks() {
   if (!siteNav || !("IntersectionObserver" in window)) return;
 
   const navLinks = Array.from(siteNav.querySelectorAll("a[href^='#']"));
-  const linkMap = new Map(
-    navLinks.map((link) => [link.getAttribute("href")?.slice(1), link]),
-  );
+  const linkMap = new Map(navLinks.map((link) => [link.getAttribute("href")?.slice(1), link]));
 
   const sections = Array.from(linkMap.keys())
     .map((id) => document.getElementById(id))
@@ -240,44 +238,54 @@ function setupActiveNavLinks() {
       navLinks.forEach((link) => link.classList.remove("is-active"));
       linkMap.get(visibleEntry.target.id)?.classList.add("is-active");
     },
-    {
-      threshold: [0.2, 0.5, 0.7],
-      rootMargin: "-20% 0px -55% 0px",
-    },
+    { threshold: [0.2, 0.5, 0.7], rootMargin: "-20% 0px -55% 0px" },
   );
 
   sections.forEach((section) => observer.observe(section));
 }
 
-function setupHeroParallax() {
-  const hero = document.querySelector(".hero-content");
-  const accent = document.querySelector(".hero-accent");
-  const photo = document.querySelector(".hero-photo-frame");
+/**
+ * 3D tilt + cursor-follow glow for glass cards.
+ * Adds perspective-based rotation on mousemove, resets on leave,
+ * and updates --mx/--my custom properties for the CSS spotlight effect.
+ */
+function setupTiltCards() {
+  if (prefersReducedMotion) return;
 
-  if (!hero || !accent || !photo || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return;
-  }
+  const tiltEls = document.querySelectorAll(".tilt");
+  if (!tiltEls.length) return;
 
-  let animationFrame = 0;
+  const supportsFinePointer = window.matchMedia("(pointer: fine)").matches;
 
-  hero.addEventListener("mousemove", (event) => {
-    const rect = hero.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
+  tiltEls.forEach((el) => {
+    const maxTilt = Number(el.getAttribute("data-tilt-max")) || 7;
+    let frame = 0;
 
-    if (animationFrame) {
-      window.cancelAnimationFrame(animationFrame);
-    }
+    el.addEventListener("mousemove", (event) => {
+      const rect = el.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
 
-    animationFrame = window.requestAnimationFrame(() => {
-      accent.style.transform = `translate3d(${x * 18}px, ${y * 16}px, 0) rotate(${x * 8}deg)`;
-      photo.style.transform = `translate3d(${x * -10}px, ${y * -12}px, 0)`;
+      el.style.setProperty("--mx", `${x * 100}%`);
+      el.style.setProperty("--my", `${y * 100}%`);
+
+      if (!supportsFinePointer) return;
+
+      const rotateY = (x - 0.5) * maxTilt * 2;
+      const rotateX = (0.5 - y) * maxTilt * 2;
+
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        el.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(6px)`;
+      });
     });
-  });
 
-  hero.addEventListener("mouseleave", () => {
-    accent.style.transform = "";
-    photo.style.transform = "";
+    el.addEventListener("mouseleave", () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      el.style.transform = "";
+      el.style.setProperty("--mx", "50%");
+      el.style.setProperty("--my", "50%");
+    });
   });
 }
 
@@ -305,6 +313,125 @@ function setupLoader() {
   }
 }
 
+/**
+ * Best-effort live LeetCode solved-count fetch.
+ * Falls back silently to the static number already in the HTML
+ * if the public stats endpoint is unreachable or rate-limited.
+ */
+function setupLiveLeetCodeStat() {
+  const statEl = document.getElementById("leetcode-live-stat");
+  if (!statEl) return;
+
+  fetch("https://leetcode-stats-api.herokuapp.com/paladuguganeshnaidu")
+    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then((data) => {
+      const solved = data?.totalSolved;
+      if (typeof solved === "number" && solved > 0) {
+        statEl.textContent = `${solved}+`;
+      }
+    })
+    .catch(() => {
+      /* keep the static fallback already in the markup */
+    });
+}
+
+/**
+ * Lightweight three.js hero background: a rotating wireframe icosahedron
+ * with a soft particle field, tuned dark/neon to match the site theme.
+ * Degrades gracefully (no-op) if three.js failed to load.
+ */
+function setupHero3D() {
+  const canvas = document.getElementById("hero-canvas");
+  if (!canvas || typeof THREE === "undefined" || prefersReducedMotion) return;
+
+  let width = canvas.clientWidth || canvas.parentElement.clientWidth;
+  let height = canvas.clientHeight || canvas.parentElement.clientHeight;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(width, height, false);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 100);
+  camera.position.set(0, 0, 9);
+
+  const icoGeometry = new THREE.IcosahedronGeometry(2.6, 1);
+  const icoMaterial = new THREE.MeshBasicMaterial({
+    color: 0x7c5cff,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.55,
+  });
+  const ico = new THREE.Mesh(icoGeometry, icoMaterial);
+  ico.position.set(2.4, 0.4, 0);
+  scene.add(ico);
+
+  const innerGeometry = new THREE.IcosahedronGeometry(1.5, 0);
+  const innerMaterial = new THREE.MeshBasicMaterial({
+    color: 0x2dd4bf,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.4,
+  });
+  const innerIco = new THREE.Mesh(innerGeometry, innerMaterial);
+  innerIco.position.copy(ico.position);
+  scene.add(innerIco);
+
+  const particleCount = 220;
+  const positions = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount; i += 1) {
+    positions[i * 3] = (Math.random() - 0.5) * 16;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
+  }
+  const particleGeometry = new THREE.BufferGeometry();
+  particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  const particleMaterial = new THREE.PointsMaterial({
+    color: 0xf5578a,
+    size: 0.035,
+    transparent: true,
+    opacity: 0.55,
+  });
+  const particles = new THREE.Points(particleGeometry, particleMaterial);
+  scene.add(particles);
+
+  let targetRotX = 0;
+  let targetRotY = 0;
+
+  window.addEventListener("mousemove", (event) => {
+    targetRotX = (event.clientY / window.innerHeight - 0.5) * 0.4;
+    targetRotY = (event.clientX / window.innerWidth - 0.5) * 0.4;
+  });
+
+  function resize() {
+    width = canvas.parentElement.clientWidth;
+    height = canvas.parentElement.clientHeight;
+    if (!width || !height) return;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height, false);
+  }
+
+  window.addEventListener("resize", resize);
+
+  function animate() {
+    ico.rotation.x += 0.0022;
+    ico.rotation.y += 0.0032;
+    innerIco.rotation.x -= 0.0018;
+    innerIco.rotation.y -= 0.0026;
+    particles.rotation.y += 0.0006;
+
+    camera.position.x += (targetRotY * 2 - camera.position.x + 0) * 0.02;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(animate);
+  }
+
+  resize();
+  animate();
+}
+
 markRevealTargets();
 runTypewriter();
 setupScrollIndicator();
@@ -312,6 +439,8 @@ setupMobileNav();
 setupKeyboardRevealCards();
 setupScrollReveal();
 setupActiveNavLinks();
-setupHeroParallax();
+setupTiltCards();
 setupCurrentYear();
 setupLoader();
+setupLiveLeetCodeStat();
+setupHero3D();
