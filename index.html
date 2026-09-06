@@ -4,87 +4,138 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Paladugu Ganesh Naidu | GenAI Engineer, AI/ML &amp; Deep Learning Developer, Cybersecurity Practitioner</title>
+    <!-- Gate animations + failsafe reveal if scripts ever fail -->
+    <script>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js", "is-loading");
+        window.setTimeout(function () {
+          if (window.__GN_BOOTED__) return;
+          d.classList.remove("is-loading", "js");
+          document.body.classList.add("is-loaded");
+          var p = document.getElementById("preloader");
+          if (p && p.parentNode) p.parentNode.removeChild(p);
+        }, 5000);
+      })();
+    </script>
+
+    <!-- Primary SEO -->
+    <title>Paladugu Ganesh Naidu · GenAI Engineer &amp; AI/ML Developer</title>
     <meta
       name="description"
-      content="Paladugu Ganesh Naidu is a GenAI Engineer and AI/ML developer building RAG systems, machine learning models, and deep learning foundations — backed by full-stack engineering and hands-on cybersecurity practice."
-    />
-    <meta
-      name="keywords"
-      content="Paladugu Ganesh Naidu, Ganesh Naidu, GenAI Engineer, AI Engineer, Artificial Intelligence Engineer, Machine Learning Engineer, ML Engineer, Deep Learning Engineer, DL Engineer, LLM Engineer, RAG Engineer, Retrieval Augmented Generation, Prompt Engineer, Prompt Engineering India, AI Agents, Generative AI, Neural Networks, Cybersecurity Engineer, Ethical Hacker, Offensive Security, Full Stack AI Developer, Python Developer, Claude, GPT, Gemini, DeepSeek, OpenAI, Anthropic, AI Automation, India, Karnataka, Bengaluru, Anantapur, VTU"
+      content="Paladugu Ganesh Naidu — GenAI Engineer &amp; AI/ML Developer building RAG systems, LLM agents and machine-learning models, backed by full-stack engineering and hands-on cybersecurity practice."
     />
     <meta name="author" content="Paladugu Ganesh Naidu" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#05060c" />
+    <meta name="theme-color" content="#fafaf9" />
 
+    <!-- Local signals -->
     <meta name="geo.region" content="IN-KA" />
     <meta name="geo.placename" content="Bengaluru, Karnataka" />
     <meta name="geo.position" content="12.9716;77.5946" />
     <meta name="ICBM" content="12.9716, 77.5946" />
 
-    <!-- Open Graph (for social sharing) -->
-    <meta property="og:title" content="Paladugu Ganesh Naidu | GenAI Engineer &amp; AI/ML Developer" />
+    <!-- Canonical + favicon -->
+    <link rel="canonical" href="https://paladuguganeshnaidu.tech/" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%236d4aff'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='26' font-weight='700' text-anchor='middle' fill='%23fff'%3EGN%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Paladugu Ganesh Naidu" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://paladuguganeshnaidu.tech/" />
+    <meta property="og:title" content="Paladugu Ganesh Naidu · GenAI Engineer &amp; AI/ML Developer" />
     <meta
       property="og:description"
-      content="GenAI, machine learning, deep learning foundations, and cybersecurity — one engineer building across all four, in the open."
+      content="Building RAG systems, LLM agents and machine-learning models — engineered with a cybersecurity practitioner's instinct for what can break."
     />
-    <meta property="og:url" content="https://paladuguganeshnaidu.tech" />
-    <meta property="og:type" content="website" />
     <meta property="og:image" content="https://paladuguganeshnaidu.tech/images/profile/ganesh-naidu.jpg" />
-    <meta property="og:image:alt" content="Portrait of Paladugu Ganesh Naidu" />
+    <meta property="og:image:alt" content="Portrait of Paladugu Ganesh Naidu, GenAI Engineer and AI/ML Developer" />
 
-    <!-- Twitter Card -->
+    <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Paladugu Ganesh Naidu | GenAI Engineer &amp; AI/ML Developer" />
+    <meta name="twitter:title" content="Paladugu Ganesh Naidu · GenAI Engineer &amp; AI/ML Developer" />
+    <meta
+      name="twitter:description"
+      content="GenAI, applied machine learning, deep-learning foundations and cybersecurity — one engineer building across all four, in the open."
+    />
     <meta name="twitter:image" content="https://paladuguganeshnaidu.tech/images/profile/ganesh-naidu.jpg" />
+    <meta name="twitter:image:alt" content="Portrait of Paladugu Ganesh Naidu, GenAI Engineer and AI/ML Developer" />
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://paladuguganeshnaidu.tech" />
-
+    <!-- Structured data: Person + WebSite -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Paladugu Ganesh Naidu",
-        "alternateName": ["Ganesh Naidu", "Paladugu Ganesh", "Ganesh Kuchivaripalli"],
-        "url": "https://paladuguganeshnaidu.tech",
-        "image": "https://paladuguganeshnaidu.tech/images/profile/ganesh-naidu.jpg",
-        "description": "GenAI Engineer and AI/ML developer specializing in generative AI, machine learning, deep learning foundations, retrieval-augmented generation, full-stack AI development, and applied cybersecurity.",
-        "jobTitle": "GenAI Engineer & AI/ML Developer",
-        "knowsAbout": [
-          "Generative AI",
-          "Large Language Models",
-          "Retrieval-Augmented Generation",
-          "Machine Learning",
-          "Deep Learning",
-          "Prompt Engineering",
-          "AI Agents",
-          "Cybersecurity",
-          "Ethical Hacking",
-          "Full Stack Development",
-          "Python",
-          "JavaScript"
-        ],
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "Nagarjuna College of Engineering and Technology"
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": "https://paladuguganeshnaidu.tech/#person",
+          "name": "Paladugu Ganesh Naidu",
+          "alternateName": ["Ganesh Naidu", "Paladugu Ganesh", "Ganesh Kuchivaripalli"],
+          "url": "https://paladuguganeshnaidu.tech/",
+          "image": "https://paladuguganeshnaidu.tech/images/profile/ganesh-naidu.jpg",
+          "description": "GenAI Engineer and AI/ML developer building retrieval-augmented generation systems, LLM agents and machine-learning models, with a hands-on offensive-security foundation and full-stack engineering delivery.",
+          "jobTitle": "GenAI Engineer & AI/ML Developer",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "ClinchWorks",
+            "jobTitle": "Full Stack Engineer Intern"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Nagarjuna College of Engineering and Technology"
+          },
+          "knowsAbout": [
+            "Generative AI",
+            "Large Language Models",
+            "Retrieval-Augmented Generation",
+            "LLM Agents",
+            "Machine Learning",
+            "Deep Learning",
+            "Prompt Engineering",
+            "Full Stack Development",
+            "Python",
+            "JavaScript",
+            "Cybersecurity",
+            "Ethical Hacking",
+            "Offensive Security"
+          ],
+          "sameAs": [
+            "https://github.com/paladuguganeshnaidu",
+            "https://linkedin.com/in/paladuguganeshnaidu",
+            "https://tryhackme.com/p/paladuguganeshnaidu",
+            "https://leetcode.com/u/paladuguganeshnaidu"
+          ]
         },
-        "sameAs": [
-          "https://github.com/paladuguganeshnaidu",
-          "https://linkedin.com/in/paladuguganeshnaidu",
-          "https://tryhackme.com/p/paladuguganeshnaidu",
-          "https://leetcode.com/u/paladuguganeshnaidu"
-        ]
-      }
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://paladuguganeshnaidu.tech/#website",
+          "url": "https://paladuguganeshnaidu.tech/",
+          "name": "Paladugu Ganesh Naidu — GenAI & AI/ML Engineer Portfolio",
+          "publisher": { "@id": "https://paladuguganeshnaidu.tech/#person" },
+          "inLanguage": "en"
+        }
+      ]
     </script>
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Icons: brand logos (devicon) + generic line icons (font awesome) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <link
       rel="stylesheet"
@@ -95,981 +146,1072 @@
 
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <div id="page-loader" class="page-loader" aria-hidden="true">
-      <div class="page-loader-mark">GN</div>
-    </div>
-    <div class="scroll-progress" aria-hidden="true">
-      <span id="scroll-progress-bar"></span>
-    </div>
-    <div class="bg-orb orb-a" aria-hidden="true"></div>
-    <div class="bg-orb orb-b" aria-hidden="true"></div>
-    <div class="bg-orb orb-c" aria-hidden="true"></div>
-    <div class="bg-grid" aria-hidden="true"></div>
 
-    <header class="site-header">
-      <a class="brand" href="#hero" aria-label="Go to top">GN<span class="brand-dot">.</span></a>
-      <button
-        id="nav-toggle"
-        class="nav-toggle"
-        type="button"
-        aria-label="Open navigation menu"
-        aria-controls="site-nav"
-        aria-expanded="false"
-      >
-        <i class="fa-solid fa-bars" aria-hidden="true"></i>
-      </button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary Navigation">
-        <div class="nav-panel-head">
-          <a class="nav-brand" href="#hero">GN</a>
-          <p>GenAI &amp; AI/ML Engineer, Cybersecurity Practitioner.</p>
-        </div>
-        <button id="nav-close" class="nav-close" type="button" aria-label="Close navigation menu">
-          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-        </button>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#tools">Tools</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#achievements">Achievements</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-github-link" href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-github" aria-hidden="true"></i>
-          GitHub
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Opening loader: particles assemble the GN monogram -->
+    <div id="preloader" class="preloader" aria-hidden="true">
+      <div class="pre-stage">
+        <canvas id="logo-canvas" class="logo-canvas" aria-hidden="true"></canvas>
+        <p class="pre-tag"><b>GN</b> — Paladugu Ganesh Naidu · GenAI · AI/ML · Security</p>
+      </div>
+    </div>
+
+    <!-- Ambient background: soft 3D shapes + neural canvas -->
+    <div class="bg-scene" aria-hidden="true">
+      <div class="bg-orb o-a"></div>
+      <div class="bg-orb o-b"></div>
+      <div class="bg-orb o-c"></div>
+      <canvas id="neural-canvas" class="neural-canvas"></canvas>
+      <div class="noise"></div>
+    </div>
+
+    <header class="site-header" id="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="#hero" aria-label="Paladugu Ganesh Naidu — back to top">
+          GN<span class="brand-dot">.</span>
         </a>
-      </nav>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="#about"><span>01</span>About</a>
+          <a class="nav-link" href="#skills"><span>02</span>Skills</a>
+          <a class="nav-link" href="#tools"><span>03</span>Stack</a>
+          <a class="nav-link" href="#projects"><span>04</span>Projects</a>
+          <a class="nav-link" href="#experience"><span>05</span>Experience</a>
+          <a class="nav-link" href="#achievements"><span>06</span>Certs</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-ghost btn-sm" href="#contact">Contact</a>
+          <a
+            class="icon-btn"
+            href="https://github.com/paladuguganeshnaidu"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
+          >
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+          <button
+            id="nav-toggle"
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-controls="site-nav"
+            aria-expanded="false"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
     </header>
     <div id="nav-backdrop" class="nav-backdrop" aria-hidden="true"></div>
 
-    <main>
-      <section id="hero" class="section hero-section">
-        <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
-        <div class="hero-content glass-card tilt" data-tilt-max="4">
-          <div class="hero-accent" aria-hidden="true"></div>
-          <div class="hero-layout">
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section id="hero" class="hero" aria-label="Introduction">
+        <div class="shell">
+          <div class="hero-inner">
             <div class="hero-copy">
-              <div class="hero-pill-row" aria-label="Current roles">
-                <span class="hero-pill">GenAI Engineer in the making</span>
-                <span class="hero-pill">Full Stack Engineer Intern @ ClinchWorks</span>
-                <span class="hero-pill">Google Student Ambassador</span>
-              </div>
-              <div class="hero-heading-split">
-                <div class="hero-heading-main">
-                  <h1>
-                    <span class="hero-line">Hello, I am</span>
-                    <span id="typed-name" class="typed-name" aria-live="polite"></span>
-                  </h1>
-                  <p class="hero-role-line">
-                    GenAI Engineer <span aria-hidden="true">&middot;</span> AI/ML Developer
-                    <span aria-hidden="true">&middot;</span> Deep Learning Learner
-                    <span aria-hidden="true">&middot;</span> Cybersecurity Practitioner
-                  </p>
-                  <p class="hero-summary">
-                    I design and ship systems where generative AI, machine learning, and security
-                    have to work together in production &mdash; RAG pipelines, ML classifiers, AI
-                    agents, and the full-stack code that carries them to real users.
-                  </p>
-                </div>
-              </div>
-              <p class="hero-summary hero-summary-secondary">
-                Currently a Full Stack Engineer Intern at ClinchWorks and a Google Student
-                Ambassador, while building a hybrid RAG API, applied ML models, and a GenAI
-                platform for stadium operations &mdash; all on top of a hands-on offensive-security
-                foundation.
+              <p class="hero-status reveal-item">
+                <span class="dot-pulse" aria-hidden="true"></span>
+                Open to GenAI, AI/ML &amp; security roles · Bengaluru / Remote
               </p>
-              <div class="hero-metrics">
-                <div class="metric glass-card tilt">
-                  <span class="metric-value">GenAI + RAG</span>
-                  <span class="metric-label">FastAPI &amp; Ollama</span>
-                </div>
-                <div class="metric glass-card tilt">
-                  <span class="metric-value">ML Models</span>
-                  <span class="metric-label">Classification &amp; forecasting</span>
-                </div>
-                <div class="metric glass-card tilt">
-                  <span class="metric-value">Cybersecurity</span>
-                  <span class="metric-label">Top 7% &middot; TryHackMe</span>
-                </div>
-              </div>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="#projects">View Projects</a>
-                <a class="btn btn-secondary" href="mailto:paladuguganeshnaidu@gmail.com">Contact Me</a>
-              </div>
-            </div>
 
-            <figure class="hero-photo-frame tilt" data-tilt-max="10">
-              <img
-                src="images/profile/ganesh-naidu.jpg"
-                alt="Paladugu Ganesh Naidu, GenAI and AI/ML engineer with a cybersecurity background"
-                class="hero-photo"
-                loading="eager"
-                decoding="async"
-              />
-            </figure>
-          </div>
-        </div>
+              <h1 class="hero-title">
+                <span class="mask"><span class="line t-line t-kicker">Paladugu Ganesh Naidu</span></span>
+                <span class="mask"><span class="line t-line t-main">
+                  GenAI Engineer<br class="br-mobile" />&amp; AI/ML Developer
+                </span></span>
+                <span class="mask"><span class="line t-line t-accent">
+                  Deep Learning Learner · Cybersecurity Practitioner
+                </span></span>
+              </h1>
 
-        <button id="scroll-indicator" class="scroll-indicator" type="button" aria-label="Scroll to about section">
-          <span>Scroll</span>
-          <i class="fa-solid fa-angles-down" aria-hidden="true"></i>
-        </button>
-      </section>
-
-      <section id="about" class="section about-section">
-        <div class="section-head">
-          <p class="eyebrow">About Me</p>
-          <h2>GenAI Engineer, AI/ML Developer &amp; Cybersecurity Practitioner</h2>
-          <p class="section-copy">
-            I am Paladugu Ganesh Naidu, a computer science undergraduate and self-directed AI
-            builder based in Karnataka, India. My work centers on Generative AI and applied
-            machine learning &mdash; retrieval-augmented generation, LLM-powered agents, and ML
-            classifiers &mdash; and I am actively deepening my deep learning foundations to move
-            from classical ML into neural network architectures. Every AI system I build is
-            shipped through full-stack engineering, and every system is designed with a
-            cybersecurity practitioner's instinct for what can break. I currently work as a Full
-            Stack Engineer Intern at ClinchWorks and represent Google's developer community as a
-            Google Student Ambassador. My approach to leadership and teamwork is simple:
-            rising by lifting others.
-          </p>
-        </div>
-
-        <div class="about-pillars-grid">
-          <article class="glass-card about-pillar tilt" data-reveal>
-            <div class="about-pillar-icon" aria-hidden="true"><i class="fa-solid fa-brain"></i></div>
-            <h3>Generative AI &amp; LLM Engineering</h3>
-            <p>
-              Prompt architecture, AI agents, and structured outputs across Claude, GPT, Gemini,
-              and DeepSeek. I built a Hybrid RAG API on FastAPI and Ollama to move from
-              theory into a working retrieval-augmented generation pipeline.
-            </p>
-          </article>
-
-          <article class="glass-card about-pillar tilt" data-reveal>
-            <div class="about-pillar-icon" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></div>
-            <h3>Machine Learning</h3>
-            <p>
-              Applied ML on real-world data &mdash; a Random Forest model for loan-approval
-              prediction, a resume-shortlisting classifier, and CloudCostAI, a cost-forecasting
-              model trained against data touching 10M+ users.
-            </p>
-          </article>
-
-          <article class="glass-card about-pillar tilt" data-reveal>
-            <div class="about-pillar-icon" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></div>
-            <h3>Deep Learning</h3>
-            <p>
-              Currently building neural network foundations &mdash; the deliberate next step
-              beyond classical ML, toward representation learning and larger model
-              architectures.
-            </p>
-          </article>
-
-          <article class="glass-card about-pillar tilt" data-reveal>
-            <div class="about-pillar-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
-            <h3>Cybersecurity &amp; Ethical Hacking</h3>
-            <p>
-              Hands-on offensive security with Burp Suite, Metasploit, Nmap, Gobuster, and FFUF;
-              ranked top 7% on TryHackMe; responsibly disclosed a real vulnerability in ToriiWeb;
-              backed by Cisco, IBM, and ISC2 cybersecurity certifications.
-            </p>
-          </article>
-
-          <article class="glass-card about-pillar tilt" data-reveal>
-            <div class="about-pillar-icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></div>
-            <h3>Full-Stack AI Development</h3>
-            <p>
-              JavaScript, Node.js, and SQL powering AI-driven web apps end to end at ClinchWorks
-              &mdash; frontend, backend APIs, database integration, deployment, and maintenance
-              across the full lifecycle.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="skills" class="section">
-        <div class="section-head">
-          <p class="eyebrow">Technical Stack</p>
-          <h2>Core Skills</h2>
-        </div>
-
-        <div class="skills-grid">
-          <article class="glass-card skill-card tilt" tabindex="0" data-reveal>
-            <i class="devicon-c-plain colored" aria-hidden="true"></i>
-            <h3>C</h3>
-            <p>Performance-first tooling, including a Nmap and MySQL automation framework.</p>
-          </article>
-
-          <article class="glass-card skill-card tilt" tabindex="0" data-reveal>
-            <i class="devicon-java-plain colored" aria-hidden="true"></i>
-            <h3>Java</h3>
-            <p>Core OOP and data-structures depth, built through consistent practice.</p>
-          </article>
-
-          <article class="glass-card skill-card tilt" tabindex="0" data-reveal>
-            <i class="devicon-python-plain colored" aria-hidden="true"></i>
-            <h3>Python</h3>
-            <p>My primary language for ML prototyping, automation, and RAG/AI-agent backends.</p>
-          </article>
-
-          <article class="glass-card skill-card tilt" tabindex="0" data-reveal>
-            <i class="devicon-mysql-plain colored" aria-hidden="true"></i>
-            <h3>SQL</h3>
-            <p>Relational analysis and database-driven reporting for production systems.</p>
-          </article>
-
-          <article class="glass-card skill-card tilt" tabindex="0" data-reveal>
-            <i class="devicon-javascript-plain colored" aria-hidden="true"></i>
-            <h3>JavaScript</h3>
-            <p>Node.js backends for ReconX automation and ClinchWorks' AI-powered web apps.</p>
-          </article>
-        </div>
-
-        <h3 class="tools-subhead">Focus Areas</h3>
-        <p class="tools-subtext">The four disciplines I am actively building across, together.</p>
-        <div class="focus-tag-row" aria-label="Focus areas">
-          <span class="focus-tag">Generative AI</span>
-          <span class="focus-tag">Retrieval-Augmented Generation</span>
-          <span class="focus-tag">AI Agents</span>
-          <span class="focus-tag">Prompt Engineering</span>
-          <span class="focus-tag">Machine Learning</span>
-          <span class="focus-tag">Deep Learning Foundations</span>
-          <span class="focus-tag">Neural Networks</span>
-          <span class="focus-tag">Cybersecurity</span>
-          <span class="focus-tag">Ethical Hacking</span>
-          <span class="focus-tag">Full-Stack AI Development</span>
-        </div>
-      </section>
-
-      <section id="tools" class="section">
-        <div class="section-head">
-          <p class="eyebrow">AI Development</p>
-          <h2>AI Engineering Toolkit</h2>
-        </div>
-
-        <div class="skills-grid">
-          <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-            <div class="tool-logo-wrap" aria-hidden="true">
-              <img class="tool-logo" src="logos/claude.jpg" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>Claude</h3>
-            <p>Architecture, reasoning, code reviews</p>
-            <div class="skill-extra">
-              <p>
-                My primary thinking partner for system design. I use it to architect RAG
-                pipelines, reason through full-stack decisions, and stress-test security
-                trade-offs before I write a line of production code.
+              <p class="hero-role reveal-item">
+                <span>RAG</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <span>LLM Agents</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <span>Applied ML</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <span>Security-First Shipping</span>
               </p>
-            </div>
-          </article>
 
-          <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-            <div class="tool-logo-wrap" aria-hidden="true">
-              <img class="tool-logo" src="logos/Antigravity.jpg" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>Antigravity</h3>
-            <p>Research, automation, workflow acceleration.</p>
-            <div class="skill-extra">
-              <p>
-                Handles the repetitive research and execution work so I can spend my own time
-                on architecture decisions instead of busywork.
-              </p>
-            </div>
-          </article>
-
-          <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-            <div class="tool-logo-wrap" aria-hidden="true">
-              <img class="tool-logo" src="logos/copilot.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>GitHub Copilot</h3>
-            <p>Rapid coding and refactoring.</p>
-            <div class="skill-extra">
-              <p>
-                Speeds up day-to-day coding at ClinchWorks &mdash; inline suggestions, refactors,
-                and boilerplate, so I can stay focused on logic and integration.
-              </p>
-            </div>
-          </article>
-
-          <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-            <div class="tool-logo-wrap" aria-hidden="true">
-              <img class="tool-logo" src="logos/Deepseek logo.jpg" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>DeepSeek</h3>
-            <p>Debugging, analysis, problem-solving.</p>
-            <div class="skill-extra">
-              <p>
-                My go-to for debugging gnarly logic and exploring alternative algorithm
-                approaches whenever I get stuck mid-build.
-              </p>
-            </div>
-          </article>
-        </div>
-
-        <div class="tool-cluster">
-          <div class="section-head">
-            <p class="eyebrow">Offensive Security</p>
-            <h2>Ethical Hacking Toolkit</h2>
-          </div>
-
-          <div class="skills-grid">
-            <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-              <div class="tool-logo-wrap" aria-hidden="true">
-                <img class="tool-logo" src="logos/burpsuite.jpg" alt="" loading="lazy" decoding="async" />
-              </div>
-              <h3>Burp Suite</h3>
-              <p>Primary toolkit for web security testing workflows.</p>
-              <div class="skill-extra">
+              <div class="hero-lead reveal-item">
                 <p>
-                  Used for interception, repeater testing, and parameter-level validation in web
-                  vulnerability assessments &mdash; including the ToriiWeb disclosure.
+                  I design and ship systems where generative AI, machine learning, and security
+                  have to work together in production &mdash; RAG pipelines, ML classifiers, AI
+                  agents, and the full-stack code that carries them to real users.
+                </p>
+                <p class="lead-soft">
+                  Currently a Full Stack Engineer Intern at ClinchWorks and a Google Student
+                  Ambassador, while building a hybrid RAG API, applied ML models, and a GenAI
+                  platform for stadium operations &mdash; all on top of a hands-on
+                  offensive-security foundation.
                 </p>
               </div>
-            </article>
 
-            <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-              <div class="tool-logo-wrap" aria-hidden="true">
-                <img class="tool-logo" src="logos/metasploit.jpg" alt="" loading="lazy" decoding="async" />
+              <div class="stat-row reveal-item" role="list" aria-label="Highlights">
+                <div class="stat" role="listitem">
+                  <p class="stat-num">GenAI + RAG</p>
+                  <p class="stat-lbl">FastAPI &amp; Ollama</p>
+                </div>
+                <div class="stat" role="listitem">
+                  <p class="stat-num">ML Models</p>
+                  <p class="stat-lbl">Classification &amp; forecasting</p>
+                </div>
+                <div class="stat" role="listitem">
+                  <p class="stat-num">Top 7%</p>
+                  <p class="stat-lbl">TryHackMe · Offensive Security</p>
+                </div>
+                <div class="stat" role="listitem">
+                  <p class="stat-num">1</p>
+                  <p class="stat-lbl">Responsible disclosure · ToriiWeb</p>
+                </div>
               </div>
-              <h3>Metasploit</h3>
-              <p>Actively learning Metasploit for exploitation and validation.</p>
-              <div class="skill-extra">
-                <p>
-                  Actively mastering Metasploit for exploit simulation and post-exploitation
-                  work in lab environments.
-                </p>
-              </div>
-            </article>
 
-            <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-              <div class="tool-logo-wrap" aria-hidden="true">
-                <img class="tool-logo" src="logos/nmap.jpg" alt="" loading="lazy" decoding="async" />
+              <div class="hero-actions reveal-item">
+                <a class="btn btn-solid" href="#projects">
+                  View Projects <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-ghost" href="mailto:paladuguganeshnaidu@gmail.com">
+                  <i class="fa-regular fa-paper-plane" aria-hidden="true"></i> Contact Me
+                </a>
               </div>
-              <h3>Nmap</h3>
-              <p>Network mapping and vulnerability-focused enumeration.</p>
-              <div class="skill-extra">
-                <p>
-                  The foundation of NmapAnalyzer &mdash; used to understand network fundamentals
-                  and reconnaissance technique at scale.
-                </p>
-              </div>
-            </article>
+            </div>
 
-            <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-              <div class="tool-logo-wrap" aria-hidden="true">
-                <img class="tool-logo" src="logos/Gobuster.jpg" alt="" loading="lazy" decoding="async" />
-              </div>
-              <h3>Gobuster</h3>
-              <p>Fast discovery of hidden paths and resources.</p>
-              <div class="skill-extra">
-                <p>Used for directory and endpoint enumeration to uncover hidden attack surfaces.</p>
-              </div>
-            </article>
+            <!-- Editorial portrait + floating "objects" -->
+            <div class="hero-visual reveal-item">
+              <div class="orbit" aria-hidden="true"></div>
+              <figure class="photo-frame">
+                <img
+                  src="images/profile/ganesh-naidu.jpg"
+                  alt="Paladugu Ganesh Naidu, GenAI Engineer and AI/ML Developer with a cybersecurity background"
+                  width="720"
+                  height="900"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+                <figcaption class="sr-only">Portrait of Paladugu Ganesh Naidu</figcaption>
+              </figure>
 
-            <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-              <div class="tool-logo-wrap" aria-hidden="true">
-                <img class="tool-logo" src="logos/fuzz.jpg" alt="" loading="lazy" decoding="async" />
+              <div class="float-chip fc-shield">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                <span><b>Security</b>Offensive · THM</span>
               </div>
-              <h3>FFUF</h3>
-              <p>Rapid fuzzing to accelerate reconnaissance coverage.</p>
-              <div class="skill-extra">
-                <p>High-speed endpoint and parameter fuzzing to surface hidden attack paths fast.</p>
+              <div class="float-chip fc-node">
+                <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                <span><b>RAG</b>FastAPI · Ollama</span>
               </div>
-            </article>
+              <div class="float-chip fc-star">
+                <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+                <span><b>GenAI</b>Claude · GPT · DeepSeek</span>
+              </div>
+              <div class="float-chip fc-google">
+                <img src="images/GSAlogo.png" alt="" width="22" height="22" loading="lazy" decoding="async" />
+                <span><b>GSA</b>Google Student Ambassador</span>
+              </div>
+            </div>
           </div>
 
-          <h3 class="tools-subhead">Operating Systems</h3>
-          <p class="tools-subtext">Comfortable across Kali Linux, Ubuntu, and Windows.</p>
-
-          <div class="os-grid">
-            <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-              <div class="tool-logo-wrap" aria-hidden="true">
-                <img class="tool-logo" src="logos/kali.jpg" alt="" loading="lazy" decoding="async" />
-              </div>
-              <h3>Kali Linux</h3>
-              <p>Preferred setup for penetration testing workflows.</p>
-              <div class="skill-extra">
-                <p>Daily environment for offensive tooling, automation scripts, and reproducible security labs.</p>
-              </div>
-            </article>
-
-            <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-              <i class="devicon-ubuntu-plain colored tool-icon-fallback" aria-hidden="true"></i>
-              <h3>Ubuntu</h3>
-              <p>Reliable platform for scripts and lab environments.</p>
-              <div class="skill-extra">
-                <p>Comfortable for development workflows, CLI tooling, and lightweight virtual lab setups.</p>
-              </div>
-            </article>
-
-            <article class="glass-card skill-card tool-card tilt" tabindex="0" data-reveal>
-              <i class="fa-brands fa-windows tool-icon-fallback" aria-hidden="true"></i>
-              <h3>Windows</h3>
-              <p>Used for daily workflows and cross-platform testing.</p>
-              <div class="skill-extra">
-                <p>Used for documentation, testing compatibility, and mixed environment execution.</p>
-              </div>
-            </article>
+          <div class="scroll-cue reveal-item" aria-hidden="true">
+            <span>Scroll</span>
+            <i class="fa-solid fa-arrow-down"></i>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="section">
-        <div class="section-head">
-          <p class="eyebrow">Work</p>
-          <h2>Projects</h2>
-          <p class="section-copy">Shipped builds first, then what I am actively building next.</p>
+      <!-- Marquee -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Generative AI</span><i class="fa-solid fa-asterisk"></i>
+          <span>Retrieval-Augmented Generation</span><i class="fa-solid fa-asterisk"></i>
+          <span>LLM Agents</span><i class="fa-solid fa-asterisk"></i>
+          <span>Machine Learning</span><i class="fa-solid fa-asterisk"></i>
+          <span>Deep Learning</span><i class="fa-solid fa-asterisk"></i>
+          <span>Offensive Security</span><i class="fa-solid fa-asterisk"></i>
+          <span>Full-Stack AI</span><i class="fa-solid fa-asterisk"></i>
+          <span>Prompt Engineering</span><i class="fa-solid fa-asterisk"></i>
         </div>
+      </div>
 
-        <h3 class="projects-subhead"><i class="fa-solid fa-check" aria-hidden="true"></i> Built</h3>
-        <div class="projects-grid">
-          <article class="glass-card project-card tilt" data-reveal>
-            <span class="project-number">01</span>
-            <h3>Hybrid RAG API</h3>
-            <p>
-              A retrieval-augmented generation API combining FastAPI and Ollama &mdash; my
-              hands-on proof that I can take an LLM from prompt theory to a working RAG
-              pipeline.
-            </p>
-            <ul class="tech-list" aria-label="Technologies used">
-              <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-brain" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-database" aria-hidden="true"></i></li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-small" href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
+      <!-- ============ ABOUT ============ -->
+      <section id="about" class="section" aria-labelledby="about-title">
+        <div class="shell">
+          <div class="sec-head">
+            <p class="sec-index">01</p>
+            <h2 id="about-title" class="sec-title">About Me</h2>
+          </div>
 
-          <article class="glass-card project-card tilt" data-reveal>
-            <span class="project-number">02</span>
-            <h3>CloudCostAI</h3>
-            <p>
-              A machine learning model for cloud cost forecasting, built and tested against
-              data touching 10M+ users.
-            </p>
-            <ul class="tech-list" aria-label="Technologies used">
-              <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-chart-line" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-cloud" aria-hidden="true"></i></li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-small" href="https://github.com/paladuguganeshnaidu/CloudCostAi" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-
-          <article class="glass-card project-card tilt" data-reveal>
-            <span class="project-number">03</span>
-            <h3>Loan Approval Predictor</h3>
-            <p>
-              A Random Forest classification model trained to predict loan-approval outcomes
-              from applicant data.
-            </p>
-            <ul class="tech-list" aria-label="Technologies used">
-              <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-tree" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-sitemap" aria-hidden="true"></i></li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-small" href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-
-          <article class="glass-card project-card tilt" data-reveal>
-            <span class="project-number">04</span>
-            <h3>Resume Shortlister</h3>
-            <p>
-              A machine learning classifier that screens and shortlists resumes &mdash; built
-              from the same job-readiness lens I use in placement training work.
-            </p>
-            <ul class="tech-list" aria-label="Technologies used">
-              <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-file-lines" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-filter" aria-hidden="true"></i></li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-small" href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-
-          <article class="glass-card project-card tilt" data-reveal>
-            <span class="project-number">05</span>
-            <h3>NmapAnalyzer</h3>
-            <p>
-              C-based automation framework integrating Nmap and MySQL, reducing scan time by
-              70% across 200+ hosts and cutting analysis effort by 85%.
-            </p>
-            <ul class="tech-list" aria-label="Technologies used">
-              <li><i class="devicon-c-plain colored" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-network-wired" aria-hidden="true"></i></li>
-              <li><i class="devicon-sqlite-plain colored" aria-hidden="true"></i></li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-small" href="https://github.com/paladuguganeshnaidu/nmapanalyzer" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-
-          <article class="glass-card project-card tilt" data-reveal>
-            <span class="project-number">06</span>
-            <h3>ReconX</h3>
-            <p>
-              Web reconnaissance automation tool using Node.js, FFUF, and Gobuster that
-              discovered 50+ hidden endpoints and cut recon time from 2 hours to 30 minutes.
-            </p>
-            <ul class="tech-list" aria-label="Technologies used">
-              <li><i class="devicon-javascript-plain colored" aria-hidden="true"></i></li>
-              <li><i class="devicon-nodejs-plain colored" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-bolt" aria-hidden="true"></i></li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-small" href="https://github.com/paladuguganeshnaidu/ReconX" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-
-          <article class="glass-card project-card tilt" data-reveal>
-            <span class="project-number">07</span>
-            <h3>ToriiWeb Vulnerability Disclosure</h3>
-            <p>
-              Identified and responsibly reported a real-world vulnerability in ToriiWeb,
-              demonstrating practical exploitation analysis and security reporting discipline.
-            </p>
-            <ul class="tech-list" aria-label="Technologies used">
-              <li><i class="fa-solid fa-bug" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-file-shield" aria-hidden="true"></i></li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-small" href="mailto:paladuguganeshnaidu@gmail.com?subject=ToriiWeb%20Report%20Request">Request Report</a>
-            </div>
-          </article>
-
-          <article class="glass-card project-card tilt" data-reveal>
-            <span class="project-number">08</span>
-            <h3>Algorithm &amp; SQL Practice Track</h3>
-            <p>
-              Consistent problem-solving depth through <span id="leetcode-live-stat">61+</span>
-              LeetCode solutions in C, MySQL, and Java, including streak-based practice and
-              contest participation.
-            </p>
-            <ul class="tech-list" aria-label="Technologies used">
-              <li><i class="devicon-c-plain colored" aria-hidden="true"></i></li>
-              <li><i class="devicon-mysql-plain colored" aria-hidden="true"></i></li>
-              <li><i class="devicon-java-plain colored" aria-hidden="true"></i></li>
-            </ul>
-            <div class="card-actions">
-              <a class="btn btn-small" href="https://leetcode.com/u/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">LeetCode</a>
-              <a class="btn btn-small" href="https://github.com/paladuguganeshnaidu/my-programs" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-        </div>
-
-        <h3 class="projects-subhead"><i class="fa-solid fa-hammer" aria-hidden="true"></i> Building Next</h3>
-        <div class="projects-grid projects-grid-future">
-          <article class="glass-card project-card project-card-future tilt" data-reveal>
-            <span class="project-number">A</span>
-            <span class="project-status">In Progress</span>
-            <h3>GenAI Stadium Operations Platform</h3>
-            <p>
-              Building a GenAI-enabled solution for FIFA World Cup 2026 stadium operations,
-              targeting crowd management, wayfinding/navigation, and multilingual assistance.
-            </p>
-            <ul class="tech-list" aria-label="Focus areas">
-              <li><i class="fa-solid fa-people-group" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-language" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></li>
-            </ul>
-          </article>
-
-          <article class="glass-card project-card project-card-future tilt" data-reveal>
-            <span class="project-number">B</span>
-            <span class="project-status">In Progress</span>
-            <h3>Smart India Hackathon &mdash; AI Solution</h3>
-            <p>
-              Leading a national-level hackathon team as Team Lead, driving problem research,
-              solution architecture, AI/ML/GenAI development, and backend support for a
-              real-world-problem submission.
-            </p>
-            <ul class="tech-list" aria-label="Focus areas">
-              <li><i class="fa-solid fa-users-gear" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-robot" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-server" aria-hidden="true"></i></li>
-            </ul>
-          </article>
-
-          <article class="glass-card project-card project-card-future tilt" data-reveal>
-            <span class="project-number">C</span>
-            <span class="project-status">Learning</span>
-            <h3>Deep Learning Foundations</h3>
-            <p>
-              Deliberately building neural-network fundamentals &mdash; the next layer beyond
-              classical ML &mdash; toward representation learning and larger model
-              architectures.
-            </p>
-            <ul class="tech-list" aria-label="Focus areas">
-              <li><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></li>
-              <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
-              <li><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="experience" class="section">
-        <div class="section-head">
-          <p class="eyebrow">Experience</p>
-          <h2>Current Roles</h2>
-          <p class="section-copy">
-            Current work, ambassador programs, and leadership that shape my AI-first, security-aware
-            engineering practice.
-          </p>
-        </div>
-
-        <div class="experience-grid">
-          <article class="glass-card experience-card tilt" data-reveal>
-            <div class="experience-logo-wrap" aria-hidden="true">
-              <img class="experience-logo" src="images/GSAlogo.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <div class="experience-copy">
-              <span class="experience-kicker">Google Student Ambassador</span>
-              <h3>Google Student Ambassador</h3>
-              <p class="experience-meta">May 2026 &ndash; Present | Remote</p>
+          <div class="about-layout">
+            <div class="about-intro" data-reveal>
+              <h3 class="about-name">GenAI Engineer, AI/ML Developer &amp; Cybersecurity Practitioner</h3>
               <p>
-                Representing Google developer initiatives on campus by fostering technology
-                learning, community engagement, and technical growth. Supporting workshops,
-                events, and outreach activities while helping students explore opportunities in
-                software development, AI, cloud computing, and open-source ecosystems.
+                I am Paladugu Ganesh Naidu, a computer science undergraduate and self-directed AI
+                builder based in Karnataka, India. My work centers on Generative AI and applied
+                machine learning &mdash; retrieval-augmented generation, LLM-powered agents, and
+                ML classifiers &mdash; and I am actively deepening my deep learning foundations to
+                move from classical ML into neural network architectures.
               </p>
-              <div class="experience-tags" aria-label="Experience highlights">
-                <span>Ambassador</span>
-                <span>Community</span>
+              <p>
+                Every AI system I build is shipped through full-stack engineering, and every
+                system is designed with a cybersecurity practitioner's instinct for what can
+                break. I currently work as a Full Stack Engineer Intern at ClinchWorks and
+                represent Google's developer community as a Google Student Ambassador. My approach
+                to leadership and teamwork is simple: rising by lifting others.
+              </p>
+            </div>
+
+            <dl class="pillars" data-reveal>
+              <div class="pillar">
+                <dt class="pillar-head">
+                  <i class="fa-solid fa-brain" aria-hidden="true"></i>
+                  <span>Generative AI &amp; LLM Engineering</span>
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </dt>
+                <dd>
+                  Prompt architecture, AI agents, and structured outputs across Claude, GPT,
+                  Gemini, and DeepSeek. I built a Hybrid RAG API on FastAPI and Ollama to move
+                  from theory into a working retrieval-augmented generation pipeline.
+                </dd>
               </div>
-            </div>
-          </article>
-
-          <article class="glass-card experience-card tilt" data-reveal>
-            <div class="experience-logo-wrap" aria-hidden="true">
-              <img class="experience-logo" src="images/CWlogo.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <div class="experience-copy">
-              <span class="experience-kicker">Clinch Works</span>
-              <h3>Full Stack Engineer Intern</h3>
-              <p class="experience-meta">March 2026 &ndash; Present | Remote</p>
-              <p>
-                Developing AI-powered web applications using JavaScript, Node.js, and SQLite.
-                Designing backend APIs and database integrations supporting production
-                deployments. Collaborating on frontend, backend, deployment, and maintenance
-                activities across the software lifecycle, including debugging, testing, and
-                performance optimization.
-              </p>
-              <div class="experience-tags" aria-label="Experience highlights">
-                <span>Full Stack</span>
-                <span>Hosting</span>
-                <span>AI-Powered Apps</span>
+              <div class="pillar">
+                <dt class="pillar-head">
+                  <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+                  <span>Machine Learning</span>
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </dt>
+                <dd>
+                  Applied ML on real-world data &mdash; a Random Forest model for loan-approval
+                  prediction, a resume-shortlisting classifier, and CloudCostAI, a
+                  cost-forecasting model trained against data touching 10M+ users.
+                </dd>
               </div>
-            </div>
-          </article>
-
-          <article class="glass-card experience-card tilt" data-reveal>
-            <div class="experience-logo-wrap experience-logo-wrap-icon" aria-hidden="true">
-              <i class="fa-solid fa-people-group"></i>
-            </div>
-            <div class="experience-copy">
-              <span class="experience-kicker">Smart India Hackathon</span>
-              <h3>Team Lead, National-Level Hackathon</h3>
-              <p class="experience-meta">2026 | Team Leadership</p>
-              <p>
-                Leading a team through problem understanding, research, architecture,
-                development, and deployment for an AI-based solution to a real-world problem
-                &mdash; owning solution architecture, AI/ML/GenAI direction, and backend support
-                end to end.
-              </p>
-              <div class="experience-tags" aria-label="Experience highlights">
-                <span>Team Lead</span>
-                <span>AI/ML/GenAI</span>
-                <span>Solution Architecture</span>
+              <div class="pillar">
+                <dt class="pillar-head">
+                  <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+                  <span>Deep Learning</span>
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </dt>
+                <dd>
+                  Currently building neural network foundations &mdash; the deliberate next step
+                  beyond classical ML, toward representation learning and larger model
+                  architectures.
+                </dd>
               </div>
-            </div>
-          </article>
+              <div class="pillar">
+                <dt class="pillar-head">
+                  <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                  <span>Cybersecurity &amp; Ethical Hacking</span>
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </dt>
+                <dd>
+                  Hands-on offensive security with Burp Suite, Metasploit, Nmap, Gobuster, and
+                  FFUF; ranked top 7% on TryHackMe; responsibly disclosed a real vulnerability in
+                  ToriiWeb; backed by Cisco, IBM, and ISC2 cybersecurity certifications.
+                </dd>
+              </div>
+              <div class="pillar">
+                <dt class="pillar-head">
+                  <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+                  <span>Full-Stack AI Development</span>
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </dt>
+                <dd>
+                  JavaScript, Node.js, and SQL powering AI-driven web apps end to end at
+                  ClinchWorks &mdash; frontend, backend APIs, database integration, deployment,
+                  and maintenance across the full lifecycle.
+                </dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </section>
 
-      <section id="highlights" class="section">
-        <div class="section-head">
-          <p class="eyebrow">Hover to Reveal</p>
-          <h2>GenAI / AI &amp; ML Journey</h2>
-        </div>
-        <div class="reveal-grid">
-          <article class="glass-card reveal-card tilt" tabindex="0" data-reveal>
-            <h3>AI-Powered Full Stack Builder</h3>
-            <p class="reveal-summary">
-              At ClinchWorks I build AI-powered web applications end to end &mdash; from backend
-              APIs and database design to deployment and maintenance.
-            </p>
-            <div class="reveal-body">
-              <p>
-                That full-stack discipline is what turns an AI experiment into something a real
-                user can rely on, which is why I treat shipping as seriously as the model or the
-                prompt.
-              </p>
-            </div>
-          </article>
+      <!-- ============ SKILLS ============ -->
+      <section id="skills" class="section" aria-labelledby="skills-title">
+        <div class="shell">
+          <div class="sec-head">
+            <p class="sec-index">02</p>
+            <h2 id="skills-title" class="sec-title">Core Skills</h2>
+          </div>
 
-          <article class="glass-card reveal-card tilt" tabindex="0" data-reveal>
-            <h3>Generative AI &amp; RAG Explorer</h3>
-            <p class="reveal-summary">
-              Building a Hybrid RAG API on FastAPI and Ollama was my answer to a gap I saw in my
-              own portfolio: talking about retrieval-augmented generation isn't the same as
-              shipping it.
-            </p>
-            <div class="reveal-body">
-              <p>
-                I experiment with prompt architecture, AI agents, and automation workflows
-                across Claude, GPT, Gemini, and DeepSeek to understand how these systems reason
-                &mdash; and where they don't.
-              </p>
-            </div>
-          </article>
-
-          <article class="glass-card reveal-card tilt" tabindex="0" data-reveal>
-            <h3>Applied Machine Learning</h3>
-            <p class="reveal-summary">
-              CloudCostAI, a loan-approval Random Forest model, and a resume-shortlisting
-              classifier are my way of learning ML on data that behaves like the real thing.
-            </p>
-            <div class="reveal-body">
-              <p>
-                Deep learning foundations are next &mdash; I want to extend this ML base into
-                neural network architectures rather than stop at classical models.
-              </p>
-            </div>
-          </article>
-        </div>
-
-        <div class="section-head">
-          <p class="eyebrow">Hover to Reveal</p>
-          <h2>Security Journey Highlights</h2>
-        </div>
-        <div class="reveal-grid">
-          <article class="glass-card reveal-card tilt" tabindex="0" data-reveal>
-            <h3>Security Automation Builder</h3>
-            <p class="reveal-summary">
-              I focus on building tooling that makes repeated security tasks faster and more
-              reliable.
-            </p>
-            <div class="reveal-body">
-              <p>
-                From NmapAnalyzer in C to ReconX in Node.js, my approach is to convert manual,
-                error-prone reconnaissance into measurable, scriptable workflows.
-              </p>
-            </div>
-          </article>
-
-          <article class="glass-card reveal-card tilt" tabindex="0" data-reveal>
-            <h3>Hands-on Offensive Learner</h3>
-            <p class="reveal-summary">
-              Practical labs and real systems are my main way to grow in offensive security.
-            </p>
-            <div class="reveal-body">
-              <p>
-                I am ranked in the top 7% on TryHackMe and use challenge-based environments to
-                sharpen enumeration, vulnerability validation, and attack path thinking.
-              </p>
-            </div>
-          </article>
-
-          <article class="glass-card reveal-card tilt" tabindex="0" data-reveal>
-            <h3>Consistent Problem Solver</h3>
-            <p class="reveal-summary">
-              Algorithmic and database problem solving supports my security and ML mindset
-              alike.
-            </p>
-            <div class="reveal-body">
-              <p>
-                LeetCode practice in C, SQL, and Java helps me reason about edge cases, optimize
-                logic, and write cleaner automation under constraints.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="education" class="section">
-        <div class="section-head">
-          <p class="eyebrow">Academic Track</p>
-          <h2>Education Timeline</h2>
-        </div>
-
-        <div class="timeline-grid">
-          <article class="glass-card timeline-card tilt" data-reveal>
-            <h3>B.E. Computer Science</h3>
-            <p>Nagarjuna College of Engineering and Technology (VTU, AICTE)</p>
-            <p>Sep 2024 &ndash; Aug 2028</p>
-            <p>CGPA: 6.7</p>
-          </article>
-          <article class="glass-card timeline-card tilt" data-reveal>
-            <h3>Intermediate (MPC)</h3>
-            <p>Narayana Junior College, Anantapur</p>
-            <p>Sep 2022 &ndash; Mar 2024</p>
-            <p>Score: 74%</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="achievements" class="section">
-        <div class="section-head">
-          <p class="eyebrow">Recognition</p>
-          <h2>Achievements &amp; Certifications</h2>
-        </div>
-
-        <div class="awards-grid">
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/copilot.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>GitHub Copilot Certified</h3>
-            <p>Achieved through hands-on experience using GitHub Copilot and GitHub in real-world development workflows.</p>
-            <a class="text-link" href="https://learn.microsoft.com/api/credentials/share/en-us/GaneshNaidu-2694/8E4C34CBA93ED8CC?sharingId=BE7BAA18AA180EA0" target="_blank" rel="noopener noreferrer">Verify</a>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/certifications/cisco-ethical-hacker.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>Cisco Ethical Hacker</h3>
-            <p>Formal certification by Cisco validating ethical hacking fundamentals and practical security concepts.</p>
-            <a class="text-link" href="https://www.credly.com/badges/921b523f-5da0-4b22-aaec-1277e93bfca8/public_url" target="_blank" rel="noopener noreferrer">View Badge</a>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/certifications/ibm-cybersecurity-fundamentals.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>Cybersecurity Fundamentals</h3>
-            <p>IBM SkillsBuild certification covering core cybersecurity fundamentals and threat concepts.</p>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/certifications/isc2-candidate.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>ISC2 Candidate</h3>
-            <p>Recognized ISC2 Candidate status, validating a foundation in information security concepts.</p>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <h3>Hackviser CORE</h3>
-            <p>Cybersecurity foundations certification covering core offensive-security concepts and methodology.</p>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/certifications/cisco-introduction-to-cybersecurity.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>Introduction to Cybersecurity</h3>
-            <p>Cisco Networking Academy certification covering foundational cybersecurity concepts.</p>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/certifications/cisco-c-essentials-1.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>C Essentials 1</h3>
-            <p>Cisco Networking Academy certification in C programming fundamentals.</p>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/certifications/mongodb-crud-operations.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>MongoDB CRUD Operations</h3>
-            <p>Certification covering create, read, update, and delete operations in MongoDB.</p>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/certifications/redhat-python-programming.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>Python Programming</h3>
-            <p>Red Hat Academy certification in Python programming fundamentals.</p>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <div class="award-badge-wrap" aria-hidden="true">
-              <img class="award-badge" src="logos/certifications/redhat-getting-started-linux.png" alt="" loading="lazy" decoding="async" />
-            </div>
-            <h3>Getting Started with Linux</h3>
-            <p>Red Hat Academy certification in foundational Linux administration.</p>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <h3>Real-World Vulnerability Report</h3>
-            <p>Reported a real vulnerability in the Torii portal with responsible disclosure and structured documentation.</p>
-            <a class="text-link" href="https://www.linkedin.com/in/paladuguganeshnaidu/" target="_blank" rel="noopener noreferrer">Discuss Details</a>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <h3>TryHackMe Top 7%</h3>
-            <p>Ranked among top learners through hands-on offensive security practice.</p>
-            <a class="text-link" href="https://tryhackme.com/p/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">View Profile</a>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <h3>ML Engineer</h3>
-            <p>Achieved through hands-on experience working with data touching 10M+ users and building foundational machine learning projects.</p>
-            <a class="text-link" href="https://github.com/paladuguganeshnaidu/CloudCostAi" target="_blank" rel="noopener noreferrer">Repo</a>
-          </article>
-
-          <article class="glass-card award-card tilt" data-reveal>
-            <h3>Internz Learn Training</h3>
-            <p>Completed cybersecurity internship projects, demonstrating dedication and hands-on enthusiasm.</p>
-            <a class="text-link" href="https://drive.google.com/drive/folders/1xi0fnEaLVbtPyT_BBmonaWBrZuUHBq3N?usp=sharing" target="_blank" rel="noopener noreferrer">View Details</a>
-          </article>
-        </div>
-      </section>
-
-      <section id="contact" class="section contact-section">
-        <div class="glass-card contact-card tilt">
-          <p class="eyebrow">Contact</p>
-          <h2>Open to GenAI, AI/ML, and Security-Focused Opportunities</h2>
-          <p>
-            I'm actively building across generative AI, applied machine learning, deep learning
-            foundations, and cybersecurity. Reach out for internships, project collaboration, or
-            AI/security-focused opportunities.
-          </p>
-          <ul class="contact-list" aria-label="Contact information">
-            <li>
-              <i class="fa-solid fa-envelope" aria-hidden="true"></i>
-              <a href="mailto:paladuguganeshnaidu@gmail.com">paladuguganeshnaidu@gmail.com</a>
+          <ul class="stack-list" data-reveal>
+            <li class="stack-row">
+              <span class="stack-idx">01</span>
+              <span class="stack-icon"><i class="devicon-c-plain colored" aria-hidden="true"></i></span>
+              <span class="stack-name">C</span>
+              <span class="stack-meta">Performance-first tooling, including a Nmap and MySQL automation framework.</span>
             </li>
-            <li>
-              <i class="fa-solid fa-phone" aria-hidden="true"></i>
-              <a href="tel:+917815872759">+91 7815872759</a>
+            <li class="stack-row">
+              <span class="stack-idx">02</span>
+              <span class="stack-icon"><i class="devicon-java-plain colored" aria-hidden="true"></i></span>
+              <span class="stack-name">Java</span>
+              <span class="stack-meta">Core OOP and data-structures depth, built through consistent practice.</span>
             </li>
-            <li>
-              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              <span>Bengaluru, Karnataka, India (native of Anantapur, Andhra Pradesh)</span>
+            <li class="stack-row">
+              <span class="stack-idx">03</span>
+              <span class="stack-icon"><i class="devicon-python-plain colored" aria-hidden="true"></i></span>
+              <span class="stack-name">Python</span>
+              <span class="stack-meta">My primary language for ML prototyping, automation, and RAG/AI-agent backends.</span>
+            </li>
+            <li class="stack-row">
+              <span class="stack-idx">04</span>
+              <span class="stack-icon"><i class="devicon-mysql-plain colored" aria-hidden="true"></i></span>
+              <span class="stack-name">SQL</span>
+              <span class="stack-meta">Relational analysis and database-driven reporting for production systems.</span>
+            </li>
+            <li class="stack-row">
+              <span class="stack-idx">05</span>
+              <span class="stack-icon"><i class="devicon-javascript-plain colored" aria-hidden="true"></i></span>
+              <span class="stack-name">JavaScript</span>
+              <span class="stack-meta">Node.js backends for ReconX automation and ClinchWorks' AI-powered web apps.</span>
             </li>
           </ul>
 
-          <div class="social-links" aria-label="Professional links">
-            <a href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
-            <a href="https://linkedin.com/in/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
-            <a href="https://tryhackme.com/p/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-user-secret" aria-hidden="true"></i> TryHackMe</a>
-            <a href="https://leetcode.com/u/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-code" aria-hidden="true"></i> LeetCode</a>
+          <div class="focus-block" data-reveal>
+            <h3 class="block-label">Focus Areas</h3>
+            <p class="focus-note">The four disciplines I am actively building across, together.</p>
+            <div class="focus-row">
+              <span class="tag">Generative AI</span>
+              <span class="tag">Retrieval-Augmented Generation</span>
+              <span class="tag">AI Agents</span>
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Deep Learning Foundations</span>
+              <span class="tag">Neural Networks</span>
+              <span class="tag">Cybersecurity</span>
+              <span class="tag">Ethical Hacking</span>
+              <span class="tag">Full-Stack AI Development</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ TOOLS / STACK ============ -->
+      <section id="tools" class="section alt" aria-labelledby="tools-title">
+        <div class="shell">
+          <div class="sec-head">
+            <p class="sec-index">03</p>
+            <h2 id="tools-title" class="sec-title">Engineering Toolkit</h2>
+            <p class="sec-lead">The AI tooling and offensive-security stack I work with daily.</p>
+          </div>
+
+          <div class="group">
+            <h3 class="group-title"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> AI Development</h3>
+            <div class="tool-grid">
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/claude.jpg" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>Claude</h4>
+                    <p>Architecture, reasoning, code reviews</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  My primary thinking partner for system design. I use it to architect RAG
+                  pipelines, reason through full-stack decisions, and stress-test security
+                  trade-offs before I write a line of production code.
+                </p>
+              </article>
+
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/Antigravity.jpg" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>Antigravity</h4>
+                    <p>Research, automation, workflow acceleration</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  Handles the repetitive research and execution work so I can spend my own time
+                  on architecture decisions instead of busywork.
+                </p>
+              </article>
+
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/copilot.png" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>GitHub Copilot</h4>
+                    <p>Rapid coding and refactoring</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  Speeds up day-to-day coding at ClinchWorks &mdash; inline suggestions,
+                  refactors, and boilerplate, so I can stay focused on logic and integration.
+                </p>
+              </article>
+
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/Deepseek logo.jpg" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>DeepSeek</h4>
+                    <p>Debugging, analysis, problem-solving</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  My go-to for debugging gnarly logic and exploring alternative algorithm
+                  approaches whenever I get stuck mid-build.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3 class="group-title"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Offensive Security</h3>
+            <div class="tool-grid">
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/burpsuite.jpg" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>Burp Suite</h4>
+                    <p>Primary web security testing toolkit</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  Used for interception, repeater testing, and parameter-level validation in web
+                  vulnerability assessments &mdash; including the ToriiWeb disclosure.
+                </p>
+              </article>
+
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/metasploit.jpg" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>Metasploit</h4>
+                    <p>Exploitation &amp; validation in labs</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  Actively mastering Metasploit for exploit simulation and post-exploitation work
+                  in lab environments.
+                </p>
+              </article>
+
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/nmap.jpg" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>Nmap</h4>
+                    <p>Network mapping &amp; enumeration</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  The foundation of NmapAnalyzer &mdash; used to understand network fundamentals
+                  and reconnaissance technique at scale.
+                </p>
+              </article>
+
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/Gobuster.jpg" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>Gobuster</h4>
+                    <p>Hidden path &amp; resource discovery</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  Used for directory and endpoint enumeration to uncover hidden attack surfaces.
+                </p>
+              </article>
+
+              <article class="tool-card" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip"><img src="logos/fuzz.jpg" alt="" loading="lazy" decoding="async" /></span>
+                  <div>
+                    <h4>FFUF</h4>
+                    <p>High-speed web fuzzing</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  High-speed endpoint and parameter fuzzing to surface hidden attack paths fast.
+                </p>
+              </article>
+
+              <article class="tool-card tool-card-os" data-reveal>
+                <div class="tool-head">
+                  <span class="tool-logo-chip chip-icon"><i class="devicon-linux-plain" aria-hidden="true"></i></span>
+                  <div>
+                    <h4>Kali Linux</h4>
+                    <p>Penetration testing environment</p>
+                  </div>
+                </div>
+                <p class="tool-more">
+                  Daily environment for offensive tooling, automation scripts, and reproducible
+                  security labs.
+                </p>
+              </article>
+            </div>
+
+            <h4 class="os-label">Also comfortable across</h4>
+            <div class="os-row" data-reveal>
+              <span class="tag tag-line"><i class="devicon-ubuntu-plain colored" aria-hidden="true"></i> Ubuntu</span>
+              <span class="tag tag-line"><i class="fa-brands fa-windows" aria-hidden="true"></i> Windows</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <div class="shell">
+          <div class="sec-head">
+            <p class="sec-index">04</p>
+            <h2 id="projects-title" class="sec-title">Projects</h2>
+            <p class="sec-lead">Shipped builds first, then what I am actively building next.</p>
+          </div>
+
+          <h3 class="proj-sub"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Built</h3>
+          <div class="proj-grid">
+            <article class="proj-card" data-reveal>
+              <span class="proj-num">01</span>
+              <h4 class="proj-title">Hybrid RAG API</h4>
+              <p class="proj-desc">
+                A retrieval-augmented generation API combining FastAPI and Ollama &mdash; my
+                hands-on proof that I can take an LLM from prompt theory to a working RAG
+                pipeline.
+              </p>
+              <ul class="tech-row" aria-label="Technologies">
+                <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-brain" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-database" aria-hidden="true"></i></li>
+              </ul>
+              <a class="link-mini" href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="proj-card" data-reveal>
+              <span class="proj-num">02</span>
+              <h4 class="proj-title">CloudCostAI</h4>
+              <p class="proj-desc">
+                A machine learning model for cloud cost forecasting, built and tested against
+                data touching 10M+ users.
+              </p>
+              <ul class="tech-row" aria-label="Technologies">
+                <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-chart-line" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-cloud" aria-hidden="true"></i></li>
+              </ul>
+              <a class="link-mini" href="https://github.com/paladuguganeshnaidu/CloudCostAi" target="_blank" rel="noopener noreferrer">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="proj-card" data-reveal>
+              <span class="proj-num">03</span>
+              <h4 class="proj-title">Loan Approval Predictor</h4>
+              <p class="proj-desc">
+                A Random Forest classification model trained to predict loan-approval outcomes
+                from applicant data.
+              </p>
+              <ul class="tech-row" aria-label="Technologies">
+                <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-tree" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-sitemap" aria-hidden="true"></i></li>
+              </ul>
+              <a class="link-mini" href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="proj-card" data-reveal>
+              <span class="proj-num">04</span>
+              <h4 class="proj-title">Resume Shortlister</h4>
+              <p class="proj-desc">
+                A machine learning classifier that screens and shortlists resumes &mdash; built
+                from the same job-readiness lens I use in placement training work.
+              </p>
+              <ul class="tech-row" aria-label="Technologies">
+                <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-file-lines" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-filter" aria-hidden="true"></i></li>
+              </ul>
+              <a class="link-mini" href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="proj-card" data-reveal>
+              <span class="proj-num">05</span>
+              <h4 class="proj-title">NmapAnalyzer</h4>
+              <p class="proj-desc">
+                C-based automation framework integrating Nmap and MySQL, reducing scan time by
+                70% across 200+ hosts and cutting analysis effort by 85%.
+              </p>
+              <ul class="tech-row" aria-label="Technologies">
+                <li><i class="devicon-c-plain colored" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-network-wired" aria-hidden="true"></i></li>
+                <li><i class="devicon-mysql-plain colored" aria-hidden="true"></i></li>
+              </ul>
+              <a class="link-mini" href="https://github.com/paladuguganeshnaidu/nmapanalyzer" target="_blank" rel="noopener noreferrer">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="proj-card" data-reveal>
+              <span class="proj-num">06</span>
+              <h4 class="proj-title">ReconX</h4>
+              <p class="proj-desc">
+                Web reconnaissance automation tool using Node.js, FFUF, and Gobuster that
+                discovered 50+ hidden endpoints and cut recon time from 2 hours to 30 minutes.
+              </p>
+              <ul class="tech-row" aria-label="Technologies">
+                <li><i class="devicon-javascript-plain colored" aria-hidden="true"></i></li>
+                <li><i class="devicon-nodejs-plain colored" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-bolt" aria-hidden="true"></i></li>
+              </ul>
+              <a class="link-mini" href="https://github.com/paladuguganeshnaidu/ReconX" target="_blank" rel="noopener noreferrer">
+                GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="proj-card" data-reveal>
+              <span class="proj-num">07</span>
+              <h4 class="proj-title">ToriiWeb Disclosure</h4>
+              <p class="proj-desc">
+                Identified and responsibly reported a real-world vulnerability in ToriiWeb,
+                demonstrating practical exploitation analysis and security reporting discipline.
+              </p>
+              <ul class="tech-row" aria-label="Focus areas">
+                <li><i class="fa-solid fa-bug" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-file-shield" aria-hidden="true"></i></li>
+              </ul>
+              <a class="link-mini" href="mailto:paladuguganeshnaidu@gmail.com?subject=ToriiWeb%20Report%20Request">
+                Request Report <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="proj-card" data-reveal>
+              <span class="proj-num">08</span>
+              <h4 class="proj-title">Algorithm &amp; SQL Practice Track</h4>
+              <p class="proj-desc">
+                Consistent problem-solving depth through
+                <span id="leetcode-live-stat" class="live-stat">61+</span> LeetCode solutions in
+                C, MySQL, and Java, including streak-based practice and contest participation.
+              </p>
+              <ul class="tech-row" aria-label="Technologies">
+                <li><i class="devicon-c-plain colored" aria-hidden="true"></i></li>
+                <li><i class="devicon-mysql-plain colored" aria-hidden="true"></i></li>
+                <li><i class="devicon-java-plain colored" aria-hidden="true"></i></li>
+              </ul>
+              <div class="link-row">
+                <a class="link-mini" href="https://leetcode.com/u/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
+                  LeetCode <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                </a>
+                <a class="link-mini" href="https://github.com/paladuguganeshnaidu/my-programs" target="_blank" rel="noopener noreferrer">
+                  GitHub <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <h3 class="proj-sub proj-sub-future"><i class="fa-solid fa-hammer" aria-hidden="true"></i> Building Next</h3>
+          <div class="proj-grid proj-grid-future">
+            <article class="proj-card future" data-reveal>
+              <div class="proj-top"><span class="proj-num">A</span><span class="badge">In Progress</span></div>
+              <h4 class="proj-title">GenAI Stadium Operations Platform</h4>
+              <p class="proj-desc">
+                Building a GenAI-enabled solution for FIFA World Cup 2026 stadium operations,
+                targeting crowd management, wayfinding/navigation, and multilingual assistance.
+              </p>
+              <ul class="tech-row" aria-label="Focus areas">
+                <li><i class="fa-solid fa-people-group" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-language" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></li>
+              </ul>
+            </article>
+
+            <article class="proj-card future" data-reveal>
+              <div class="proj-top"><span class="proj-num">B</span><span class="badge">In Progress</span></div>
+              <h4 class="proj-title">Smart India Hackathon — AI Solution</h4>
+              <p class="proj-desc">
+                Leading a national-level hackathon team as Team Lead, driving problem research,
+                solution architecture, AI/ML/GenAI development, and backend support for a
+                real-world-problem submission.
+              </p>
+              <ul class="tech-row" aria-label="Focus areas">
+                <li><i class="fa-solid fa-users-gear" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-robot" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-server" aria-hidden="true"></i></li>
+              </ul>
+            </article>
+
+            <article class="proj-card future" data-reveal>
+              <div class="proj-top"><span class="proj-num">C</span><span class="badge badge-soft">Learning</span></div>
+              <h4 class="proj-title">Deep Learning Foundations</h4>
+              <p class="proj-desc">
+                Deliberately building neural-network fundamentals &mdash; the next layer beyond
+                classical ML &mdash; toward representation learning and larger model
+                architectures.
+              </p>
+              <ul class="tech-row" aria-label="Focus areas">
+                <li><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></li>
+                <li><i class="devicon-python-plain colored" aria-hidden="true"></i></li>
+                <li><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section id="experience" class="section alt" aria-labelledby="experience-title">
+        <div class="shell">
+          <div class="sec-head">
+            <p class="sec-index">05</p>
+            <h2 id="experience-title" class="sec-title">Experience</h2>
+            <p class="sec-lead">
+              Current work, ambassador programs, and leadership that shape my AI-first,
+              security-aware engineering practice.
+            </p>
+          </div>
+
+          <div class="exp-list">
+            <article class="exp-row" data-reveal>
+              <span class="exp-logo"><img src="images/CWlogo.png" alt="ClinchWorks logo" loading="lazy" decoding="async" /></span>
+              <div class="exp-body">
+                <p class="exp-kicker">ClinchWorks</p>
+                <h3 class="exp-title">Full Stack Engineer Intern</h3>
+                <p class="exp-meta">March 2026 – Present · Remote</p>
+                <p class="exp-desc">
+                  Developing AI-powered web applications using JavaScript, Node.js, and SQLite.
+                  Designing backend APIs and database integrations supporting production
+                  deployments. Collaborating on frontend, backend, deployment, and maintenance
+                  activities across the software lifecycle, including debugging, testing, and
+                  performance optimization.
+                </p>
+                <div class="exp-tags">
+                  <span>Full Stack</span><span>Hosting</span><span>AI-Powered Apps</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="exp-row" data-reveal>
+              <span class="exp-logo"><img src="images/GSAlogo.png" alt="Google Student Ambassador logo" loading="lazy" decoding="async" /></span>
+              <div class="exp-body">
+                <p class="exp-kicker">Google</p>
+                <h3 class="exp-title">Google Student Ambassador</h3>
+                <p class="exp-meta">May 2026 – Present · Remote</p>
+                <p class="exp-desc">
+                  Representing Google developer initiatives on campus by fostering technology
+                  learning, community engagement, and technical growth. Supporting workshops,
+                  events, and outreach activities while helping students explore opportunities in
+                  software development, AI, cloud computing, and open-source ecosystems.
+                </p>
+                <div class="exp-tags">
+                  <span>Ambassador</span><span>Community</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="exp-row" data-reveal>
+              <span class="exp-logo logo-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>
+              <div class="exp-body">
+                <p class="exp-kicker">Smart India Hackathon</p>
+                <h3 class="exp-title">Team Lead, National-Level Hackathon</h3>
+                <p class="exp-meta">2026 · Team Leadership</p>
+                <p class="exp-desc">
+                  Leading a team through problem understanding, research, architecture,
+                  development, and deployment for an AI-based solution to a real-world problem
+                  &mdash; owning solution architecture, AI/ML/GenAI direction, and backend
+                  support end to end.
+                </p>
+                <div class="exp-tags">
+                  <span>Team Lead</span><span>AI/ML/GenAI</span><span>Solution Architecture</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ HIGHLIGHTS (journeys) ============ -->
+      <section id="highlights" class="section" aria-labelledby="highlights-title">
+        <div class="shell">
+          <div class="sec-head">
+            <p class="sec-index">06</p>
+            <h2 id="highlights-title" class="sec-title">Journey</h2>
+            <p class="sec-lead">How I think across generative AI, machine learning, and security.</p>
+          </div>
+
+          <div class="hl-grid">
+            <article class="hl-card hl-violet" data-reveal>
+              <div class="hl-head">
+                <span class="hl-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+                <h3>AI-Powered Full Stack Builder</h3>
+              </div>
+              <p class="hl-text">
+                At ClinchWorks I build AI-powered web applications end to end &mdash; from backend
+                APIs and database design to deployment and maintenance. That full-stack
+                discipline is what turns an AI experiment into something a real user can rely on,
+                which is why I treat shipping as seriously as the model or the prompt.
+              </p>
+            </article>
+
+            <article class="hl-card hl-teal" data-reveal>
+              <div class="hl-head">
+                <span class="hl-icon"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i></span>
+                <h3>Generative AI &amp; RAG Explorer</h3>
+              </div>
+              <p class="hl-text">
+                Building a Hybrid RAG API on FastAPI and Ollama was my answer to a gap I saw in my
+                own portfolio: talking about retrieval-augmented generation isn't the same as
+                shipping it. I experiment with prompt architecture, AI agents, and automation
+                workflows across Claude, GPT, Gemini, and DeepSeek to understand how these
+                systems reason &mdash; and where they don't.
+              </p>
+            </article>
+
+            <article class="hl-card hl-violet" data-reveal>
+              <div class="hl-head">
+                <span class="hl-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>
+                <h3>Applied Machine Learning</h3>
+              </div>
+              <p class="hl-text">
+                CloudCostAI, a loan-approval Random Forest model, and a resume-shortlisting
+                classifier are my way of learning ML on data that behaves like the real thing.
+                Deep learning foundations are next &mdash; I want to extend this ML base into
+                neural network architectures rather than stop at classical models.
+              </p>
+            </article>
+
+            <article class="hl-card hl-teal" data-reveal>
+              <div class="hl-head">
+                <span class="hl-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+                <h3>Security Automation Builder</h3>
+              </div>
+              <p class="hl-text">
+                I focus on building tooling that makes repeated security tasks faster and more
+                reliable. From NmapAnalyzer in C to ReconX in Node.js, my approach is to convert
+                manual, error-prone reconnaissance into measurable, scriptable workflows.
+              </p>
+            </article>
+
+            <article class="hl-card hl-violet" data-reveal>
+              <div class="hl-head">
+                <span class="hl-icon"><i class="fa-solid fa-user-secret" aria-hidden="true"></i></span>
+                <h3>Hands-on Offensive Learner</h3>
+              </div>
+              <p class="hl-text">
+                Practical labs and real systems are my main way to grow in offensive security. I
+                am ranked in the top 7% on TryHackMe and use challenge-based environments to
+                sharpen enumeration, vulnerability validation, and attack path thinking.
+              </p>
+            </article>
+
+            <article class="hl-card hl-teal" data-reveal>
+              <div class="hl-head">
+                <span class="hl-icon"><i class="fa-solid fa-code" aria-hidden="true"></i></span>
+                <h3>Consistent Problem Solver</h3>
+              </div>
+              <p class="hl-text">
+                Algorithmic and database problem solving supports my security and ML mindset
+                alike. LeetCode practice in C, SQL, and Java helps me reason about edge cases,
+                optimize logic, and write cleaner automation under constraints.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ EDUCATION ============ -->
+      <section id="education" class="section alt" aria-labelledby="education-title">
+        <div class="shell">
+          <div class="sec-head">
+            <p class="sec-index">07</p>
+            <h2 id="education-title" class="sec-title">Education</h2>
+          </div>
+
+          <div class="edu-list">
+            <article class="edu-row" data-reveal>
+              <div class="edu-meta">
+                <p class="edu-dates">Sep 2024 – Aug 2028</p>
+                <p class="edu-org">VTU · AICTE</p>
+              </div>
+              <div class="edu-copy">
+                <h3>B.E. Computer Science</h3>
+                <p>Nagarjuna College of Engineering and Technology</p>
+                <p class="edu-note">CGPA: 6.7</p>
+              </div>
+            </article>
+
+            <article class="edu-row" data-reveal>
+              <div class="edu-meta">
+                <p class="edu-dates">Sep 2022 – Mar 2024</p>
+                <p class="edu-org">Narayana Junior College</p>
+              </div>
+              <div class="edu-copy">
+                <h3>Intermediate (MPC)</h3>
+                <p>Anantapur, Andhra Pradesh</p>
+                <p class="edu-note">Score: 74%</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ACHIEVEMENTS / CERTS ============ -->
+      <section id="achievements" class="section" aria-labelledby="achievements-title">
+        <div class="shell">
+          <div class="sec-head">
+            <p class="sec-index">08</p>
+            <h2 id="achievements-title" class="sec-title">Achievements &amp; Certifications</h2>
+            <p class="sec-lead">Original work and valued certifications, with verifiable links.</p>
+          </div>
+
+          <div class="cert-grid">
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/copilot.png" alt="GitHub Copilot badge" loading="lazy" decoding="async" /></span>
+              <h3>GitHub Copilot Certified</h3>
+              <p>Achieved through hands-on experience using GitHub Copilot and GitHub in real-world development workflows.</p>
+              <a class="link-mini" href="https://learn.microsoft.com/api/credentials/share/en-us/GaneshNaidu-2694/8E4C34CBA93ED8CC?sharingId=BE7BAA18AA180EA0" target="_blank" rel="noopener noreferrer">Verify</a>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/certifications/cisco-ethical-hacker.png" alt="Cisco Ethical Hacker badge" loading="lazy" decoding="async" /></span>
+              <h3>Cisco Ethical Hacker</h3>
+              <p>Formal certification by Cisco validating ethical hacking fundamentals and practical security concepts.</p>
+              <a class="link-mini" href="https://www.credly.com/badges/921b523f-5da0-4b22-aaec-1277e93bfca8/public_url" target="_blank" rel="noopener noreferrer">View Badge</a>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/certifications/ibm-cybersecurity-fundamentals.png" alt="IBM Cybersecurity Fundamentals badge" loading="lazy" decoding="async" /></span>
+              <h3>Cybersecurity Fundamentals</h3>
+              <p>IBM SkillsBuild certification covering core cybersecurity fundamentals and threat concepts.</p>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/certifications/isc2-candidate.png" alt="ISC2 Candidate badge" loading="lazy" decoding="async" /></span>
+              <h3>ISC2 Candidate</h3>
+              <p>Recognized ISC2 Candidate status, validating a foundation in information security concepts.</p>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo cert-logo-ic"><i class="fa-solid fa-bug" aria-hidden="true"></i></span>
+              <h3>Hackviser CORE</h3>
+              <p>Cybersecurity foundations certification covering core offensive-security concepts and methodology.</p>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/certifications/cisco-introduction-to-cybersecurity.png" alt="Cisco Introduction to Cybersecurity badge" loading="lazy" decoding="async" /></span>
+              <h3>Introduction to Cybersecurity</h3>
+              <p>Cisco Networking Academy certification covering foundational cybersecurity concepts.</p>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/certifications/cisco-c-essentials-1.png" alt="Cisco C Essentials 1 badge" loading="lazy" decoding="async" /></span>
+              <h3>C Essentials 1</h3>
+              <p>Cisco Networking Academy certification in C programming fundamentals.</p>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/certifications/mongodb-crud-operations.png" alt="MongoDB CRUD Operations badge" loading="lazy" decoding="async" /></span>
+              <h3>MongoDB CRUD Operations</h3>
+              <p>Certification covering create, read, update, and delete operations in MongoDB.</p>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/certifications/redhat-python-programming.png" alt="Red Hat Python Programming badge" loading="lazy" decoding="async" /></span>
+              <h3>Python Programming</h3>
+              <p>Red Hat Academy certification in Python programming fundamentals.</p>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo"><img src="logos/certifications/redhat-getting-started-linux.png" alt="Red Hat Getting Started with Linux badge" loading="lazy" decoding="async" /></span>
+              <h3>Getting Started with Linux</h3>
+              <p>Red Hat Academy certification in foundational Linux administration.</p>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo cert-logo-ic"><i class="fa-solid fa-file-shield" aria-hidden="true"></i></span>
+              <h3>Real-World Vulnerability Report</h3>
+              <p>Reported a real vulnerability in the Torii portal with responsible disclosure and structured documentation.</p>
+              <a class="link-mini" href="https://www.linkedin.com/in/paladuguganeshnaidu/" target="_blank" rel="noopener noreferrer">Discuss Details</a>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo cert-logo-ic"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+              <h3>TryHackMe Top 7%</h3>
+              <p>Ranked among top learners through hands-on offensive security practice.</p>
+              <a class="link-mini" href="https://tryhackme.com/p/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">View Profile</a>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo cert-logo-ic"><i class="fa-solid fa-robot" aria-hidden="true"></i></span>
+              <h3>ML Engineer</h3>
+              <p>Achieved through hands-on experience working with data touching 10M+ users and building foundational machine learning projects.</p>
+              <a class="link-mini" href="https://github.com/paladuguganeshnaidu/CloudCostAi" target="_blank" rel="noopener noreferrer">Repo</a>
+            </article>
+
+            <article class="cert-card" data-reveal>
+              <span class="cert-logo cert-logo-ic"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>
+              <h3>Internz Learn Training</h3>
+              <p>Completed cybersecurity internship projects, demonstrating dedication and hands-on enthusiasm.</p>
+              <a class="link-mini" href="https://drive.google.com/drive/folders/1xi0fnEaLVbtPyT_BBmonaWBrZuUHBq3N?usp=sharing" target="_blank" rel="noopener noreferrer">View Details</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CONTACT ============ -->
+      <section id="contact" class="section contact" aria-labelledby="contact-title">
+        <div class="shell">
+          <div class="contact-card" data-reveal>
+            <p class="sec-index">09</p>
+            <h2 id="contact-title" class="contact-title">Let's build what's next.</h2>
+            <p class="contact-lead">
+              I'm actively building across generative AI, applied machine learning, deep learning
+              foundations, and cybersecurity. Reach out for internships, project collaboration,
+              or AI/security-focused opportunities.
+            </p>
+
+            <a class="btn btn-solid btn-lg" href="mailto:paladuguganeshnaidu@gmail.com">
+              paladuguganeshnaidu@gmail.com <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            </a>
+
+            <ul class="contact-list">
+              <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+917815872759">+91 78158 72759</a></li>
+              <li>
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <span>Bengaluru, Karnataka, India · native of Anantapur, Andhra Pradesh</span>
+              </li>
+            </ul>
+
+            <div class="social-row">
+              <a href="https://github.com/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github" aria-hidden="true"></i><span>GitHub</span>
+              </a>
+              <a href="https://linkedin.com/in/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>LinkedIn</span>
+              </a>
+              <a href="https://tryhackme.com/p/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-user-secret" aria-hidden="true"></i><span>TryHackMe</span>
+              </a>
+              <a href="https://leetcode.com/u/paladuguganeshnaidu" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-code" aria-hidden="true"></i><span>LeetCode</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
     </main>
 
-    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">
-      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
-    </button>
-
     <footer class="site-footer">
-      <p><span id="year"></span> Paladugu Ganesh Naidu &mdash; GenAI Engineer, AI/ML Developer &amp; Cybersecurity Practitioner.</p>
+      <div class="shell footer-inner">
+        <p class="f-brand">GN<span>.</span></p>
+        <p class="f-line">
+          © <span id="year">2026</span> Paladugu Ganesh Naidu — GenAI Engineer, AI/ML Developer
+          &amp; Cybersecurity Practitioner. Built minimal, engineered secure.
+        </p>
+        <p class="f-top">
+          <a href="#hero">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
+        </p>
+      </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
     <script src="js/main.js" defer></script>
   </body>
 </html>
