@@ -3,36 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>BHARAT 3D: 3D Land Administration Architecture for India</title>
-    <style>
-        body {background-color: #fff; color: #000; font-family: Arial, sans-serif; line-height: 1.5; margin: 2em;}
-        h1, h2, h3, h4 { color: #000; margin-top: 1.5em;}
-        h1 {font-size: 1.8em;}
-        h2 {font-size: 1.5em;}
-        h3 {font-size: 1.3em;}
-        ul, ol { margin-left: 1.5em; }
-        table {border-collapse: collapse; width: 100%; margin-top:1em;}
-        th, td {border: 1px solid #444; padding: 0.5em; text-align: left;}
-        pre.mermaid {background: #fff; padding: 0.5em; border: 1px solid #ccc; overflow-x: auto;}
-        em {font-style: italic;}
-    </style>
+  <style>
+    @page { size: A4; margin: 0.55in 0.65in; }
+    * { box-sizing: border-box; }
+    body { background: #fff; color: #000; font-family: "Times New Roman", Times, serif; font-size: 9.5pt; line-height: 1.12; margin: 0 auto; max-width: 8.27in; min-height: 11.7in; padding: 0.55in 0.65in; }
+    h1 { font-size: 19pt; line-height: 1.08; margin: 0 0 10pt; text-align: center; }
+    .author-block { font-size: 9.5pt; line-height: 1.2; margin: 0 auto 14pt; text-align: center; }
+    .author-block strong { font-size: 10.5pt; }
+    h2 { counter-increment: section; font-size: 10pt; margin: 9pt 0 3pt; text-transform: uppercase; }
+    h2::before { content: counter(section) ". "; }
+    .abstract h2::before { content: ""; }
+    h3 { font-size: 9.5pt; font-style: italic; margin: 6pt 0 2pt; }
+    p { margin: 0 0 5pt; text-align: justify; }
+    ul, ol { margin: 2pt 0 5pt 14pt; padding-left: 9pt; }
+    li { margin-bottom: 2pt; text-align: justify; }
+    .abstract { margin-bottom: 10pt; }
+    .abstract h2 { margin-top: 0; }
+    .abstract ul { list-style: none; margin: 0; padding: 0; }
+    .abstract li { display: inline; }
+    .paper-columns { column-count: 2; column-gap: 0.22in; counter-reset: section; }
+    .paper-columns > * { break-inside: avoid; }
+    table { border-collapse: collapse; font-size: 8pt; margin: 5pt 0; width: 100%; }
+    th, td { border: 0.5pt solid #555; padding: 3pt; text-align: left; vertical-align: top; }
+    .figure { margin: 7pt 0; text-align: center; }
+    .figure img { display: block; height: auto; margin: 0 auto; max-width: 100%; }
+    .figure p { font-size: 8pt; font-style: italic; text-align: left; }
+    code { font-family: "Courier New", monospace; font-size: 8pt; }
+    .mermaid { background: #fff; border: 0.5pt solid #777; overflow-x: auto; padding: 3pt; }
+    @media screen { body { box-shadow: 0 0 18px rgba(0, 0, 0, 0.22); } }
+    @media (max-width: 700px) { body { font-size: 10pt; padding: 24px 18px; } .paper-columns { column-count: 1; } h1 { font-size: 17pt; } }
+    @media print { body { box-shadow: none; } }
+  </style>
 </head>
 <body>
 
 <h1>BHARAT 3D: Backward-Compatible Volumetric Extension of India's ULPIN Framework for Three-Dimensional Land Administration</h1>
 
-<h2>Executive Summary</h2>
-<ul>
-<li>This study addresses the gap between India’s traditional 2D cadastre and the need to model volumetric property. India’s land records modernization (DILRMP) and ULPIN (“Bhu-Aadhaar”) provide a geo-referenced 2D base, but multi-level buildings, underground utilities, and air-rights require a 3D extension.</li>
-<li>International benchmarks: Singapore’s coordinated, survey‑based cadastral system ensures precise geospatial reference and supports strata titles and subterranean parcels, without altering its base parcel identifier. The Netherlands has prototyped 3D cadastral objects linked to 2D parcels in their LADM-based model. These cases suggest a “2D-first, 3D-where-needed” approach.</li>
-<li>We propose the BHARAT 3D architecture: keep the existing 2D parcel ID (ULPIN) and attach child volumetric objects (buildings, floors, units, tunnels, etc.) under it. Each 3D object gets a derivative Volumetric Property Reference ID (VPRID) encoding its parent ULPIN, building, floor and unit. This preserves backward compatibility and legal continuity.</li>
-<li>Multi-modal spatial data (drone imagery, LiDAR, CAD/BIM, GNSS/CORS, terrain models) are fused in an asynchronous processing pipeline. AI algorithms extract building footprints, heights and 3D mesh candidates from this data. A human-in-the-loop (licensed surveyor) then reviews and adjusts each 3D model before official registration.</li>
-<li>The system follows open standards: ISO 19152 (LADM) for the land administration information model, CityGML 3.0 for semantic 3D building models, and OGC 3D Tiles for streaming 3D visualization. Data are stored in PostGIS with 3D extents and in an object store for large assets (point clouds, tiles).</li>
-<li>Key research tasks include prototyping AI modules, designing a compliance-check engine (building codes, subsurface hazards), and planning a data-collection strategy. We outline experiment plans (segmentation accuracy, height error, topology validity, query performance) with placeholders for results. No empirical results are claimed yet; this framework sets the stage for detailed evaluation.</li>
-<li>This work aims to chart a practical roadmap (ULPIN→VPRID, async AI+human validation) rather than purely theoretical conclusions. It makes assumptions (unspecified pilot area, generic data sources, available GPU resources) and avoids untested claims. The goal is a clear, publishable plan for a national-level research effort in 3D cadastral engineering.</li>
-</ul>
+<div class="author-block">
+  <strong>Paladugu Ganesh Naidu</strong><br>
+  Student, Nagarjuna College of Engineering &amp; Technology<br>
+  Bangalore, India<br>
+  paladuguganeshnaidu@gmail.com
+</div>
 
+<section class="abstract">
+<h2>Abstract</h2>
+<ul>
+<li>This study addresses the gap between India's traditional 2D cadastre and the need to model volumetric property. India's land records modernization (DILRMP) and ULPIN ("Bhu-Aadhaar") provide a geo-referenced 2D base, but multi-level buildings, underground utilities, and air-rights require a 3D extension.</li>
+<li>International benchmarks: Singapore's coordinated, survey-based cadastral system ensures precise geospatial reference and supports strata titles and subterranean parcels, without altering its base parcel identifier. The Netherlands has prototyped 3D cadastral objects linked to 2D parcels in their LADM-based model. These cases suggest a "2D-first, 3D-where-needed" approach.</li>
+<li>We propose the BHARAT 3D architecture: keep the existing 2D parcel ID (ULPIN) and attach child volumetric objects (buildings, floors, units, tunnels, etc.) under it. Each 3D object gets a derivative Volumetric Property Reference ID (VPRID) encoding its parent ULPIN, building, floor and unit. This preserves backward compatibility and legal continuity.</li>
+<li>Multi-modal spatial data (drone imagery, LiDAR, CAD/BIM, GNSS/CORS, terrain models) are fused in an asynchronous processing pipeline. AI algorithms extract building footprints, heights and 3D mesh candidates from this data. A human-in-the-loop (licensed surveyor) then reviews and adjusts each 3D model before official registration.</li>
+<li>The system follows open standards: ISO 19152 (LADM) for the land administration information model, CityGML 3.0 for semantic 3D building models, and OGC 3D Tiles for streaming 3D visualization. Data are stored in PostGIS with 3D extents and in an object store for large assets (point clouds, tiles).</li>
+<li>Key research tasks include prototyping AI modules, designing a compliance-check engine (building codes, subsurface hazards), and planning a data-collection strategy. We outline experiment plans (segmentation accuracy, height error, topology validity, query performance) with placeholders for results. No empirical results are claimed yet; this framework sets the stage for detailed evaluation.</li>
+<li>This work aims to chart a practical roadmap (ULPIN to VPRID, async AI+human validation) rather than purely theoretical conclusions. It makes assumptions (unspecified pilot area, generic data sources, available GPU resources) and avoids untested claims. The goal is a clear, publishable plan for a national-level research effort in 3D cadastral engineering.</li>
+</ul>
 <h2>Introduction</h2>
-<p>India’s land administration is undergoing rapid digital transformation. The Digital India Land Records Modernization Programme (DILRMP) has computerized ~95% of rural land records and ~68% of cadastral maps. A key innovation is the Unique Land Parcel Identification Number (ULPIN or “Bhu-Aadhaar”), a 14-character code tied to a parcel’s geographic location. Over 66% of agricultural parcels have been assigned ULPINs as of 2026. This georeferenced 2D base immensely improves transparency and dispute resolution.</p>
+<p>India's land administration is undergoing rapid digital transformation. The Digital India Land Records Modernization Programme (DILRMP) has computerized approximately 95% of rural land records and 68% of cadastral maps. A key innovation is the Unique Land Parcel Identification Number (ULPIN or "Bhu-Aadhaar"), a 14-character code tied to a parcel's geographic location. Over 66% of agricultural parcels have been assigned ULPINs as of 2026. This georeferenced 2D base immensely improves transparency and dispute resolution.</p>
 
 <p>Nonetheless, 2D cadastres are insufficient for modern urban and infrastructure challenges. Consider a plot with a 5-story apartment building and an underground parking: residents on different floors have distinct rights, yet under a 2D system they all share one ULPIN. Likewise, buried utilities or elevated metro lines overlap existing parcels. Without volumetric modeling, authorities cannot fully capture ownership or enforce rules that depend on elevation (e.g. maximum building height, minimum clearance).</p>
 
@@ -45,7 +71,9 @@
 <li><strong>Ensure compliance:</strong> Incorporate topology checks and a surveyor validation step to guarantee that each 3D model meets legal accuracy standards.</li>
 <li><strong>Prototype architecture:</strong> Design a system with asynchronous processing, open standards (LADM, CityGML, 3D Tiles), and a 3D spatial database to store and serve the models.</li>
 </ol>
+</section>
 
+<main class="paper-columns">
 <h2>Literature Review and International Context</h2>
 
 <h3>Singapore: Geocentric Cadastre</h3>
@@ -60,7 +88,7 @@
 <h2>Conceptual Data Model</h2>
 <p>Figure 1 illustrates the hierarchical model. Each 2D parcel (ULPIN) is the root. An envelope Volume (Building) is created above/below it. That volume is subdivided into Floors, and floors into Units (e.g. apartment units, common areas). Separately, the same parcel can be linked to Infrastructure volumes (tunnels, vaults, utility corridors) and Air-volumes (e.g. defined by height restrictions). Thus a multi-story block yields multiple registered “objects” all linked to one ground parcel.</p>
 
-<div style="text-align:center; margin:20px 0;">
+<div class="figure">
   <img 
     src="https://raw.githubusercontent.com/paladuguganeshnaidu/paladuguganeshnaidu.github.io/main/images/research/conceptual-hierarchy.png"
     alt="Building volumetric object and parcel structure"
@@ -86,7 +114,7 @@
 <li><strong>Tier 5: Governance & Analytics.</strong> Specialized engines run on the spatial data: building bylaw checker (detect zoning/height violations), subsurface clash engine (test planned excavations against utility models), and a blockchain-inspired audit log for recording approvals. A chatbot can answer policy queries from the database.</li>
 </ul>
 
-<div style="text-align:center; margin:20px 0;">
+<div class="figure">
   <img 
     src="https://raw.githubusercontent.com/paladuguganeshnaidu/paladuguganeshnaidu.github.io/main/images/research/system-architecture.png"
     alt="Floor level and private common unit"
@@ -109,7 +137,7 @@
 <li><strong>Surveyor Review:</strong> Present the finalized 3D model in an editor. The surveyor adjusts vertices or splits/joins units as needed. Upon approval, the model (with VPRID) is committed to PostGIS.</li>
 </ul>
 
-<div style="text-align:center; margin:20px 0;">
+<div class="figure">
   <img 
     src="https://raw.githubusercontent.com/paladuguganeshnaidu/paladuguganeshnaidu.github.io/main/images/research/data-fusion-pipeline.png"
     alt="Underground infrastructure"
@@ -131,7 +159,7 @@
 </ol>
 <p>All AI-derived 3D objects are provisional. The final step is a <strong>Surveyor-In-The-Loop</strong>: a human checks and edits the model in a 3D viewer. Only after the surveyor digitally signs off does the system record the 3D object as official. This mirrors current practice (legal survey reports) and ensures accountability.</p>
 
-<div style="text-align:center; margin:20px 0;">
+<div class="figure">
   <img 
     src="https://raw.githubusercontent.com/paladuguganeshnaidu/paladuguganeshnaidu.github.io/main/images/research/reconstruction-workflow.png"
     alt="Air-space and tower structure"
@@ -183,6 +211,8 @@
 <li>Open Geospatial Consortium, 2022. <em>OGC CityGML 3.0 – City Geography Markup Language</em>. OGC Standard (ISO 19107-based 3D City Model). [Online] Available: https://docs.ogc.org/is/20-010/20-010.html.</li>
 <li>Pinkos, H. (CesiumJS Blog), 2019. “OGC adopted 3D Tiles as a Community Standard for streaming massive 3D content.” [Online] Available: https://cesium.com/blog/2019/03/01/cesiumjs-version-1.55-released/.</li>
 </ol>
+
+</main>
 
 </body>
 </html>
