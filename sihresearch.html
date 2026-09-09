@@ -10,10 +10,11 @@
     h1 { font-size: 19pt; line-height: 1.08; margin: 0 0 10pt; text-align: center; }
     .author-block { font-size: 9.5pt; line-height: 1.2; margin: 0 auto 14pt; text-align: center; }
     .author-block strong { font-size: 10.5pt; }
-    h2 { counter-increment: section; font-size: 10pt; margin: 9pt 0 3pt; text-transform: uppercase; }
-    h2::before { content: counter(section) ". "; }
+    h2 { counter-increment: section; counter-reset: subsection; font-size: 10pt; margin: 9pt 0 3pt; text-transform: uppercase; }
+    h2::before { content: counter(section, upper-roman) ". "; }
     .abstract h2::before { content: ""; }
-    h3 { font-size: 9.5pt; font-style: italic; margin: 6pt 0 2pt; }
+    h3 { counter-increment: subsection; font-size: 9.5pt; font-style: italic; margin: 6pt 0 2pt; }
+    h3::before { content: counter(subsection, upper-alpha) ". "; }
     p { margin: 0 0 5pt; text-align: justify; }
     ul, ol { margin: 2pt 0 5pt 14pt; padding-left: 9pt; }
     li { margin-bottom: 2pt; text-align: justify; }
