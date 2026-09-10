@@ -8,8 +8,9 @@
     * { box-sizing: border-box; }
     body { background: #fff; color: #000; font-family: "Times New Roman", Times, serif; font-size: 9.5pt; line-height: 1.12; margin: 0 auto; max-width: 8.27in; min-height: 11.7in; padding: 0.55in 0.65in; }
     h1 { font-size: 19pt; line-height: 1.08; margin: 0 0 10pt; text-align: center; }
-    .author-block { font-size: 9.5pt; line-height: 1.2; margin: 0 auto 14pt; text-align: center; }
-    .author-block strong { font-size: 10.5pt; }
+    .author-block { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10pt 8pt; font-size: 8.5pt; line-height: 1.15; margin: 0 auto 14pt; text-align: center; }
+    .author { break-inside: avoid; }
+    .author strong { display: block; font-size: 9.5pt; margin-bottom: 2pt; }
     h2 { counter-increment: section; counter-reset: subsection; font-size: 10pt; margin: 9pt 0 3pt; text-transform: uppercase; }
     h2::before { content: counter(section, upper-roman) ". "; }
     .abstract h2::before { content: ""; }
@@ -32,7 +33,7 @@
     code { font-family: "Courier New", monospace; font-size: 8pt; }
     .mermaid { background: #fff; border: 0.5pt solid #777; overflow-x: auto; padding: 3pt; }
     @media screen { body { box-shadow: 0 0 18px rgba(0, 0, 0, 0.22); } }
-    @media (max-width: 700px) { body { font-size: 10pt; padding: 24px 18px; } .paper-columns { column-count: 1; } h1 { font-size: 17pt; } }
+    @media (max-width: 700px) { body { font-size: 10pt; padding: 24px 18px; } .paper-columns { column-count: 1; } .author-block { grid-template-columns: repeat(2, 1fr); } h1 { font-size: 17pt; } }
     @media print { body { box-shadow: none; } }
   </style>
 </head>
@@ -41,10 +42,50 @@
 <h1>BHARAT 3D: Backward-Compatible Volumetric Extension of India's ULPIN Framework for Three-Dimensional Land Administration</h1>
 
 <div class="author-block">
-  <strong>Paladugu Ganesh Naidu</strong><br>
-  Student, Nagarjuna College of Engineering &amp; Technology<br>
-  Bangalore, India<br>
-  paladuguganeshnaidu@gmail.com
+  <div class="author">
+    <strong>Niranjan L<sup>*</sup></strong>
+    Professor, Dept. of CSE (AI&amp;ML)<br>
+    Nagarjuna College of Engineering &amp; Technology<br>
+    Bengaluru, India<br>
+    niranjanl1983@gmail.com
+  </div>
+  <div class="author">
+    <strong>Paladugu Ganesh Naidu</strong>
+    Undergraduate, Dept. of CSE<br>
+    Nagarjuna College of Engineering &amp; Technology<br>
+    Bengaluru, India<br>
+    paladuguganeshnaidu@gmail.com
+  </div>
+  <div class="author">
+    <strong>Partha Shankar</strong>
+    Undergraduate, Dept. of CSE<br>
+    Nagarjuna College of Engineering &amp; Technology<br>
+    Bengaluru, India
+  </div>
+  <div class="author">
+    <strong>Nandhushree M</strong>
+    Undergraduate, Dept. of CSE<br>
+    Nagarjuna College of Engineering &amp; Technology<br>
+    Bengaluru, India
+  </div>
+  <div class="author">
+    <strong>Nihar R</strong>
+    Undergraduate, Dept. of CSE<br>
+    Nagarjuna College of Engineering &amp; Technology<br>
+    Bengaluru, India
+  </div>
+  <div class="author">
+    <strong>Anupama B M</strong>
+    Undergraduate, Dept. of CSE<br>
+    Nagarjuna College of Engineering &amp; Technology<br>
+    Bengaluru, India
+  </div>
+  <div class="author">
+    <strong>Maithri M</strong>
+    Undergraduate, Dept. of CSE<br>
+    Nagarjuna College of Engineering &amp; Technology<br>
+    Bengaluru, India
+  </div>
 </div>
 
 <section class="abstract">
