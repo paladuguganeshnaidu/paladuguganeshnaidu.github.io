@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BHARAT 3D: 3D Land Administration Architecture for India</title>
+    <title>3D ULPIN Mapping System: 3D Land Administration Architecture for India</title>
   <style>
     @page { size: A4; margin: 0.55in 0.65in; }
     * { box-sizing: border-box; }
@@ -43,7 +43,7 @@
 
 <button class="pdf-button" type="button" onclick="window.print()" aria-label="Download this paper as a PDF">Download PDF</button>
 
-<h1>BHARAT 3D: Backward-Compatible Volumetric Extension of India's ULPIN Framework for Three-Dimensional Land Administration</h1>
+<h1>3D ULPIN Mapping System: Backward-Compatible Volumetric Extension of India's ULPIN Framework for Three-Dimensional Land Administration</h1>
 
 <div class="author-block">
   <div class="author">
@@ -97,7 +97,7 @@
 <ul>
 <li>This study addresses the gap between India's traditional 2D cadastre and the need to model volumetric property. India's land records modernization (DILRMP) and ULPIN ("Bhu-Aadhaar") provide a geo-referenced 2D base, but multi-level buildings, underground utilities, and air-rights require a 3D extension.</li>
 <li>International benchmarks: Singapore's coordinated, survey-based cadastral system ensures precise geospatial reference and supports strata titles and subterranean parcels, without altering its base parcel identifier. The Netherlands has prototyped 3D cadastral objects linked to 2D parcels in their LADM-based model. These cases suggest a "2D-first, 3D-where-needed" approach.</li>
-<li>We propose the BHARAT 3D architecture: keep the existing 2D parcel ID (ULPIN) and attach child volumetric objects (buildings, floors, units, tunnels, etc.) under it. Each 3D object gets a derivative Volumetric Property Reference ID (VPRID) encoding its parent ULPIN, building, floor and unit. This preserves backward compatibility and legal continuity.</li>
+<li>We propose the 3D ULPIN mapping system architecture: keep the existing 2D parcel ID (ULPIN) and attach child volumetric objects (buildings, floors, units, tunnels, etc.) under it. Each 3D object gets a derivative Volumetric Property Reference ID (VPRID) encoding its parent ULPIN, building, floor and unit. This preserves backward compatibility and legal continuity.</li>
 <li>Multi-modal spatial data (drone imagery, LiDAR, CAD/BIM, GNSS/CORS, terrain models) are fused in an asynchronous processing pipeline. AI algorithms extract building footprints, heights and 3D mesh candidates from this data. A human-in-the-loop (licensed surveyor) then reviews and adjusts each 3D model before official registration.</li>
 <li>The system follows open standards: ISO 19152 (LADM) for the land administration information model, CityGML 3.0 for semantic 3D building models, and OGC 3D Tiles for streaming 3D visualization. Data are stored in PostGIS with 3D extents and in an object store for large assets (point clouds, tiles).</li>
 <li>Key research tasks include prototyping AI modules, designing a compliance-check engine (building codes, subsurface hazards), and planning a data-collection strategy. We outline experiment plans (segmentation accuracy, height error, topology validity, query performance) with placeholders for results. No empirical results are claimed yet; this framework sets the stage for detailed evaluation.</li>
@@ -110,7 +110,7 @@
 
 <p>Concurrently, India’s SVAMITVA scheme has demonstrated large-scale geospatial mapping: UAVs have surveyed over 90,000 rural villages to create property maps and issue 1.08 crore property cards. The Survey of India uses survey-grade drones and CORS references to ensure ±5 cm accuracy in these village maps. This shows India’s growing capability in precision geospatial data, which our proposal also leverages.</p>
 
-<p><strong>Problem statement:</strong> How can India augment its existing ULPIN-based cadastre to capture multi-level ownership and built structures, while remaining compatible with current laws and workflows? We propose BHARAT 3D: a layered model where each 2D parcel (ULPIN) may host subordinate 3D spaces. Our objectives are:</p>
+<p><strong>Problem statement:</strong> How can India augment its existing ULPIN-based cadastre to capture multi-level ownership and built structures, while remaining compatible with current laws and workflows? We propose the 3D ULPIN mapping system: a layered model where each 2D parcel (ULPIN) may host subordinate 3D spaces. Our objectives are:</p>
 <ol>
 <li><strong>Extend identification:</strong> Define a scheme (VPRIDs) for unique IDs of 3D volumetric units (buildings, floors, tunnels) that derive from the parent ULPIN.</li>
 <li><strong>Define data pipeline:</strong> Outline AI and geospatial processes to generate 3D models from multi-modal data (drone images, LiDAR, CAD, GNSS, etc.).</li>
@@ -126,7 +126,7 @@
 <p>Singapore’s Land Authority (SLA) maintains a modern, coordinate-based cadastral system. Since 2004, all surveys use the SVY21 datum and a tightly controlled survey network. This allows very precise placement of parcels and strata lots. Singapore introduced strata titles (for condominium units) in the 1960s, layering apartment ownership on a ground parcel ID. Subterranean and air-space subdivisions (for tunnels or telecom towers) are also supported by referencing the original surface lot. Importantly, SLA kept the base parcel ID intact and added layers for vertical units, illustrating our “inherit and extend” strategy. The Singapore model also highlights rigorous survey verification: every proposed change is checked against permanent ground markers and control networks, a practice we incorporate as the human-in-loop review.</p>
 
 <h3>Netherlands: Phased 3D Cadastre</h3>
-<p>The Dutch Kadaster pioneered 3D cadastral concepts. Early studies (Stoter & Ploeger 2003) identified multi-level housing and underground rights as motivations for 3D registration. Their approach, aligned with ISO 19152 (LADM), treated 3D legal spaces as separate “spatial units” linked to 2D parcels. In a 2013 prototype, they stored volumetric objects (e.g. building solids) in a 3D database, while maintaining traditional 2D rights records. Key lessons: (a) Existing legal infrastructure can remain largely 2D if each 3D unit is an extra record; (b) visualization (CityGML models, 3D GIS) aids stakeholders, but the core is the data model of objects and rights; (c) accuracy requirements are strict (survey tolerances) – hence our explicit surveyor verification step. The Dutch work reinforces that BHARAT 3D should be incremental: we do not replace ULPIN, we only add new record types (Building, Floor, Unit, Infrastructure) with reference to it.</p>
+<p>The Dutch Kadaster pioneered 3D cadastral concepts. Early studies (Stoter & Ploeger 2003) identified multi-level housing and underground rights as motivations for 3D registration. Their approach, aligned with ISO 19152 (LADM), treated 3D legal spaces as separate “spatial units” linked to 2D parcels. In a 2013 prototype, they stored volumetric objects (e.g. building solids) in a 3D database, while maintaining traditional 2D rights records. Key lessons: (a) Existing legal infrastructure can remain largely 2D if each 3D unit is an extra record; (b) visualization (CityGML models, 3D GIS) aids stakeholders, but the core is the data model of objects and rights; (c) accuracy requirements are strict (survey tolerances) – hence our explicit surveyor verification step. The Dutch work reinforces that the 3D ULPIN mapping system should be incremental: we do not replace ULPIN, we only add new record types (Building, Floor, Unit, Infrastructure) with reference to it.</p>
 
 <h3>Other Experiences</h3>
 <p>Several jurisdictions have piloted 3D cadastres (e.g. Sweden, Australia, Czech Republic). A 2020 review noted that while many have surveyed 3D objects, very few have operationalized them in law. Common challenges include defining air/subsurface rights and integrating BIM. Our approach avoids diving into legal reform; instead we assume the cadastral system is willing to store 3D objects as metadata, and put the onus on surveyors to attach those objects to existing laws. In practice, a government or court would need to validate any new 3D registration, beyond our technical scope.</p>
@@ -231,7 +231,7 @@
 <p>Datasets: We assume a sample city block with known building shapes and LiDAR (e.g. an open OSM/LiDAR dataset) for initial tests. Compliance tests will use hypothetical zoning rules. All benchmarks will be noted as “TBD” until implemented.</p>
 
 <h2>Discussion</h2>
-<p>BHARAT 3D bridges India’s land records with modern 3D capabilities. Unlike a mere 3D mapping tool, it ties each 3D object to legal metadata (owner, rights, source data). For example, a condominium unit’s 3D solid in the database has fields: VPRID, parent ULPIN, owner info (linked from registration), creation date, and GIS metadata. This integration of geometry and land registry is the core contribution.</p>
+<p>The 3D ULPIN mapping system bridges India’s land records with modern 3D capabilities. Unlike a mere 3D mapping tool, it ties each 3D object to legal metadata (owner, rights, source data). For example, a condominium unit’s 3D solid in the database has fields: VPRID, parent ULPIN, owner info (linked from registration), creation date, and GIS metadata. This integration of geometry and land registry is the core contribution.</p>
 
 <p>We adhere to international standards to maximize interoperability. Using CityGML (or its JSON equivalent) means detailed semantic models (e.g. roof types, construction year) can be encoded. For large-scale visualization, 3D Tiles allows streaming entire cityscapes in the browser. However, data standardization does not eliminate governance needs: our system still requires human validation. The digital surveyor review is essential to meet legal evidentiary standards (as in Singapore and Dutch practice).</p>
 
@@ -247,7 +247,7 @@
 </ul>
 
 <h2>Conclusion</h2>
-<p>We have outlined BHARAT 3D: a research blueprint for 3D cadastre in India. By respecting the existing ULPIN system and using AI-assisted 3D modeling with human oversight, we seek a practical path forward. The key innovation is the layered identifier (ULPIN→VPRID) that connects 2D parcels to volumetric objects. Our architecture integrates heterogeneous data and modern web-GIS standards to deliver 3D insights without disrupting current processes. Though experimental results are pending, this framework provides a clear direction for implementation and study. The next steps include building the prototype components, testing on pilot regions, and iterating with stakeholders to refine the approach.</p>
+<p>We have outlined the 3D ULPIN mapping system: a research blueprint for 3D cadastre in India. By respecting the existing ULPIN system and using AI-assisted 3D modeling with human oversight, we seek a practical path forward. The key innovation is the layered identifier (ULPIN→VPRID) that connects 2D parcels to volumetric objects. Our architecture integrates heterogeneous data and modern web-GIS standards to deliver 3D insights without disrupting current processes. Though experimental results are pending, this framework provides a clear direction for implementation and study. The next steps include building the prototype components, testing on pilot regions, and iterating with stakeholders to refine the approach.</p>
 
 <h2>References</h2>
 <ol>
