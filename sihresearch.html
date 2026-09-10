@@ -32,12 +32,16 @@
     .figure p { font-size: 8pt; font-style: italic; text-align: left; }
     code { font-family: "Courier New", monospace; font-size: 8pt; }
     .mermaid { background: #fff; border: 0.5pt solid #777; overflow-x: auto; padding: 3pt; }
+    .pdf-button { background: #111; border: 0; border-radius: 2px; color: #fff; cursor: pointer; font: 8.5pt "Times New Roman", Times, serif; padding: 7px 11px; position: fixed; right: 18px; top: 18px; z-index: 10; }
+    .pdf-button:hover { background: #444; }
     @media screen { body { box-shadow: 0 0 18px rgba(0, 0, 0, 0.22); } }
     @media (max-width: 700px) { body { font-size: 10pt; padding: 24px 18px; } .paper-columns { column-count: 1; } .author-block { grid-template-columns: repeat(2, 1fr); } h1 { font-size: 17pt; } }
-    @media print { body { box-shadow: none; } }
+    @media print { body { box-shadow: none; } .pdf-button { display: none; } }
   </style>
 </head>
 <body>
+
+<button class="pdf-button" type="button" onclick="window.print()" aria-label="Download this paper as a PDF">Download PDF</button>
 
 <h1>BHARAT 3D: Backward-Compatible Volumetric Extension of India's ULPIN Framework for Three-Dimensional Land Administration</h1>
 
