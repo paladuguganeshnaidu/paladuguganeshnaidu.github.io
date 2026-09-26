@@ -1,57 +1,55 @@
 # Portfolio — Paladugu Ganesh Naidu
 
-A static, single-page portfolio for **Paladugu Ganesh Naidu** — positioned around
-Generative AI engineering, applied machine learning, deep-learning foundations,
-and cybersecurity.
+A static, single-page developer portfolio focused on applied AI/GenAI engineering, software development and cybersecurity.
 
-Built with plain HTML, CSS and JavaScript (no framework, no build step) and
-deployed on GitHub Pages behind the custom domain `paladuguganeshnaidu.tech`.
+## What it demonstrates
 
-## Run locally
+- Responsive portfolio UI.
+- Editorial light visual system.
+- Animated opening loader and scroll reveals.
+- Ambient neural/3D canvas background.
+- Reduced-motion support.
+- Semantic HTML and accessible navigation.
+- SEO metadata, canonical URL, Open Graph/Twitter cards.
+- Person and WebSite JSON-LD.
+- robots.txt and sitemap.xml.
 
-Open `index.html` directly in a browser, or serve the folder with any static server:
+## Stack
 
-```bash
-npx serve .
-```
+Plain HTML, CSS and JavaScript. No framework and no build step.
 
-## Project structure
+## Structure
 
-```
-index.html      — content, semantic structure & SEO metadata
-css/style.css   — light editorial theme, opening-loader + reveal system, responsive
-js/main.js      — loader, neural/3D canvas background, nav, scroll reveals, live stat
-robots.txt      — crawl rules + sitemap pointer
-sitemap.xml     — sitemap for search engines
-images/         — profile photos, role logos
-logos/          — tool + certification logos
-```
+- index.html — page structure and SEO metadata.
+- css/style.css — visual system and responsive styles.
+- js/main.js — loader, canvas effects, navigation and reveal behavior.
+- images/ — portfolio imagery.
+- logos/ — technology/certification assets.
+- robots.txt.
+- sitemap.xml.
 
-## Design direction
+## Local run
 
-- **Theme:** editorial light-minimal — warm paper canvas, hairline rules, big
-  Space Grotesk type, with a restrained **AI violet** + **security cyan** accent pair.
-- **Motion:** an opening percentage loader that reveals the page, masked line-rise
-  hero entrance, staggered scroll reveals, an infinite marquee, and a live ambient
-  background (drifting soft orbs, a faint neural constellation and a rotating
-  3D wireframe orb on `<canvas>`).
-- **Accessibility:** respects `prefers-reduced-motion`; semantic landmarks, one `h1`,
-  skip-link, labelled sections, descriptive image alt text.
+Open index.html directly or use a static server such as `npx serve .`.
 
-## SEO notes
+## Deployment
 
-- Single `h1`, semantic `section`/`article`/`header`/`footer` landmarks.
-- Clean `<title>` + meta description (~155 chars), canonical URL.
-- Open Graph + Twitter card tags for social sharing.
-- `Person` + `WebSite` JSON-LD with `sameAs` profile links, employer, education,
-  skills and location.
-- `robots.txt` and `sitemap.xml` shipped at the site root.
-- No keyword-stuffing meta tags; relevance comes from real, descriptive content.
+The repository is designed for GitHub Pages and supports the custom domain paladuguganeshnaidu.tech through the repository CNAME configuration.
 
-## Deploying to GitHub Pages
+## Accessibility
 
-1. Push the contents of this folder to the root of your `<username>.github.io`
-   repository (or any repo, then enable Pages under Settings → Pages).
-2. Keep the `CNAME` file if you use the custom domain `paladuguganeshnaidu.tech`
-   (delete it to use the default `github.io` URL).
-3. GitHub Pages serves `index.html` at the root automatically — no build step.
+The current implementation includes a skip link, semantic landmarks, a single primary h1, descriptive image alt text and `prefers-reduced-motion` handling.
+
+## Current portfolio direction
+
+The portfolio highlights work across AI/ML, GenAI systems, full-stack engineering, cybersecurity tooling, research experiments and deployed student projects.
+
+## License
+
+See LICENSE if present.
+
+## Author
+
+Paladugu Ganesh Naidu
+
+Repository: https://github.com/paladuguganeshnaidu/paladuguganeshnaidu.github.io
