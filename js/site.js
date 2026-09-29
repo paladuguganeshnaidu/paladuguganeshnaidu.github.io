@@ -93,6 +93,7 @@
       target = window.scrollY || 0;
       currentScroll += (target - currentScroll) * (reduce ? .2 : .055);
       root.style.setProperty('--page-scroll', currentScroll.toFixed(2));
+      root.style.setProperty('--field-y', Math.round(currentScroll * -0.025) + 'px');
       if (!reduce) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
