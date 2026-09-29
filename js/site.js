@@ -3,13 +3,30 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Navigation
+  // Accessible mobile navigation.
   const nav = document.querySelector('.navlinks');
   const menu = document.querySelector('.menu');
+
+  const closeMenu = () => {
+    if (!nav || !menu) return;
+    nav.classList.remove('open');
+    menu.setAttribute('aria-expanded', 'false');
+  };
+
   if (menu && nav) {
+    menu.setAttribute('aria-expanded', 'false');
     menu.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       menu.setAttribute('aria-expanded', String(open));
+    });
+
+    document.addEventListener('click', event => {
+      if (!nav.classList.contains('open')) return;
+      if (!nav.contains(event.target) && !menu.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closeMenu();
     });
   }
 
@@ -25,79 +42,115 @@
     }
   });
 
-  // Work filters
+  // Work filters.
   const filterButtons = [...document.querySelectorAll('[data-filter]')];
   const cards = [...document.querySelectorAll('[data-type]')];
-  filterButtons.forEach(btn => btn.addEventListener('click', () => {
-    filterButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    cards.forEach(card => {
-      card.hidden = !(filter === 'all' || card.dataset.type === filter);
-    });
-  }));
 
-  // Live public GitHub activity
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter = button.dataset.filter;
+      cards.forEach(card => {
+        card.hidden = !(filter === 'all' || card.dataset.type === filter);
+      });
+    });
+  });
+
+  const setFeedMessage = (feed, message) => {
+    const p = document.createElement('p');
+    p.className = 'muted';
+    p.textContent = message;
+    feed.replaceChildren(p);
+  };
+
+  // Live public GitHub activity with a bounded request.
   const feed = document.querySelector('#github-feed');
   if (feed) {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 7000);
+
     fetch('https://api.github.com/users/paladuguganeshnaidu/events/public?per_page=12', {
-      headers: { Accept: 'application/vnd.github+json' }
+      headers: { Accept: 'application/vnd.github+json' },
+      signal: controller.signal,
+      cache: 'no-store'
     })
-      .then(response => response.ok ? response.json() : Promise.reject())
+      .then(response => response.ok ? response.json() : Promise.reject(new Error('GitHub request failed')))
       .then(events => {
         if (!Array.isArray(events) || !events.length) {
-          feed.innerHTML = '<p class="muted">No recent public activity was returned by GitHub.</p>';
+          setFeedMessage(feed, 'No recent public activity was returned by GitHub.');
           return;
         }
-        feed.replaceChildren(...events.slice(0, 8).map(event => {
+
+        const nodes = events.slice(0, 8).map(event => {
           const item = document.createElement('a');
           const repo = event.repo?.name || 'GitHub';
           const when = event.created_at
             ? new Date(event.created_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
             : '';
-          const action = (event.type || 'Activity').replace('Event','').replace(/([A-Z])/g,' $1').trim();
+          const action = (event.type || 'Activity')
+            .replace('Event', '')
+            .replace(/([A-Z])/g, ' $1')
+            .trim();
+
           item.className = 'activity-item';
           item.href = 'https://github.com/' + repo;
           item.target = '_blank';
           item.rel = 'noopener noreferrer';
-          item.innerHTML = '<span class="activity-dot"></span>';
+
+          const dot = document.createElement('span');
+          dot.className = 'activity-dot';
 
           const box = document.createElement('div');
           const title = document.createElement('strong');
           title.textContent = action + ' · ' + repo;
+
           const meta = document.createElement('small');
           meta.textContent = when;
+
           box.append(title, meta);
-          item.appendChild(box);
+          item.append(dot, box);
           return item;
-        }));
+        });
+
+        feed.replaceChildren(...nodes);
       })
       .catch(() => {
-        feed.innerHTML = '<p class="muted">Live GitHub activity is temporarily unavailable. The project archive remains fully indexed and browsable.</p>';
+        setFeedMessage(feed, 'Live GitHub activity is temporarily unavailable. The project archive remains fully indexed and browsable.');
+      })
+      .finally(() => {
+        window.clearTimeout(timeout);
       });
   }
 
-  // Hero 3D scene — smooth pointer/touch tilt with no layout reads in the frame loop.
+  // Hero 3D scene.
   const scene = document.querySelector('[data-scene]');
   if (scene && !reduceMotion) {
-    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
     let hostRect = null;
 
     const refreshSceneRect = () => {
       const host = scene.parentElement;
       hostRect = host ? host.getBoundingClientRect() : null;
     };
+
     const setPointer = (x, y) => {
       if (!hostRect) refreshSceneRect();
       if (!hostRect) return;
+
       targetX = Math.max(-1, Math.min(1, ((x - hostRect.left) / hostRect.width - 0.5) * 2));
       targetY = Math.max(-1, Math.min(1, ((y - hostRect.top) / hostRect.height - 0.5) * 2));
     };
 
     const host = scene.parentElement;
     refreshSceneRect();
+
     window.addEventListener('resize', refreshSceneRect, { passive: true });
-    host?.addEventListener('pointermove', e => setPointer(e.clientX, e.clientY), { passive: true });
+    host?.addEventListener('pointermove', event => setPointer(event.clientX, event.clientY), { passive: true });
     host?.addEventListener('pointerleave', () => { targetX = 0; targetY = 0; }, { passive: true });
     host?.addEventListener('pointerup', () => { targetX = 0; targetY = 0; }, { passive: true });
     host?.addEventListener('pointercancel', () => { targetX = 0; targetY = 0; }, { passive: true });
@@ -109,10 +162,10 @@
       scene.style.setProperty('--scene-ry', (currentX * 10).toFixed(2) + 'deg');
       requestAnimationFrame(frame);
     };
+
     requestAnimationFrame(frame);
   }
 
-  // Profile image fallback
   const profileImage = document.querySelector('img[data-profile-image]');
   if (profileImage) {
     profileImage.addEventListener('error', () => {
