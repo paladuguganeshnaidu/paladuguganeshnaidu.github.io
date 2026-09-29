@@ -1,30 +1,429 @@
-let THREE;try{THREE=await import('https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js')}catch(e){const h=document.getElementById('world-canvas');if(h)h.innerHTML='<div class="world-noscript">The 3D engine could not load. <a href="work.html">Open the standard portfolio</a>.</div>';throw e}
-const host=document.getElementById('world-canvas'),nameEl=document.getElementById('world-selected-name'),copyEl=document.getElementById('world-selected-copy'),metaEl=document.getElementById('world-selected-meta');
-const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches,mobile=matchMedia('(max-width:720px)').matches;
-const items=[['DeepSeek','logos/Deepseek%20logo.jpg','AI / GENAI','Local and open model exploration.','cube'],['Claude','logos/claude.jpg','AI / GENAI','AI assistant and model ecosystem.','sphere'],['GitHub Copilot','logos/copilot.png','ENGINEERING','AI-assisted software development.','octa'],['Antigravity','logos/Antigravity.jpg','AI / TOOLS','Experimental AI tooling.','torus'],['Nmap','logos/nmap.jpg','SECURITY','Network discovery and scanning.','cube'],['Burp Suite','logos/burpsuite.jpg','SECURITY','Web security testing.','sphere'],['Kali Linux','logos/kali.jpg','SECURITY','Security-focused operating system.','octa'],['Metasploit','logos/metasploit.jpg','SECURITY','Exploit development and research.','cube'],['Gobuster','logos/Gobuster.jpg','SECURITY','Content and directory discovery.','torus'],['FFUF','logos/fuzz.jpg','SECURITY','Fast web fuzzing and endpoint discovery.','sphere'],['Cisco C Essentials','logos/certifications/cisco-c-essentials-1.png','CREDENTIAL','Cisco programming fundamentals.','cube'],['Cisco Ethical Hacker','logos/certifications/cisco-ethical-hacker.png','CREDENTIAL','Cisco ethical hacking credential.','octa'],['Cisco Intro to Cybersecurity','logos/certifications/cisco-introduction-to-cybersecurity.png','CREDENTIAL','Cybersecurity foundations credential.','sphere'],['IBM Cybersecurity Fundamentals','logos/certifications/ibm-cybersecurity-fundamentals.png','CREDENTIAL','IBM cybersecurity foundation.','cube'],['ISC2 Candidate','logos/certifications/isc2-candidate.png','CREDENTIAL','ISC2 candidate credential record.','torus'],['MongoDB CRUD Operations','logos/certifications/mongodb-crud-operations.png','CREDENTIAL','MongoDB database operations.','sphere'],['Red Hat Python','logos/certifications/redhat-python-programming.png','CREDENTIAL','Red Hat Python programming.','cube'],['Red Hat Linux','logos/certifications/redhat-getting-started-linux.png','CREDENTIAL','Red Hat Linux learning record.','octa']];
-const concepts=[['RAG / LLM','AI SYSTEMS','Retrieval, local models and grounded generation.'],['Ollama','AI SYSTEMS','Local LLM runtime and inference.'],['FastAPI','ENGINEERING','Python APIs and services.'],['MCP / Tools','AI SYSTEMS','Tool use and agent-oriented systems.'],['PyTorch','ENGINEERING','Neural networks and training.'],['Docker','ENGINEERING','Containerized development and deployment.'],['Python','ENGINEERING','Primary programming language.'],['GPU','INFRASTRUCTURE','Accelerated model workloads.']];
-let renderer;try{renderer=new THREE.WebGLRenderer({antialias:!mobile,alpha:true,powerPreference:'high-performance'})}catch(e){host.innerHTML='<div class="world-noscript">WebGL is unavailable on this device. <a href="work.html">Open the standard portfolio</a>.</div>';throw e}
-const cap=mobile?1.25:1.6;renderer.setPixelRatio(Math.min(devicePixelRatio||1,cap));renderer.setSize(host.clientWidth,host.clientHeight,false);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;host.appendChild(renderer.domElement);
-const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0x090a11,.035);const camera=new THREE.PerspectiveCamera(44,host.clientWidth/Math.max(1,host.clientHeight),.1,100);camera.position.z=13;
-const world=new THREE.Group(),layer=new THREE.Group();world.add(layer);scene.add(world);scene.add(new THREE.HemisphereLight(0xc7c3ff,0x0b1118,2.1));
-const key=new THREE.DirectionalLight(0xffffff,2.8);key.position.set(4,7,8);scene.add(key);const lilac=new THREE.PointLight(0x8f7cf6,18,28,2);lilac.position.set(-7,1,4);scene.add(lilac);const mint=new THREE.PointLight(0x73c7b3,14,24,2);mint.position.set(7,-4,0);scene.add(mint);
-const core=new THREE.Group();core.add(new THREE.Mesh(new THREE.IcosahedronGeometry(1.6,2),new THREE.MeshPhysicalMaterial({color:0x9182f5,roughness:.24,metalness:.45,clearcoat:.7,emissive:0x1b1631,emissiveIntensity:.6})));
-[1.95,2.35,2.8].forEach((r,i)=>{const q=new THREE.Mesh(new THREE.TorusGeometry(r,.015+i*.004,8,96),new THREE.MeshBasicMaterial({color:0xb7a9ff,transparent:true,opacity:.27-i*.05}));q.rotation.set(.9+i*.35,.3+i*.45,i*.28);core.add(q)});
-const tc=document.createElement('canvas');tc.width=512;tc.height=256;const ctx=tc.getContext('2d');ctx.font='700 64px Inter,Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#fff';ctx.fillText('MY WORLD',256,96);ctx.font='600 23px monospace';ctx.fillStyle='rgba(255,255,255,.62)';ctx.fillText('AI · ENGINEERING · SECURITY',256,154);const tt=new THREE.CanvasTexture(tc);tt.colorSpace=THREE.SRGBColorSpace;const label=new THREE.Sprite(new THREE.SpriteMaterial({map:tt,transparent:true,depthWrite:false}));label.scale.set(4.6,2.3,1);core.add(label);layer.add(core);
-const starCount=mobile?90:160,pos=new Float32Array(starCount*3);for(let i=0;i<starCount;i++){const r=11+Math.random()*9,a=Math.random()*Math.PI*2,b=Math.acos(Math.random()*2-1);pos[i*3]=Math.sin(b)*Math.cos(a)*r;pos[i*3+1]=Math.sin(b)*Math.sin(a)*r;pos[i*3+2]=Math.cos(b)*r}const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(pos,3));const stars=new THREE.Points(sg,new THREE.PointsMaterial({color:0xa9a0ec,size:mobile?.055:.075,transparent:true,opacity:.42}));scene.add(stars);
-const colors={'AI / GENAI':0x9f91f4,'AI / TOOLS':0xc2b8ff,'SECURITY':0x76cdb8,'CREDENTIAL':0xf1b79b,'AI SYSTEMS':0xa795ff,'ENGINEERING':0x8fbff1,'INFRASTRUCTURE':0xf0ae92},load=new THREE.TextureLoader(),nodes=[],lines=[];
-function tex(url){const t=load.load(url);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=Math.min(renderer.capabilities.getMaxAnisotropy(),4);return t}
-function shape(type,s){if(type==='sphere')return new THREE.SphereGeometry(s,20,16);if(type==='octa')return new THREE.OctahedronGeometry(s,1);if(type==='torus')return new THREE.TorusGeometry(s*.78,s*.18,12,40);return new THREE.BoxGeometry(s*1.55,s*1.55,s*1.2)}
-function textTex(text){const c=document.createElement('canvas');c.width=512;c.height=160;const x=c.getContext('2d');x.font='700 56px Inter,Arial';x.textAlign='center';x.textBaseline='middle';x.fillStyle='#fff';x.fillText(text,256,78);x.font='600 18px monospace';x.fillStyle='rgba(255,255,255,.45)';x.fillText('3D NODE',256,122);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
-function addLogo(item,i){const [n,f,c,d,type]=item,theta=i/items.length*Math.PI*2,phi=Math.acos(1-2*(i+.5)/items.length),r=5.1+(i%3)*.48,g=new THREE.Group(),s=.62+(i%4)*.045,col=colors[c]||0xffffff;g.position.set(Math.sin(phi)*Math.cos(theta)*r,Math.cos(phi)*r*.86,Math.sin(phi)*Math.sin(theta)*r);const base=g.position.clone(),logo=tex(f),side=new THREE.MeshStandardMaterial({color:col,roughness:.34,metalness:.3}),lm=new THREE.MeshStandardMaterial({map:logo,roughness:.25}),m=new THREE.Mesh(shape(type,s),type==='cube'?[side,side,side,side,lm,lm]:new THREE.MeshStandardMaterial({color:col,roughness:.24,metalness:.4,emissive:col,emissiveIntensity:.08}));g.add(m);if(type!=='cube'){const p=new THREE.Mesh(new THREE.PlaneGeometry(s*.95,s*.95),new THREE.MeshBasicMaterial({map:logo,transparent:true,depthWrite:false,side:THREE.DoubleSide}));p.position.z=s*.95;g.add(p)}g.userData={name:n,cat:c,desc:d,base,hover:0,phase:i*.77};layer.add(g);nodes.push(g);const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),base.clone()]),new THREE.LineBasicMaterial({color:0x8d84bf,transparent:true,opacity:.14}));layer.add(line);lines.push({line,node:g})}
-items.forEach(addLogo);
-concepts.forEach((it,i)=>{const [n,c,d]=it,a=i/concepts.length*Math.PI*2+.22,r=7.2,g=new THREE.Group();g.position.set(Math.cos(a)*r,Math.sin(a*1.8)*1.8,Math.sin(a)*r);g.userData={name:n,cat:c,desc:d,base:g.position.clone(),hover:0,phase:(items.length+i)*.77};const col=colors[c]||0xffffff;g.add(new THREE.Mesh(new THREE.OctahedronGeometry(.55,1),new THREE.MeshPhysicalMaterial({color:col,roughness:.2,metalness:.6,clearcoat:.8})));const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:textTex(n),transparent:true,depthWrite:false}));sp.scale.set(2.1,.66,1);sp.position.y=-.86;g.add(sp);layer.add(g);nodes.push(g)});
-function show(n){if(!n){nameEl.textContent='GN CORE';copyEl.textContent='AI systems, full-stack engineering, security and research — the connected pieces of my work.';metaEl.textContent='CORE · PALADUGU GANESH NAIDU';return}nameEl.textContent=n.userData.name;copyEl.textContent=n.userData.desc;metaEl.textContent=n.userData.cat+' · MY WORLD'}show();
-const ray=new THREE.Raycaster(),pointer=new THREE.Vector2(99,99);let hovered=null;function pick(x,y){const r=renderer.domElement.getBoundingClientRect();pointer.x=(x-r.left)/r.width*2-1;pointer.y=-(y-r.top)/r.height*2+1}function hover(){ray.setFromCamera(pointer,camera);const hit=ray.intersectObjects(nodes,true)[0];let n=null;if(hit){n=hit.object;while(n&&!n.userData.name)n=n.parent}if(n!==hovered){hovered=n;show(n);renderer.domElement.style.cursor=n?'pointer':'grab'}}
-let drag=false,moved=false,lx=0,ly=0,trX=-.08,trY=.16,crX=trX,crY=trY,tz=13,cz=13,pageScroll=0;
-renderer.domElement.addEventListener('pointerdown',e=>{drag=true;moved=false;lx=e.clientX;ly=e.clientY;renderer.domElement.setPointerCapture?.(e.pointerId)},{passive:true});
-renderer.domElement.addEventListener('pointermove',e=>{pick(e.clientX,e.clientY);if(!drag)return;const dx=e.clientX-lx,dy=e.clientY-ly;if(Math.abs(dx)+Math.abs(dy)>3)moved=true;trY+=dx*.0042;trX=Math.max(-.85,Math.min(.85,trX+dy*.0035));lx=e.clientX;ly=e.clientY},{passive:true});
-renderer.domElement.addEventListener('pointerup',e=>{drag=false;renderer.domElement.releasePointerCapture?.(e.pointerId);if(!moved)hover()},{passive:true});
-renderer.domElement.addEventListener('pointercancel',()=>drag=false,{passive:true});renderer.domElement.addEventListener('pointerleave',()=>{if(!drag)pointer.set(99,99)},{passive:true});renderer.domElement.addEventListener('wheel',e=>{e.preventDefault();tz=Math.max(8,Math.min(18,tz+e.deltaY*.012))},{passive:false});renderer.domElement.addEventListener('dblclick',()=>{trX=-.08;trY=.16;tz=13});
-window.addEventListener('scroll',()=>pageScroll=scrollY||0,{passive:true});window.addEventListener('resize',()=>{const w=host.clientWidth,h=host.clientHeight;camera.aspect=w/Math.max(1,h);camera.updateProjectionMatrix();renderer.setPixelRatio(Math.min(devicePixelRatio||1,cap));renderer.setSize(w,h,false)},{passive:true});
-const clock=new THREE.Clock();function animate(){const t=clock.getElapsedTime(),p=Math.max(0,Math.min(1,pageScroll/Math.max(1,host.clientHeight)));crX+=(trX-p*.38-crX)*(reduced?.035:.08);crY+=(trY+p*.55-crY)*(reduced?.035:.08);cz+=(tz-p*.9-cz)*(reduced?.06:.09);world.rotation.x=crX;world.rotation.y=crY;camera.position.z=cz;camera.lookAt(0,0,0);if(!reduced){core.rotation.y=t*.18;stars.rotation.y=t*.015}nodes.forEach(n=>{const u=n.userData;u.hover+=(hovered===n?1:0-u.hover)*.12;n.scale.setScalar(1+(reduced?0:Math.sin(t*.9+u.phase)*.03)+u.hover*.28);n.position.x=u.base.x;n.position.y=u.base.y+(reduced?0:Math.sin(t*.7+u.phase)*.06);n.position.z=u.base.z;n.rotation.x+=reduced?0:.0017;n.rotation.y+=reduced?0:.0022});lines.forEach(q=>{const a=q.line.geometry.attributes.position.array;a[3]=q.node.position.x;a[4]=q.node.position.y;a[5]=q.node.position.z;q.line.geometry.attributes.position.needsUpdate=true});hover();renderer.render(scene,camera)}renderer.setAnimationLoop(animate);document.addEventListener('visibilitychange',()=>renderer.setAnimationLoop(document.hidden?null:animate));
+import * as THREE from 'three';
+import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/controls/OrbitControls.js';
+
+const host = document.getElementById('world-canvas');
+const loading = document.getElementById('world-loading');
+const selectedName = document.getElementById('world-selected-name');
+const selectedCopy = document.getElementById('world-selected-copy');
+const selectedMeta = document.getElementById('world-selected-meta');
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mobile = window.matchMedia('(max-width: 700px)').matches;
+
+const logoAssets = [
+  { name:'DeepSeek', file:'logos/Deepseek%20logo.jpg', group:'AI / GENAI' },
+  { name:'Claude', file:'logos/claude.jpg', group:'AI / GENAI' },
+  { name:'GitHub Copilot', file:'logos/copilot.png', group:'ENGINEERING' },
+  { name:'Antigravity', file:'logos/Antigravity.jpg', group:'AI / TOOLS' },
+  { name:'Nmap', file:'logos/nmap.jpg', group:'SECURITY' },
+  { name:'Burp Suite', file:'logos/burpsuite.jpg', group:'SECURITY' },
+  { name:'Kali Linux', file:'logos/kali.jpg', group:'SECURITY' },
+  { name:'Metasploit', file:'logos/metasploit.jpg', group:'SECURITY' },
+  { name:'Gobuster', file:'logos/Gobuster.jpg', group:'SECURITY' },
+  { name:'FFUF', file:'logos/fuzz.jpg', group:'SECURITY' },
+  { name:'Cisco C Essentials', file:'logos/certifications/cisco-c-essentials-1.png', group:'CREDENTIAL' },
+  { name:'Cisco Ethical Hacker', file:'logos/certifications/cisco-ethical-hacker.png', group:'CREDENTIAL' },
+  { name:'Cisco Intro to Cybersecurity', file:'logos/certifications/cisco-introduction-to-cybersecurity.png', group:'CREDENTIAL' },
+  { name:'IBM Cybersecurity Fundamentals', file:'logos/certifications/ibm-cybersecurity-fundamentals.png', group:'CREDENTIAL' },
+  { name:'ISC2 Candidate', file:'logos/certifications/isc2-candidate.png', group:'CREDENTIAL' },
+  { name:'MongoDB CRUD Operations', file:'logos/certifications/mongodb-crud-operations.png', group:'CREDENTIAL' },
+  { name:'Red Hat Python', file:'logos/certifications/redhat-python-programming.png', group:'CREDENTIAL' },
+  { name:'Red Hat Linux', file:'logos/certifications/redhat-getting-started-linux.png', group:'CREDENTIAL' }
+];
+
+const facePalette = {
+  'AI / GENAI':'#eee9ff',
+  'AI / TOOLS':'#f1edff',
+  ENGINEERING:'#e9f4ff',
+  SECURITY:'#e8f7f1',
+  CREDENTIAL:'#fff0e7'
+};
+
+const worldCopy = {
+  'AI / GENAI':'Models, local inference and GenAI workflows.',
+  'AI / TOOLS':'The experimental tools I use while building.',
+  ENGINEERING:'Software engineering, APIs and developer workflow.',
+  SECURITY:'Security tooling, recon and offensive-security practice.',
+  CREDENTIAL:'Public learning and certification records.'
+};
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({
+    antialias: !mobile,
+    alpha: false,
+    powerPreference: 'high-performance'
+  });
+} catch (error) {
+  host.innerHTML = '<div class="world-fallback">WebGL is unavailable on this device. <a href="work.html">Open the standard portfolio</a>.</div>';
+  throw error;
+}
+
+const maxPixelRatio = mobile ? 1.15 : 1.45;
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
+renderer.setSize(host.clientWidth, host.clientHeight, false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.02;
+renderer.setClearColor(0x08090d, 1);
+host.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x08090d, mobile ? 0.032 : 0.024);
+
+const camera = new THREE.PerspectiveCamera(
+  mobile ? 48 : 44,
+  Math.max(.1, host.clientWidth / Math.max(1, host.clientHeight)),
+  .1,
+  100
+);
+camera.position.set(0, 0, mobile ? 16.8 : 13.8);
+
+const world = new THREE.Group();
+world.rotation.set(-0.05, 0.18, 0);
+scene.add(world);
+
+// Light only: no background geometry, so the world remains a cube-only installation.
+scene.add(new THREE.HemisphereLight(0xe7e3ff, 0x10151a, 2.2));
+
+const key = new THREE.DirectionalLight(0xffffff, 3.2);
+key.position.set(5, 8, 9);
+scene.add(key);
+
+const lavender = new THREE.PointLight(0x8f7cf6, 22, 30, 2);
+lavender.position.set(-7, 3, 5);
+scene.add(lavender);
+
+const mint = new THREE.PointLight(0x73c7b3, 18, 28, 2);
+mint.position.set(8, -4, 3);
+scene.add(mint);
+
+const peach = new THREE.PointLight(0xf2b89e, 8, 22, 2);
+peach.position.set(0, 7, -6);
+scene.add(peach);
+
+// 50 cubes = 5 columns × 5 rows × 2 depth layers.
+const CUBE_COUNT = 50;
+const COLS = 5;
+const ROWS = 5;
+const LAYERS = 2;
+const cubeSize = mobile ? 1.02 : 1.18;
+const gap = mobile ? 0.25 : 0.30;
+const step = cubeSize + gap;
+const cubeGroup = new THREE.Group();
+world.add(cubeGroup);
+
+const loader = new THREE.ImageLoader();
+const textureCache = new Map();
+const materialCache = new Map();
+const cubeMeshes = [];
+
+function canvasTextureFor(asset, image) {
+  const size = 256;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext('2d');
+
+  ctx.fillStyle = facePalette[asset.group] || '#f2f2f5';
+  ctx.fillRect(0, 0, size, size);
+
+  ctx.fillStyle = 'rgba(255,255,255,.42)';
+  ctx.fillRect(10, 10, size - 20, size - 20);
+
+  const maxW = 196;
+  const maxH = 170;
+  const scale = Math.min(maxW / image.width, maxH / image.height);
+  const w = image.width * scale;
+  const h = image.height * scale;
+  const x = (size - w) / 2;
+  const y = 24 + (maxH - h) / 2;
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.roundRect(28, 20, size - 56, 178, 18);
+  ctx.clip();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(28, 20, size - 56, 178);
+  ctx.drawImage(image, x, y, w, h);
+  ctx.restore();
+
+  ctx.fillStyle = 'rgba(25,27,32,.78)';
+  ctx.font = '600 13px Inter,Arial,sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(asset.name, size / 2, 226);
+
+  ctx.fillStyle = 'rgba(25,27,32,.42)';
+  ctx.font = '500 8px JetBrains Mono,monospace';
+  ctx.fillText(asset.group, size / 2, 242);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 4);
+  texture.needsUpdate = true;
+  return texture;
+}
+
+function fallbackTexture(asset) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 256;
+  canvas.height = 256;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = facePalette[asset.group] || '#eeeeee';
+  ctx.fillRect(0,0,256,256);
+  ctx.fillStyle = '#202124';
+  ctx.font = '700 27px Inter,Arial,sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(asset.name, 128, 118);
+  ctx.font = '600 10px JetBrains Mono,monospace';
+  ctx.fillText(asset.group, 128, 151);
+  return new THREE.CanvasTexture(canvas);
+}
+
+function loadFaceTexture(asset) {
+  if (textureCache.has(asset.file)) return Promise.resolve(textureCache.get(asset.file));
+
+  return new Promise(resolve => {
+    loader.load(
+      asset.file,
+      image => {
+        const texture = canvasTextureFor(asset, image);
+        textureCache.set(asset.file, texture);
+        resolve(texture);
+      },
+      undefined,
+      () => {
+        const texture = fallbackTexture(asset);
+        textureCache.set(asset.file, texture);
+        resolve(texture);
+      }
+    );
+  });
+}
+
+function materialFor(asset) {
+  const key = asset.file;
+  if (materialCache.has(key)) return materialCache.get(key);
+  const placeholder = new THREE.MeshStandardMaterial({
+    color: 0xffffff,
+    roughness: .26,
+    metalness: .08
+  });
+  materialCache.set(key, placeholder);
+  return placeholder;
+}
+
+const textures = await Promise.all(logoAssets.map(loadFaceTexture));
+
+logoAssets.forEach((asset, index) => {
+  materialCache.set(asset.file, new THREE.MeshStandardMaterial({
+    map: textures[index],
+    color: 0xffffff,
+    roughness: .28,
+    metalness: .06
+  }));
+});
+
+function faceMaterialForCube(cubeIndex, faceIndex) {
+  const assetIndex = (cubeIndex * 5 + faceIndex * 3 + Math.floor(cubeIndex / 5)) % logoAssets.length;
+  return materialFor(logoAssets[assetIndex]);
+}
+
+function createCube(index) {
+  const layerIndex = Math.floor(index / 25);
+  const localIndex = index % 25;
+  const row = Math.floor(localIndex / COLS);
+  const col = localIndex % COLS;
+
+  const x = (col - 2) * step + (layerIndex ? 0.12 : -0.12);
+  const y = (2 - row) * step + (layerIndex ? -0.10 : 0.10);
+  const z = (layerIndex - 0.5) * (cubeSize + 0.72);
+
+  const group = new THREE.Group();
+  group.position.set(x, y, z);
+
+  const materials = [];
+  for (let face = 0; face < 6; face++) {
+    materials.push(faceMaterialForCube(index, face));
+  }
+
+  const mesh = new THREE.Mesh(
+    new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize),
+    materials
+  );
+
+  const edge = new THREE.LineSegments(
+    new THREE.EdgesGeometry(mesh.geometry),
+    new THREE.LineBasicMaterial({
+      color: 0x171923,
+      transparent: true,
+      opacity: .46
+    })
+  );
+
+  group.add(mesh);
+  group.add(edge);
+
+  group.userData = {
+    index,
+    base: new THREE.Vector3(x, y, z),
+    hover: 0,
+    spin: (index % 7) * .14,
+    seed: index * 0.73,
+    category: logoAssets[(index * 5) % logoAssets.length].group
+  };
+
+  cubeGroup.add(group);
+  cubeMeshes.push(group);
+}
+
+for (let i = 0; i < CUBE_COUNT; i++) {
+  createCube(i);
+}
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = .065;
+controls.enablePan = false;
+controls.enableZoom = true;
+controls.minDistance = mobile ? 12 : 9;
+controls.maxDistance = mobile ? 24 : 22;
+controls.rotateSpeed = mobile ? .42 : .56;
+controls.zoomSpeed = .75;
+controls.target.set(0, 0, 0);
+controls.saveState();
+
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2(99, 99);
+let hovered = null;
+
+function setPointer(clientX, clientY) {
+  const rect = renderer.domElement.getBoundingClientRect();
+  pointer.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+  pointer.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+}
+
+function updateInspector(cube) {
+  if (!cube) {
+    selectedName.textContent = 'MY WORLD';
+    selectedCopy.textContent = 'AI systems, security, engineering and the credentials behind the work.';
+    selectedMeta.textContent = '50 CUBES · 6 LOGO FACES EACH';
+    return;
+  }
+
+  const idx = cube.userData.index;
+  const heroAsset = logoAssets[(idx * 5) % logoAssets.length];
+  selectedName.textContent = heroAsset.name;
+  selectedCopy.textContent = worldCopy[heroAsset.group] || 'A part of the engineering stack behind the work.';
+  selectedMeta.textContent = heroAsset.group + ' · CUBE ' + String(idx + 1).padStart(2, '0');
+}
+
+function updateHover() {
+  raycaster.setFromCamera(pointer, camera);
+  const hits = raycaster.intersectObjects(cubeMeshes, true);
+
+  let next = null;
+  if (hits.length) {
+    let object = hits[0].object;
+    while (object && !object.userData?.index && object.parent) {
+      object = object.parent;
+    }
+    next = object?.userData?.index !== undefined ? object : null;
+  }
+
+  if (next !== hovered) {
+    hovered = next;
+    updateInspector(hovered);
+    renderer.domElement.style.cursor = hovered ? 'pointer' : 'grab';
+  }
+}
+
+renderer.domElement.addEventListener('pointermove', event => {
+  setPointer(event.clientX, event.clientY);
+  if (!event.isPrimary) return;
+  updateHover();
+}, { passive: true });
+
+renderer.domElement.addEventListener('pointerleave', () => {
+  pointer.set(99, 99);
+  hovered = null;
+  updateInspector(null);
+}, { passive: true });
+
+renderer.domElement.addEventListener('dblclick', () => {
+  controls.reset();
+}, { passive: true });
+
+const pointerTarget = new THREE.Vector2();
+const pointerSmooth = new THREE.Vector2();
+
+const clock = new THREE.Clock();
+
+function animate() {
+  const elapsed = clock.getElapsedTime();
+
+  pointerSmooth.lerp(pointerTarget.copy(pointer), .12);
+  if (!reduceMotion) {
+    cubeGroup.rotation.y += 0.00045;
+    cubeGroup.rotation.x = Math.sin(elapsed * .18) * .012;
+  }
+
+  cubeMeshes.forEach(cube => {
+    const data = cube.userData;
+
+    const worldPos = cube.position.clone();
+    const screenPoint = worldPos.project(camera);
+
+    const dx = pointerSmooth.x - screenPoint.x;
+    const dy = pointerSmooth.y - screenPoint.y;
+    const distance = Math.hypot(dx, dy);
+    const influence = Math.max(0, 1 - distance / 0.85);
+
+    data.hover += ((hovered === cube ? 1 : 0) - data.hover) * .10;
+
+    const hoverLift = data.hover * .15;
+    const float = reduceMotion ? 0 : Math.sin(elapsed * .7 + data.seed) * .018;
+    const magneticX = reduceMotion ? 0 : dx * influence * .07;
+    const magneticY = reduceMotion ? 0 : dy * influence * .07;
+
+    cube.position.x = data.base.x + magneticX;
+    cube.position.y = data.base.y - magneticY + hoverLift + float;
+    cube.position.z = data.base.z + influence * .16;
+
+    const targetScale = 1 + data.hover * .075;
+    const scaleNow = cube.scale.x + (targetScale - cube.scale.x) * .10;
+    cube.scale.setScalar(scaleNow);
+
+    if (!reduceMotion) {
+      cube.rotation.x += 0.00045 + data.spin * .00002;
+      cube.rotation.y += 0.00062 + data.spin * .00003;
+    }
+  });
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+
+function resize() {
+  const width = host.clientWidth;
+  const height = host.clientHeight;
+
+  camera.aspect = width / Math.max(1, height);
+  camera.updateProjectionMatrix();
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
+  renderer.setSize(width, height, false);
+}
+
+window.addEventListener('resize', resize, { passive: true });
+resize();
+
+document.addEventListener('visibilitychange', () => {
+  renderer.setAnimationLoop(document.hidden ? null : animate);
+});
+
+updateInspector(null);
+loading?.classList.add('hidden');
+renderer.setAnimationLoop(animate);
