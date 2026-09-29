@@ -342,7 +342,6 @@ main,header,footer{position:relative;z-index:2}
   will-change:transform;
 }
 .field-tile{
-  --px:0px;--py:0px;--pz:0px;--sy:0px;--prx:0deg;--pry:0deg;
   --depth:1;
   position:absolute;
   width:76px;height:76px;
@@ -353,8 +352,9 @@ main,header,footer{position:relative;z-index:2}
   box-shadow:0 18px 35px rgba(32,33,36,.06);
   transform-style:preserve-3d;
   backface-visibility:hidden;
-  animation:fieldFloat var(--dur,12s) ease-in-out infinite;
-  animation-delay:var(--delay,0s);
+
+  will-change:transform;
+  transform:translate3d(0,0,0);
 }
 .field-tile:before{
   content:"";position:absolute;inset:5px;
@@ -388,7 +388,7 @@ main,header,footer{position:relative;z-index:2}
 .ft-9{right:36%;bottom:12%;--delay:-11s;--dur:19s}.ft-10{right:13%;bottom:17%;--delay:-5s;--dur:14s}
 .ft-11{left:45%;top:66%;--delay:-8s;--dur:16s}.ft-12{right:42%;top:6%;--delay:-12s;--dur:18s}
 .field-server-object,.field-gpu-object,.field-shield-object{
-  position:absolute;transform-style:preserve-3d;animation:fieldFloat 15s ease-in-out infinite;backface-visibility:hidden
+  position:absolute;transform-style:preserve-3d;backface-visibility:hidden;will-change:transform
 }
 .field-server-object{left:2%;top:57%;width:76px;height:92px}
 .server-stack{
@@ -402,7 +402,7 @@ main,header,footer{position:relative;z-index:2}
 .server-stack:before{top:16px;box-shadow:0 21px 0 -1px #fff}
 .server-stack:after{top:16px;transform:translateY(42px);opacity:.82}
 .server-lights{position:absolute;right:9px;top:21px;width:4px;height:4px;border-radius:50%;background:#79c7b5;box-shadow:0 21px #9c91e9;transform:translateZ(22px)}
-.field-gpu-object{right:2%;top:63%;width:90px;height:56px;animation-delay:-5s}
+.field-gpu-object{right:2%;top:63%;width:90px;height:56px}
 .gpu-card{
   position:absolute;inset:0;border:1px solid #e5cfc3;border-radius:13px;
   background:linear-gradient(145deg,#fff1e9,#f7d8c9);transform:translateZ(10px) rotateY(22deg) rotateX(6deg);
@@ -410,7 +410,7 @@ main,header,footer{position:relative;z-index:2}
 }
 .gpu-card:before{content:"";position:absolute;width:28px;height:28px;left:31px;top:13px;border-radius:50%;border:1px solid #d6b6a5;box-shadow:inset 0 0 0 5px #f8e6dc}
 .gpu-card:after{content:"GPU";position:absolute;left:11px;bottom:6px;font:700 7px var(--mono);color:#9a6c54}
-.field-shield-object{right:31%;top:57%;width:48px;height:58px;animation-delay:-9s}
+.field-shield-object{right:31%;top:57%;width:48px;height:58px}
 .field-shield{
   width:100%;height:100%;display:grid;place-items:center;
   background:linear-gradient(160deg,#effaf6,#cde9df);
@@ -420,16 +420,6 @@ main,header,footer{position:relative;z-index:2}
 }
 .field-lock{width:9px;height:8px;border:2px solid #46766d;border-radius:2px;position:relative}
 .field-lock:before{content:"";position:absolute;width:6px;height:6px;left:-.5px;top:-7px;border:2px solid #46766d;border-bottom:0;border-radius:6px 6px 0 0}
-@keyframes fieldFloat{
-  0%,100%{
-    transform:translate3d(var(--px),calc(var(--py) + var(--sy)),var(--pz))
-      rotateX(calc(7deg + var(--prx))) rotateY(calc(-10deg + var(--pry)));
-  }
-  50%{
-    transform:translate3d(var(--px),calc(var(--py) + var(--sy) - 15px),calc(var(--pz) + 18px))
-      rotateX(calc(-4deg + var(--prx))) rotateY(calc(15deg + var(--pry)));
-  }
-}
 .profile-large{display:grid;gap:18px}
 .profile-large img{width:min(100%,360px);height:380px;object-fit:cover;border-radius:28px;border:1px solid var(--line);box-shadow:0 26px 70px rgba(32,33,36,.11)}
 .profile-meta{display:flex;flex-wrap:wrap;gap:8px}
