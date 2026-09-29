@@ -84,3 +84,24 @@
     requestAnimationFrame(frame);
   }
 })();
+  const field = document.querySelector('.global-field');
+  if (field) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const root = document.documentElement;
+    let target = 0, currentScroll = 0;
+    const tick = () => {
+      target = window.scrollY || 0;
+      currentScroll += (target - currentScroll) * (reduce ? .2 : .055);
+      root.style.setProperty('--page-scroll', currentScroll.toFixed(2));
+      if (!reduce) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  const profileImage = document.querySelector('img[data-profile-image]');
+  if (profileImage) {
+    profileImage.addEventListener('error', () => {
+      profileImage.src = 'images/profile/ganesh-naidu.jpg';
+    }, {once:true});
+  }
+})();
