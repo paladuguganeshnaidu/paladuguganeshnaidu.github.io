@@ -239,10 +239,15 @@ function createCube(index) {
 
   const x = (col - 2) * step + (layerIndex ? 0.12 : -0.12);
   const y = (2 - row) * step + (layerIndex ? -0.10 : 0.10);
-  const z = (layerIndex - 0.5) * (cubeSize + 0.72);
+  const depthOffset = layerIndex ? 1.72 : -1.72;
+  const xOffset = layerIndex ? 0.42 : -0.18;
+  const yOffset = layerIndex ? -0.36 : 0.12;
+  const z = depthOffset;
+  const layeredX = x + xOffset;
+  const layeredY = y + yOffset;
 
   const group = new THREE.Group();
-  group.position.set(x, y, z);
+  group.position.set(layeredX, layeredY, z);
 
   const materials = [];
   for (let face = 0; face < 6; face++) {
@@ -268,7 +273,7 @@ function createCube(index) {
 
   group.userData = {
     index,
-    base: new THREE.Vector3(x, y, z),
+    base: new THREE.Vector3(layeredX, layeredY, z),
     hover: 0,
     spin: (index % 7) * .14,
     seed: index * 0.73,
@@ -327,7 +332,7 @@ function updateHover() {
   let next = null;
   if (hits.length) {
     let object = hits[0].object;
-    while (object && !object.userData?.index && object.parent) {
+    while (object && object.userData?.index === undefined && object.parent) {
       object = object.parent;
     }
     next = object?.userData?.index !== undefined ? object : null;
