@@ -65,63 +65,97 @@
     feed.replaceChildren(p);
   };
 
-  // Live public GitHub activity with a bounded request.
+  // Live public GitHub activity with timeout + short client cache.
   const feed = document.querySelector('#github-feed');
   if (feed) {
+    const cacheKey = 'gn.github.activity.v1';
+    const cacheTtl = 5 * 60 * 1000;
+    const now = Date.now();
+
+    const renderEvents = events => {
+      if (!Array.isArray(events) || !events.length) {
+        setFeedMessage(feed, 'No recent public activity was returned by GitHub.');
+        return;
+      }
+
+      const nodes = events.slice(0, 8).map(event => {
+        const item = document.createElement('a');
+        const repo = event.repo?.name || 'GitHub';
+        const when = event.created_at
+          ? new Date(event.created_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
+          : '';
+        const action = (event.type || 'Activity')
+          .replace('Event', '')
+          .replace(/([A-Z])/g, ' $1')
+          .trim();
+
+        item.className = 'activity-item';
+        item.href = 'https://github.com/' + repo;
+        item.target = '_blank';
+        item.rel = 'noopener noreferrer';
+
+        const dot = document.createElement('span');
+        dot.className = 'activity-dot';
+
+        const box = document.createElement('div');
+        const title = document.createElement('strong');
+        title.textContent = action + ' · ' + repo;
+
+        const meta = document.createElement('small');
+        meta.textContent = when;
+
+        box.append(title, meta);
+        item.append(dot, box);
+        return item;
+      });
+
+      feed.replaceChildren(...nodes);
+    };
+
+    let cached = null;
+    try {
+      const raw = localStorage.getItem(cacheKey);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed?.timestamp && Array.isArray(parsed.events) && now - parsed.timestamp < cacheTtl) {
+          cached = parsed.events;
+        }
+      }
+    } catch {
+      cached = null;
+    }
+
+    if (cached) {
+      renderEvents(cached);
+    }
+
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 7000);
 
     fetch('https://api.github.com/users/paladuguganeshnaidu/events/public?per_page=12', {
       headers: { Accept: 'application/vnd.github+json' },
-      signal: controller.signal,
-      cache: 'no-store'
+      signal: controller.signal
     })
       .then(response => response.ok ? response.json() : Promise.reject(new Error('GitHub request failed')))
       .then(events => {
-        if (!Array.isArray(events) || !events.length) {
-          setFeedMessage(feed, 'No recent public activity was returned by GitHub.');
-          return;
+        if (Array.isArray(events)) {
+          renderEvents(events);
+          try {
+            localStorage.setItem(cacheKey, JSON.stringify({
+              timestamp: Date.now(),
+              events
+            }));
+          } catch {
+            // Storage may be disabled or full; the live result is still usable.
+          }
         }
-
-        const nodes = events.slice(0, 8).map(event => {
-          const item = document.createElement('a');
-          const repo = event.repo?.name || 'GitHub';
-          const when = event.created_at
-            ? new Date(event.created_at).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })
-            : '';
-          const action = (event.type || 'Activity')
-            .replace('Event', '')
-            .replace(/([A-Z])/g, ' $1')
-            .trim();
-
-          item.className = 'activity-item';
-          item.href = 'https://github.com/' + repo;
-          item.target = '_blank';
-          item.rel = 'noopener noreferrer';
-
-          const dot = document.createElement('span');
-          dot.className = 'activity-dot';
-
-          const box = document.createElement('div');
-          const title = document.createElement('strong');
-          title.textContent = action + ' · ' + repo;
-
-          const meta = document.createElement('small');
-          meta.textContent = when;
-
-          box.append(title, meta);
-          item.append(dot, box);
-          return item;
-        });
-
-        feed.replaceChildren(...nodes);
       })
       .catch(() => {
-        setFeedMessage(feed, 'Live GitHub activity is temporarily unavailable. The project archive remains fully indexed and browsable.');
+        if (!cached) {
+          setFeedMessage(feed, 'Live GitHub activity is temporarily unavailable. The project archive remains fully indexed and browsable.');
+        }
       })
-      .finally(() => {
-        window.clearTimeout(timeout);
-      });
+      .finally(() => window.clearTimeout(timeout));
   }
 
   // Hero 3D scene.
