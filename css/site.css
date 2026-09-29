@@ -328,6 +328,7 @@ main,header,footer{position:relative;z-index:2}
 }
 .field-inner{
   position:absolute;inset:-8%;
+  transform:translate3d(0,var(--field-y,0px),0);
   transform-style:preserve-3d;
   will-change:transform;
 }
