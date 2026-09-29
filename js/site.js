@@ -225,11 +225,6 @@
           (liftZ + floatZ).toFixed(2) + 'px) rotateX(' + rx.toFixed(2) +
           'deg) rotateY(' + ry.toFixed(2) + 'deg) rotateZ(' + rz.toFixed(2) + 'deg)';
 
-        if (influence > 0.02) {
-          el.style.setProperty('filter', 'drop-shadow(0 18px 24px rgba(91,75,165,' + (0.06 + influence * 0.10).toFixed(3) + '))');
-        } else {
-          el.style.removeProperty('filter');
-        }
       });
 
       lastScroll = scrollY;
