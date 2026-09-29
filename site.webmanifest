@@ -5,5 +5,8 @@
   "display":"standalone",
   "background_color":"#fbfaf7",
   "theme_color":"#fbfaf7",
-  "description":"Portfolio and AI engineering lab for Paladugu Ganesh Naidu."
+  "description":"Portfolio and AI engineering lab for Paladugu Ganesh Naidu.",
+  "icons":[
+    {"src":"/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
 }
