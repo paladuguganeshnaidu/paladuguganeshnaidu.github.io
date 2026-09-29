@@ -2,433 +2,337 @@ import * as THREE from 'three';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/controls/OrbitControls.js';
 
 const host = document.getElementById('world-canvas');
-const loading = document.getElementById('world-loading');
-const selectedName = document.getElementById('world-selected-name');
-const selectedCopy = document.getElementById('world-selected-copy');
-const selectedMeta = document.getElementById('world-selected-meta');
-
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobile = window.matchMedia('(max-width: 700px)').matches;
 
-const logoAssets = [
-  { name:'DeepSeek', file:'logos/Deepseek%20logo.jpg', group:'AI / GENAI' },
-  { name:'Claude', file:'logos/claude.jpg', group:'AI / GENAI' },
-  { name:'GitHub Copilot', file:'logos/copilot.png', group:'ENGINEERING' },
-  { name:'Antigravity', file:'logos/Antigravity.jpg', group:'AI / TOOLS' },
-  { name:'Nmap', file:'logos/nmap.jpg', group:'SECURITY' },
-  { name:'Burp Suite', file:'logos/burpsuite.jpg', group:'SECURITY' },
-  { name:'Kali Linux', file:'logos/kali.jpg', group:'SECURITY' },
-  { name:'Metasploit', file:'logos/metasploit.jpg', group:'SECURITY' },
-  { name:'Gobuster', file:'logos/Gobuster.jpg', group:'SECURITY' },
-  { name:'FFUF', file:'logos/fuzz.jpg', group:'SECURITY' },
-  { name:'Cisco C Essentials', file:'logos/certifications/cisco-c-essentials-1.png', group:'CREDENTIAL' },
-  { name:'Cisco Ethical Hacker', file:'logos/certifications/cisco-ethical-hacker.png', group:'CREDENTIAL' },
-  { name:'Cisco Intro to Cybersecurity', file:'logos/certifications/cisco-introduction-to-cybersecurity.png', group:'CREDENTIAL' },
-  { name:'IBM Cybersecurity Fundamentals', file:'logos/certifications/ibm-cybersecurity-fundamentals.png', group:'CREDENTIAL' },
-  { name:'ISC2 Candidate', file:'logos/certifications/isc2-candidate.png', group:'CREDENTIAL' },
-  { name:'MongoDB CRUD Operations', file:'logos/certifications/mongodb-crud-operations.png', group:'CREDENTIAL' },
-  { name:'Red Hat Python', file:'logos/certifications/redhat-python-programming.png', group:'CREDENTIAL' },
-  { name:'Red Hat Linux', file:'logos/certifications/redhat-getting-started-linux.png', group:'CREDENTIAL' }
+const assets = [
+  {file:'logos/Deepseek%20logo.jpg', group:'AI'},
+  {file:'logos/claude.jpg', group:'AI'},
+  {file:'logos/copilot.png', group:'DEV'},
+  {file:'logos/Antigravity.jpg', group:'AI'},
+  {file:'logos/nmap.jpg', group:'SEC'},
+  {file:'logos/burpsuite.jpg', group:'SEC'},
+  {file:'logos/kali.jpg', group:'SEC'},
+  {file:'logos/metasploit.jpg', group:'SEC'},
+  {file:'logos/Gobuster.jpg', group:'SEC'},
+  {file:'logos/fuzz.jpg', group:'SEC'},
+  {file:'logos/certifications/cisco-c-essentials-1.png', group:'CRED'},
+  {file:'logos/certifications/cisco-ethical-hacker.png', group:'CRED'},
+  {file:'logos/certifications/cisco-introduction-to-cybersecurity.png', group:'CRED'},
+  {file:'logos/certifications/ibm-cybersecurity-fundamentals.png', group:'CRED'},
+  {file:'logos/certifications/isc2-candidate.png', group:'CRED'},
+  {file:'logos/certifications/mongodb-crud-operations.png', group:'CRED'},
+  {file:'logos/certifications/redhat-python-programming.png', group:'CRED'},
+  {file:'logos/certifications/redhat-getting-started-linux.png', group:'CRED'}
 ];
 
-const facePalette = {
-  'AI / GENAI':'#eee9ff',
-  'AI / TOOLS':'#f1edff',
-  ENGINEERING:'#e9f4ff',
-  SECURITY:'#e8f7f1',
-  CREDENTIAL:'#fff0e7'
-};
-
-const worldCopy = {
-  'AI / GENAI':'Models, local inference and GenAI workflows.',
-  'AI / TOOLS':'The experimental tools I use while building.',
-  ENGINEERING:'Software engineering, APIs and developer workflow.',
-  SECURITY:'Security tooling, recon and offensive-security practice.',
-  CREDENTIAL:'Public learning and certification records.'
-};
-
-let renderer;
-try {
-  renderer = new THREE.WebGLRenderer({
-    antialias: !mobile,
-    alpha: false,
-    powerPreference: 'high-performance'
-  });
-} catch (error) {
-  host.innerHTML = '<div class="world-fallback">WebGL is unavailable on this device. <a href="work.html">Open the standard portfolio</a>.</div>';
-  throw error;
-}
-
-const maxPixelRatio = mobile ? 1.15 : 1.45;
-renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
-renderer.setSize(host.clientWidth, host.clientHeight, false);
-renderer.outputColorSpace = THREE.SRGBColorSpace;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.02;
-renderer.setClearColor(0x08090d, 1);
-host.appendChild(renderer.domElement);
-
-const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x08090d, mobile ? 0.032 : 0.024);
-
-const camera = new THREE.PerspectiveCamera(
-  mobile ? 48 : 44,
-  Math.max(.1, host.clientWidth / Math.max(1, host.clientHeight)),
-  .1,
-  100
-);
-camera.position.set(0, 0, mobile ? 16.8 : 13.8);
-
-const world = new THREE.Group();
-world.rotation.set(-0.05, 0.18, 0);
-scene.add(world);
-
-// Light only: no background geometry, so the world remains a cube-only installation.
-scene.add(new THREE.HemisphereLight(0xe7e3ff, 0x10151a, 2.2));
-
-const key = new THREE.DirectionalLight(0xffffff, 3.2);
-key.position.set(5, 8, 9);
-scene.add(key);
-
-const lavender = new THREE.PointLight(0x8f7cf6, 22, 30, 2);
-lavender.position.set(-7, 3, 5);
-scene.add(lavender);
-
-const mint = new THREE.PointLight(0x73c7b3, 18, 28, 2);
-mint.position.set(8, -4, 3);
-scene.add(mint);
-
-const peach = new THREE.PointLight(0xf2b89e, 8, 22, 2);
-peach.position.set(0, 7, -6);
-scene.add(peach);
-
-// 50 cubes = 5 columns × 5 rows × 2 depth layers.
-const CUBE_COUNT = 50;
-const COLS = 5;
-const ROWS = 5;
-const LAYERS = 2;
-const cubeSize = mobile ? 1.02 : 1.18;
-const gap = mobile ? 0.25 : 0.30;
-const step = cubeSize + gap;
-const cubeGroup = new THREE.Group();
-world.add(cubeGroup);
-
-const loader = new THREE.ImageLoader();
+const faceBg = {AI:'#efebff',DEV:'#eaf5ff',SEC:'#e8f6f0',CRED:'#fff0e7'};
+const cubeCount = 50;
+const textureLoader = new THREE.ImageLoader();
 const textureCache = new Map();
-const materialCache = new Map();
-const cubeMeshes = [];
 
-function canvasTextureFor(asset, image) {
+function makeFaceTexture(asset, image){
   const size = 256;
   const canvas = document.createElement('canvas');
   canvas.width = size;
   canvas.height = size;
   const ctx = canvas.getContext('2d');
 
-  ctx.fillStyle = facePalette[asset.group] || '#f2f2f5';
-  ctx.fillRect(0, 0, size, size);
+  ctx.fillStyle = faceBg[asset.group] || '#f2f2f2';
+  ctx.fillRect(0,0,size,size);
 
-  ctx.fillStyle = 'rgba(255,255,255,.42)';
-  ctx.fillRect(10, 10, size - 20, size - 20);
+  ctx.fillStyle = 'rgba(255,255,255,.72)';
+  ctx.fillRect(10,10,size-20,size-20);
 
-  const maxW = 196;
-  const maxH = 170;
-  const scale = Math.min(maxW / image.width, maxH / image.height);
+  const max = 196;
+  const scale = Math.min(max/image.width, max/image.height);
   const w = image.width * scale;
   const h = image.height * scale;
-  const x = (size - w) / 2;
-  const y = 24 + (maxH - h) / 2;
+  const x = (size-w)/2;
+  const y = (size-h)/2;
 
   ctx.save();
   ctx.beginPath();
-  ctx.roundRect(28, 20, size - 56, 178, 18);
+  ctx.roundRect(22,22,size-44,size-44,18);
   ctx.clip();
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(28, 20, size - 56, 178);
-  ctx.drawImage(image, x, y, w, h);
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(22,22,size-44,size-44);
+  ctx.drawImage(image,x,y,w,h);
   ctx.restore();
 
-  ctx.fillStyle = 'rgba(25,27,32,.78)';
-  ctx.font = '600 13px Inter,Arial,sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'alphabetic';
-  ctx.fillText(asset.name, size / 2, 226);
-
-  ctx.fillStyle = 'rgba(25,27,32,.42)';
-  ctx.font = '500 8px JetBrains Mono,monospace';
-  ctx.fillText(asset.group, size / 2, 242);
-
-  const texture = new THREE.CanvasTexture(canvas);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 4);
-  texture.needsUpdate = true;
-  return texture;
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(),4);
+  return tex;
 }
 
-function fallbackTexture(asset) {
+function fallbackTexture(asset){
   const canvas = document.createElement('canvas');
   canvas.width = 256;
   canvas.height = 256;
   const ctx = canvas.getContext('2d');
-  ctx.fillStyle = facePalette[asset.group] || '#eeeeee';
+  ctx.fillStyle = faceBg[asset.group] || '#eeeeee';
   ctx.fillRect(0,0,256,256);
-  ctx.fillStyle = '#202124';
-  ctx.font = '700 27px Inter,Arial,sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(asset.name, 128, 118);
-  ctx.font = '600 10px JetBrains Mono,monospace';
-  ctx.fillText(asset.group, 128, 151);
-  return new THREE.CanvasTexture(canvas);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
 }
 
-function loadFaceTexture(asset) {
-  if (textureCache.has(asset.file)) return Promise.resolve(textureCache.get(asset.file));
-
-  return new Promise(resolve => {
-    loader.load(
+function getTexture(asset){
+  if(textureCache.has(asset.file)) return Promise.resolve(textureCache.get(asset.file));
+  return new Promise(resolve=>{
+    textureLoader.load(
       asset.file,
-      image => {
-        const texture = canvasTextureFor(asset, image);
-        textureCache.set(asset.file, texture);
-        resolve(texture);
+      image=>{
+        const tex = makeFaceTexture(asset,image);
+        textureCache.set(asset.file,tex);
+        resolve(tex);
       },
       undefined,
-      () => {
-        const texture = fallbackTexture(asset);
-        textureCache.set(asset.file, texture);
-        resolve(texture);
+      ()=>{
+        const tex = fallbackTexture(asset);
+        textureCache.set(asset.file,tex);
+        resolve(tex);
       }
     );
   });
 }
 
-function materialFor(asset) {
-  const key = asset.file;
-  if (materialCache.has(key)) return materialCache.get(key);
-  const placeholder = new THREE.MeshStandardMaterial({
-    color: 0xffffff,
-    roughness: .26,
-    metalness: .08
-  });
-  materialCache.set(key, placeholder);
-  return placeholder;
-}
+const textures = await Promise.all(assets.map(getTexture));
 
-const textures = await Promise.all(logoAssets.map(loadFaceTexture));
-
-logoAssets.forEach((asset, index) => {
-  materialCache.set(asset.file, new THREE.MeshStandardMaterial({
-    map: textures[index],
-    color: 0xffffff,
-    roughness: .28,
-    metalness: .06
-  }));
+const renderer = new THREE.WebGLRenderer({
+  antialias:!mobile,
+  alpha:false,
+  powerPreference:'high-performance'
 });
 
-function faceMaterialForCube(cubeIndex, faceIndex) {
-  const assetIndex = (cubeIndex * 5 + faceIndex * 3 + Math.floor(cubeIndex / 5)) % logoAssets.length;
-  return materialFor(logoAssets[assetIndex]);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1,mobile ? 1.1 : 1.4));
+renderer.setSize(host.clientWidth,host.clientHeight,false);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+renderer.setClearColor(0x07080c,1);
+host.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x07080c,mobile ? .018 : .014);
+
+const camera = new THREE.PerspectiveCamera(
+  mobile ? 46 : 42,
+  host.clientWidth/Math.max(1,host.clientHeight),
+  .1,
+  120
+);
+camera.position.set(0,0,mobile ? 22 : 18);
+
+scene.add(new THREE.HemisphereLight(0xebe8ff,0x0d1115,2.2));
+
+const key = new THREE.DirectionalLight(0xffffff,2.6);
+key.position.set(5,8,9);
+scene.add(key);
+
+const lilac = new THREE.PointLight(0x8f7cf6,26,34,2);
+lilac.position.set(-8,4,6);
+scene.add(lilac);
+
+const mint = new THREE.PointLight(0x73c7b3,18,30,2);
+mint.position.set(8,-5,3);
+scene.add(mint);
+
+const peach = new THREE.PointLight(0xf2b89e,10,24,2);
+peach.position.set(0,8,-8);
+scene.add(peach);
+
+const field = new THREE.Group();
+scene.add(field);
+
+const cubes = [];
+const cols = 10;
+const rows = 5;
+const width = mobile ? 15.5 : 22;
+const height = mobile ? 10.5 : 13.2;
+const depth = mobile ? 8.5 : 12.5;
+
+function seeded(index){
+  const x = Math.sin(index*12.9898)*43758.5453;
+  return x-Math.floor(x);
 }
 
-function createCube(index) {
-  const layerIndex = Math.floor(index / 25);
-  const localIndex = index % 25;
-  const row = Math.floor(localIndex / COLS);
-  const col = localIndex % COLS;
+for(let i=0;i<cubeCount;i++){
+  const nx = seeded(i+1);
+  const ny = seeded(i+51);
+  const nz = seeded(i+101);
+  const x = (nx-.5)*width;
+  const y = (ny-.5)*height;
+  const z = (nz-.5)*depth;
 
-  const x = (col - 2) * step + (layerIndex ? 0.12 : -0.12);
-  const y = (2 - row) * step + (layerIndex ? -0.10 : 0.10);
-  const depthOffset = layerIndex ? 1.72 : -1.72;
-  const xOffset = layerIndex ? 0.42 : -0.18;
-  const yOffset = layerIndex ? -0.36 : 0.12;
-  const z = depthOffset;
-  const layeredX = x + xOffset;
-  const layeredY = y + yOffset;
-
+  const size = mobile ? .64 + seeded(i+151)*.16 : .78 + seeded(i+151)*.22;
   const group = new THREE.Group();
-  group.position.set(layeredX, layeredY, z);
+  group.position.set(x,y,z);
+  group.rotation.set(
+    seeded(i+201)*Math.PI,
+    seeded(i+251)*Math.PI,
+    seeded(i+301)*Math.PI
+  );
 
   const materials = [];
-  for (let face = 0; face < 6; face++) {
-    materials.push(faceMaterialForCube(index, face));
+  for(let face=0;face<6;face++){
+    const asset = assets[(i*5 + face*2 + Math.floor(i/7))%assets.length];
+    materials.push(new THREE.MeshStandardMaterial({
+      map:textures[assets.indexOf(asset)],
+      color:0xffffff,
+      roughness:.3,
+      metalness:.08
+    }));
   }
 
   const mesh = new THREE.Mesh(
-    new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize),
+    new THREE.BoxGeometry(size,size,size),
     materials
   );
+  group.add(mesh);
 
   const edge = new THREE.LineSegments(
     new THREE.EdgesGeometry(mesh.geometry),
     new THREE.LineBasicMaterial({
-      color: 0x171923,
-      transparent: true,
-      opacity: .46
+      color:0x11131a,
+      transparent:true,
+      opacity:.34
     })
   );
-
-  group.add(mesh);
   group.add(edge);
 
   group.userData = {
-    index,
-    base: new THREE.Vector3(layeredX, layeredY, z),
-    hover: 0,
-    spin: (index % 7) * .14,
-    seed: index * 0.73,
-    category: logoAssets[(index * 5) % logoAssets.length].group
+    base:new THREE.Vector3(x,y,z),
+    seed:i*0.73,
+    index:i,
+    size,
+    phaseX:seeded(i+401)*Math.PI*2,
+    phaseY:seeded(i+451)*Math.PI*2,
+    phaseZ:seeded(i+501)*Math.PI*2,
+    driftX:.06 + seeded(i+551)*.08,
+    driftY:.05 + seeded(i+601)*.075,
+    driftZ:.045 + seeded(i+651)*.065,
+    homeRotation:group.rotation.clone(),
+    hover:0
   };
 
-  cubeGroup.add(group);
-  cubeMeshes.push(group);
+  field.add(group);
+  cubes.push(group);
 }
 
-for (let i = 0; i < CUBE_COUNT; i++) {
-  createCube(i);
-}
-
-const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera,renderer.domElement);
 controls.enableDamping = true;
-controls.dampingFactor = .065;
+controls.dampingFactor = .05;
 controls.enablePan = false;
 controls.enableZoom = true;
-controls.minDistance = mobile ? 12 : 9;
-controls.maxDistance = mobile ? 24 : 22;
-controls.rotateSpeed = mobile ? .42 : .56;
-controls.zoomSpeed = .75;
-controls.target.set(0, 0, 0);
-controls.saveState();
+controls.rotateSpeed = mobile ? .38 : .50;
+controls.zoomSpeed = .62;
+controls.minDistance = mobile ? 14 : 11;
+controls.maxDistance = mobile ? 34 : 32;
+controls.target.set(0,0,0);
 
+const pointer = new THREE.Vector2(99,99);
+const smoothPointer = new THREE.Vector2(99,99);
 const raycaster = new THREE.Raycaster();
-const pointer = new THREE.Vector2(99, 99);
 let hovered = null;
 
-function setPointer(clientX, clientY) {
+function setPointer(clientX,clientY){
   const rect = renderer.domElement.getBoundingClientRect();
-  pointer.x = ((clientX - rect.left) / rect.width) * 2 - 1;
-  pointer.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+  pointer.x = ((clientX-rect.left)/rect.width)*2-1;
+  pointer.y = -((clientY-rect.top)/rect.height)*2+1;
 }
 
-function updateInspector(cube) {
-  if (!cube) {
-    selectedName.textContent = 'MY WORLD';
-    selectedCopy.textContent = 'AI systems, security, engineering and the credentials behind the work.';
-    selectedMeta.textContent = '50 CUBES · 6 LOGO FACES EACH';
-    return;
-  }
-
-  const idx = cube.userData.index;
-  const heroAsset = logoAssets[(idx * 5) % logoAssets.length];
-  selectedName.textContent = heroAsset.name;
-  selectedCopy.textContent = worldCopy[heroAsset.group] || 'A part of the engineering stack behind the work.';
-  selectedMeta.textContent = heroAsset.group + ' · CUBE ' + String(idx + 1).padStart(2, '0');
+function findCube(intersects){
+  if(!intersects.length) return null;
+  let object = intersects[0].object;
+  while(object && object.userData.index === undefined && object.parent) object=object.parent;
+  return object?.userData.index !== undefined ? object : null;
 }
 
-function updateHover() {
-  raycaster.setFromCamera(pointer, camera);
-  const hits = raycaster.intersectObjects(cubeMeshes, true);
-
-  let next = null;
-  if (hits.length) {
-    let object = hits[0].object;
-    while (object && object.userData?.index === undefined && object.parent) {
-      object = object.parent;
-    }
-    next = object?.userData?.index !== undefined ? object : null;
-  }
-
-  if (next !== hovered) {
-    hovered = next;
-    updateInspector(hovered);
-    renderer.domElement.style.cursor = hovered ? 'pointer' : 'grab';
-  }
+function updateHover(){
+  raycaster.setFromCamera(pointer,camera);
+  const hit = findCube(raycaster.intersectObjects(cubes,true));
+  hovered = hit;
+  renderer.domElement.style.cursor = hovered ? 'pointer' : 'grab';
 }
 
-renderer.domElement.addEventListener('pointermove', event => {
-  setPointer(event.clientX, event.clientY);
-  if (!event.isPrimary) return;
+renderer.domElement.addEventListener('pointermove',e=>{
+  setPointer(e.clientX,e.clientY);
   updateHover();
-}, { passive: true });
+},{passive:true});
 
-renderer.domElement.addEventListener('pointerleave', () => {
-  pointer.set(99, 99);
-  hovered = null;
-  updateInspector(null);
-}, { passive: true });
+renderer.domElement.addEventListener('pointerleave',()=>{
+  pointer.set(99,99);
+  hovered=null;
+},{passive:true});
 
-renderer.domElement.addEventListener('dblclick', () => {
+renderer.domElement.addEventListener('dblclick',()=>{
   controls.reset();
-}, { passive: true });
-
-const pointerTarget = new THREE.Vector2();
-const pointerSmooth = new THREE.Vector2();
+});
 
 const clock = new THREE.Clock();
 
-function animate() {
-  const elapsed = clock.getElapsedTime();
+function animate(){
+  const t = clock.getElapsedTime();
 
-  pointerSmooth.lerp(pointerTarget.copy(pointer), .12);
-  if (!reduceMotion) {
-    cubeGroup.rotation.y += 0.00045;
-    cubeGroup.rotation.x = Math.sin(elapsed * .18) * .012;
+  smoothPointer.lerp(pointer,.09);
+  controls.update();
+
+  if(!reduceMotion){
+    field.rotation.y = Math.sin(t*.055)*.055;
+    field.rotation.x = Math.cos(t*.047)*.035;
   }
 
-  cubeMeshes.forEach(cube => {
-    const data = cube.userData;
+  cubes.forEach(cube=>{
+    const d=cube.userData;
 
-    const worldPos = cube.position.clone();
-    const screenPoint = worldPos.project(camera);
+    if(!reduceMotion){
+      cube.position.x = d.base.x + Math.sin(t*d.driftX+d.phaseX)*.95;
+      cube.position.y = d.base.y + Math.cos(t*d.driftY+d.phaseY)*.72;
+      cube.position.z = d.base.z + Math.sin(t*d.driftZ+d.phaseZ)*.82;
 
-    const dx = pointerSmooth.x - screenPoint.x;
-    const dy = pointerSmooth.y - screenPoint.y;
-    const distance = Math.hypot(dx, dy);
-    const influence = Math.max(0, 1 - distance / 0.85);
-
-    data.hover += ((hovered === cube ? 1 : 0) - data.hover) * .10;
-
-    const hoverLift = data.hover * .15;
-    const float = reduceMotion ? 0 : Math.sin(elapsed * .7 + data.seed) * .018;
-    const magneticX = reduceMotion ? 0 : dx * influence * .07;
-    const magneticY = reduceMotion ? 0 : dy * influence * .07;
-
-    cube.position.x = data.base.x + magneticX;
-    cube.position.y = data.base.y - magneticY + hoverLift + float;
-    cube.position.z = data.base.z + influence * .16;
-
-    const targetScale = 1 + data.hover * .075;
-    const scaleNow = cube.scale.x + (targetScale - cube.scale.x) * .10;
-    cube.scale.setScalar(scaleNow);
-
-    if (!reduceMotion) {
-      cube.rotation.x += 0.00045 + data.spin * .00002;
-      cube.rotation.y += 0.00062 + data.spin * .00003;
+      cube.rotation.x = d.homeRotation.x + Math.sin(t*.22+d.phaseX)*.20;
+      cube.rotation.y = d.homeRotation.y + Math.cos(t*.19+d.phaseY)*.24;
+      cube.rotation.z = d.homeRotation.z + Math.sin(t*.17+d.phaseZ)*.15;
     }
+
+    const screen=cube.position.clone().project(camera);
+    const dx=smoothPointer.x-screen.x;
+    const dy=smoothPointer.y-screen.y;
+    const distance=Math.hypot(dx,dy);
+    const influence=Math.max(0,1-distance/.72);
+
+    d.hover += ((hovered===cube?1:0)-d.hover)*.11;
+    const magnetic=influence*(reduceMotion?0:.12);
+
+    cube.position.x += dx*magnetic;
+    cube.position.y -= dy*magnetic;
+    cube.position.z += influence*(reduceMotion?0:.25);
+
+    const scale=1+d.hover*.08;
+    cube.scale.x += (scale-cube.scale.x)*.10;
+    cube.scale.y=cube.scale.x;
+    cube.scale.z=cube.scale.x;
   });
 
-  controls.update();
-  renderer.render(scene, camera);
+  renderer.render(scene,camera);
 }
 
-function resize() {
-  const width = host.clientWidth;
-  const height = host.clientHeight;
-
-  camera.aspect = width / Math.max(1, height);
+function resize(){
+  const w=host.clientWidth;
+  const h=host.clientHeight;
+  camera.aspect=w/Math.max(1,h);
   camera.updateProjectionMatrix();
-
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
-  renderer.setSize(width, height, false);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1,mobile ? 1.1 : 1.4));
+  renderer.setSize(w,h,false);
 }
 
-window.addEventListener('resize', resize, { passive: true });
+window.addEventListener('resize',resize,{passive:true});
 resize();
 
-document.addEventListener('visibilitychange', () => {
+document.addEventListener('visibilitychange',()=>{
   renderer.setAnimationLoop(document.hidden ? null : animate);
 });
 
-updateInspector(null);
-loading?.classList.add('hidden');
 renderer.setAnimationLoop(animate);
