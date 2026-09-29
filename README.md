@@ -1,55 +1,26 @@
-# Portfolio — Paladugu Ganesh Naidu
+# Paladugu Ganesh Naidu — Personal Portfolio
 
-A static, single-page developer portfolio focused on applied AI/GenAI engineering, software development and cybersecurity.
+A multi-page static portfolio for work across **GenAI, applied ML, full-stack engineering, cybersecurity, local AI systems and research**.
 
-## What it demonstrates
+## Pages
+- `/` — positioning, selected work and live public GitHub activity
+- `/work.html` — built, active, research and future work
+- `/lab.html` — current engineering focus and live GitHub activity
+- `/journey.html` — engineering/learning progression
+- `/research.html` — 3D ULPIN research overview
+- `/sihresearch.html` — full research-paper page
+- `/about.html` — profile, public evidence and contact
 
-- Responsive portfolio UI.
-- Editorial light visual system.
-- Animated opening loader and scroll reveals.
-- Ambient neural/3D canvas background.
-- Reduced-motion support.
-- Semantic HTML and accessible navigation.
-- SEO metadata, canonical URL, Open Graph/Twitter cards.
-- Person and WebSite JSON-LD.
-- robots.txt and sitemap.xml.
+## Live activity
+Home and Lab read the public GitHub Events API client-side and gracefully fall back to the profile link if rate-limited.
 
 ## Stack
-
 Plain HTML, CSS and JavaScript. No framework and no build step.
 
-## Structure
-
-- index.html — page structure and SEO metadata.
-- css/style.css — visual system and responsive styles.
-- js/main.js — loader, canvas effects, navigation and reveal behavior.
-- images/ — portfolio imagery.
-- logos/ — technology/certification assets.
-- robots.txt.
-- sitemap.xml.
-
-## Local run
-
-Open index.html directly or use a static server such as `npx serve .`.
+## Sources represented
+Public information is cross-checked against GitHub, LinkedIn, ClinchWorks, AWS Builder Center, PyPI and the public 3D-ULPIN research material.
 
 ## Deployment
+Designed for GitHub Pages with the custom domain configured through CNAME.
 
-The repository is designed for GitHub Pages and supports the custom domain paladuguganeshnaidu.tech through the repository CNAME configuration.
-
-## Accessibility
-
-The current implementation includes a skip link, semantic landmarks, a single primary h1, descriptive image alt text and `prefers-reduced-motion` handling.
-
-## Current portfolio direction
-
-The portfolio highlights work across AI/ML, GenAI systems, full-stack engineering, cybersecurity tooling, research experiments and deployed student projects.
-
-## License
-
-See LICENSE if present.
-
-## Author
-
-Paladugu Ganesh Naidu
-
-Repository: https://github.com/paladuguganeshnaidu/paladuguganeshnaidu.github.io
+Author: Paladugu Ganesh Naidu
