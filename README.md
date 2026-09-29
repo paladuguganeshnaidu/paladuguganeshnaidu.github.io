@@ -10,6 +10,7 @@ A multi-page static portfolio for work across **GenAI, applied ML, full-stack en
 - `/research.html` — 3D ULPIN research overview
 - `/sihresearch.html` — full research-paper page
 - `/about.html` — profile, public evidence and contact
+- `/myworld.html` — full-screen interactive 3D technology world
 
 ## Live activity
 Home and Lab read the public GitHub Events API client-side and gracefully fall back to the profile link if rate-limited.
