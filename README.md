@@ -14,7 +14,7 @@ Use Node.js 22 or later.
 
 ## Content and routes
 
-The previous project, lab, journey, research, certification and profile content is preserved in src/data/pages.json. Legacy .html addresses redirect to clean routes and retain query strings and fragments. /Ai-GenAi-Engineer/ contains all 28 original phases (0–27), statuses, projects and depth guidance. /lomvren/ describes the product formerly called LocalForge, based on its public README. /resume/ embeds and links the original provided PDF; its bytes are preserved.
+The previous project, lab, journey, research, certification and profile content is preserved in src/data/pages.json. Legacy .html addresses redirect to clean routes and retain query strings and fragments. /roadmap/ contains all 28 original phases (0–27), statuses, projects and depth guidance. /lomvren/ describes the product formerly called LocalForge, based on its public README. /resume/ embeds and links the original provided PDF; its bytes are preserved.
 
 Professional updates come from the supplied Profile.pdf: ClinchWorks, ToriiMinds, Red Hat Student Ambassador and the historical Google Student Ambassador role. The source snapshot is retained in src/data/legacy.json and src/data/roadmap-source.html. Edit pages.json and roadmap.json for ongoing content changes.
 
@@ -34,3 +34,5 @@ NVIDIA RTX 5090: https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/r
 NVIDIA DGX Spark: https://www.nvidia.com/en-us/products/workstations/dgx-spark/
 
 Original product images are attributed on the homepage. Hardware is illustrative; no endorsement, ownership of depicted equipment, or performance benchmark is implied. The LOMVREN interface card is a clearly labeled workflow illustration.
+
+The pre-existing /Ai-GenAi-Engineer/ address is served by a separate GitHub Pages project repository. The integrated portfolio roadmap uses /roadmap/ to avoid that routing conflict.
