@@ -1,0 +1,56 @@
+[
+  {
+    "year": "2024–2028",
+    "title": "Computer science foundations",
+    "text": "B.Tech in Computer Science at Nagarjuna College of Engineering and Technology. Programming, databases, data structures, Linux and web development form the foundation.",
+    "href": "/about/"
+  },
+  {
+    "year": "2025–2026",
+    "title": "Applied ML & security",
+    "text": "CloudCostAI, LoanApprovalAI, NmapAnalyzer and ReconX connect practical machine learning with security automation and hands-on labs.",
+    "href": "/work/"
+  },
+  {
+    "year": "August 2025 →",
+    "title": "ToriiMinds",
+    "text": "Trainee at ToriiMinds in Karnataka, India, as recorded in the provided professional profile.",
+    "href": "/about/"
+  },
+  {
+    "year": "April 2026 →",
+    "title": "ClinchWorks",
+    "text": "AI Systems & Full-Stack Engineer. Building across interfaces, backend APIs, databases, AI integrations, deployment and application security.",
+    "href": "/about/"
+  },
+  {
+    "year": "May–July 2026",
+    "title": "Google Student Ambassador",
+    "text": "Campus events, workshops and peer learning around Google technologies and student developer communities.",
+    "href": "/about/"
+  },
+  {
+    "year": "Current profile",
+    "title": "Red Hat Student Ambassador",
+    "text": "A student community role listed in the provided profile. Certifications and learning records accompany the engineering work.",
+    "href": "/certifications/"
+  },
+  {
+    "year": "2026",
+    "title": "GenAI & developer tools",
+    "text": "RAG, local LLMs, FastAPI and Ollama became central to the work. GNCore and LOMVREN bring AI workflows into developer tooling.",
+    "href": "/lomvren/"
+  },
+  {
+    "year": "Research",
+    "title": "3D ULPIN & cadastre",
+    "text": "A team research blueprint exploring GIS, LiDAR, AI-assisted reconstruction and volumetric land administration. Empirical results remain future work.",
+    "href": "/research/"
+  },
+  {
+    "year": "2026 → 2027 · Planned",
+    "title": "Toward production AI",
+    "text": "A 28-phase roadmap covering neural networks, PyTorch, transformers, RAG, agents, MCP, fine-tuning, serving, evaluation and a flagship production system.",
+    "href": "/roadmap/"
+  }
+]

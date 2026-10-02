@@ -36,3 +36,7 @@ NVIDIA DGX Spark: https://www.nvidia.com/en-us/products/workstations/dgx-spark/
 Original product images are attributed on the homepage. Hardware is illustrative; no endorsement, ownership of depicted equipment, or performance benchmark is implied. The LOMVREN interface card is a clearly labeled workflow illustration.
 
 The pre-existing /Ai-GenAi-Engineer/ address is served by a separate GitHub Pages project repository. The integrated portfolio roadmap uses /roadmap/ to avoid that routing conflict.
+
+## Journey space and contact
+
+/space/ contains an interactive Three.js constellation with selectable milestones, full journey content and links to all 28 roadmap phases. src/data/milestones.json is the experience source. The new portrait is supplied by the owner. Contact controls open a native accessible dialog with email and LinkedIn choices. LOMVREN installation links point to the owner-provided VS Code Marketplace listing.
