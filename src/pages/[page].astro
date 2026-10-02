@@ -1,0 +1,7 @@
+---
+import Layout from '../layouts/Layout.astro';
+import pages from '../data/pages.json';
+export function getStaticPaths(){return Object.entries(pages).filter(([page])=>page!=='myworld').map(([page,data])=>({params:{page},props:{data}}));}
+const {data}=Astro.props;
+---
+<Layout title={data.title} description={data.description} path={'/'+Astro.params.page+'/'}><div class="legacy" set:html={data.html}/></Layout>

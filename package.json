@@ -1,0 +1,19 @@
+{
+  "name": "ganesh-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "node scripts/verify.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "cheerio": "^1.1.2",
+    "playwright": "^1.55.0"
+  }
+}

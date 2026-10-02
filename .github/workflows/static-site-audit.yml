@@ -1,23 +1,18 @@
-name: Static site audit
-
+name: Portfolio validation
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
-
 permissions:
   contents: read
-
 jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Run production audit
-        run: node scripts/site-audit.mjs
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check

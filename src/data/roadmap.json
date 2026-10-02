@@ -1,0 +1,201 @@
+{
+  "phases": [
+    {
+      "title": "Phase 0 — Foundations",
+      "subtitle": "Python · Git/GitHub · SQL · Machine Learning",
+      "badge": "COMPLETED",
+      "status": "completed",
+      "html": "\n            <div class=\"phase-grid\">\n              <div><h4>Completed</h4><ul class=\"checklist\">\n                <li>Python programming and practical software work</li>\n                <li>Git, GitHub, virtual environments and project structure</li>\n                <li>SQL querying, joins, aggregation and problem solving</li>\n                <li>ML fundamentals and supervised / unsupervised learning</li>\n                <li>scikit-learn workflow and evaluation metrics</li>\n              </ul></div>\n              <div><div class=\"mini-box\"><strong>Rule</strong><p>Do not restart these foundations. Revisit only when a project or interview requires them.</p></div></div>\n            </div>\n          "
+    },
+    {
+      "title": "Phase 1 — Neural Network Foundations",
+      "subtitle": "Neuron → forward pass → loss → gradients → backpropagation",
+      "badge": "COMPLETED",
+      "status": "completed",
+      "html": "\n            <div class=\"phase-grid\">\n              <div><h4>Learned + implemented</h4><ul class=\"checklist\">\n                <li>Inputs, weights, bias and weighted sum</li>\n                <li>Forward pass and prediction</li>\n                <li>Loss and prediction error</li>\n                <li>Gradient descent and parameter updates</li>\n                <li>Derivatives and chain rule</li>\n                <li>Backpropagation and gradient accumulation</li>\n              </ul></div>\n              <div><div class=\"mini-box\"><strong>Key achievement</strong><p>The mechanics were implemented from scratch before relying on frameworks.</p></div></div>\n            </div>\n          "
+    },
+    {
+      "title": "Phase 2 — Activation Functions",
+      "subtitle": "Step · Sigmoid · Tanh · ReLU · Leaky ReLU · Softmax",
+      "badge": "CURRENT",
+      "status": "current",
+      "html": "\n            <div class=\"phase-grid\">\n              <div><h4>Current sequence</h4><ul class=\"checklist\">\n                <li>Step function — basic understanding</li>\n                <li>Sigmoid — implementation and purpose</li>\n                <li>Tanh — intuition and use</li>\n                <li>ReLU — importance and practical behavior</li>\n                <li>Leaky ReLU — understand the problem it addresses</li>\n                <li>Softmax — classification output and probability distribution</li>\n              </ul></div>\n              <div><div class=\"mini-box\"><strong>Depth control</strong><p>For every activation: what, why, advantage, problem, where used, tiny implementation.</p></div><div class=\"mini-box\"><strong>Stop rule</strong><p>No research-level derivations. Finish the engineering understanding and move on.</p></div></div>\n            </div>\n          "
+    },
+    {
+      "title": "Phase 3 — Multi-Layer Neural Network",
+      "subtitle": "Build a complete network from scratch",
+      "badge": "NEXT",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Build</h4><ul class=\"checklist\">\n          <li>Input and hidden layers</li><li>Multiple neurons and layers</li><li>Output layer</li><li>Forward propagation</li><li>Activation and loss</li><li>Backpropagation and parameter updates</li><li>Mini-batch concept</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Project</strong><p>Small multi-layer classifier without NumPy/PyTorch first.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 4 — NumPy for AI",
+      "subtitle": "Vectors · matrices · batches · vectorization",
+      "badge": "UP NEXT",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Core</h4><ul class=\"checklist\">\n          <li>Arrays, shapes and dimensions</li><li>Indexing and reshaping</li><li>Broadcasting</li><li>Vectorization</li><li>Matrix multiplication and dot products</li><li>Batch operations</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Goal</strong><p>Convert the neural network from loop-based operations into matrix-based operations.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 5 — PyTorch",
+      "subtitle": "Tensors · autograd · models · datasets · training loops",
+      "badge": "MUST KNOW",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Core</h4><ul class=\"checklist\">\n          <li>Tensor operations and shapes</li><li>Dataset and DataLoader</li><li>nn.Module and forward()</li><li>Loss functions and optimizers</li><li>Autograd</li><li>Training and validation loops</li><li>Metrics, saving and loading models</li><li>Inference</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Workflow</strong><p>Data → Dataset → DataLoader → Model → Forward → Loss → Backward → Optimizer → Validation → Save.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 6 — CPU + GPU Engineering",
+      "subtitle": "CUDA · memory · throughput · benchmarking",
+      "badge": "MUST KNOW",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>DGX Spark lab</h4><ul class=\"checklist\">\n          <li>CPU vs GPU</li><li>CUDA and device selection</li><li>Move models and tensors to GPU</li><li>GPU memory and batch size</li><li>GPU utilization</li><li>Training and inference time</li><li>Tokens/sec and throughput</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Benchmark</strong><p>Run the same model on CPU and GPU and document training time, inference time, memory and throughput.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 7 — Computer Vision Support",
+      "subtitle": "CNN fundamentals without turning CV into a second curriculum",
+      "badge": "SUPPORTING",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Convolution, kernels, feature maps</li><li>Stride and padding</li><li>Pooling</li><li>CNN architecture and training</li><li>Transfer learning and pretrained models</li><li>Data augmentation, dropout and batch normalization</li><li>OpenCV basics</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Do not over-invest</strong><p>Advanced CV architectures, research-level vision and multiple CV projects are optional.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 8 — NLP Foundations",
+      "subtitle": "Text representation → embeddings → sequence concepts",
+      "badge": "FOUNDATION",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Text cleaning and tokenization</li><li>Vocabulary, padding and truncation</li><li>Special tokens</li><li>Word embeddings and vector representation</li><li>Cosine similarity</li><li>RNN, LSTM and GRU concepts</li><li>Vanishing gradient intuition</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Depth</strong><p>RNN/LSTM are conceptual foundations. Do not spend weeks mastering them.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 9 — Transformers",
+      "subtitle": "Attention · self-attention · encoder/decoder · architecture",
+      "badge": "CORE",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Must know</h4><ul class=\"checklist\">\n          <li>Why Transformers</li><li>Query, Key and Value</li><li>Attention scores</li><li>Scaled dot-product attention</li><li>Multi-head attention</li><li>Positional encoding</li><li>Feed-forward networks</li><li>Residual connections and layer normalization</li><li>Encoder, decoder and architecture differences</li><li>BERT vs GPT</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Practical</strong><p>Implement a small self-attention mechanism, then move to PyTorch/Hugging Face.</p></div><div class=\"mini-box\"><strong>Stop here</strong><p>Once attention and Transformer architecture can be explained and implemented, avoid research-level mathematics.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 10 — Hugging Face",
+      "subtitle": "Transformers · tokenizers · pretrained models · inference",
+      "badge": "CORE",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Transformers ecosystem</li><li>Tokenizers</li><li>Pretrained models</li><li>Pipelines</li><li>AutoTokenizer and AutoModel</li><li>Datasets</li><li>Model configuration and model cards</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Practical</strong><p>Run BERT/DistilBERT → tokenize → inference → evaluate.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 11 — Local LLM Engineering",
+      "subtitle": "LLM internals · generation · local inference · benchmarking",
+      "badge": "GENAI CORE",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Must know</h4><ul class=\"checklist\">\n          <li>Decoder-only LLMs and GPT-style models</li><li>Parameters and context window</li><li>Tokens, IDs, embeddings and logits</li><li>Next-token prediction</li><li>Temperature, top-k and top-p</li><li>Sampling and inference</li><li>KV cache — conceptual understanding</li>\n        </ul></div><div><div class=\"mini-box\"><strong>DGX Spark</strong><p>Run open-source LLMs locally and measure model size, context, memory, latency and tokens/sec.</p></div><div class=\"mini-box\"><strong>Portfolio</strong><p>Publish an LLM benchmarking report.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 12 — Embeddings + Vector Search",
+      "subtitle": "Dense vectors · similarity · top-k · vector databases",
+      "badge": "CORE",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Embedding models</li><li>Dense vector representations</li><li>Semantic similarity</li><li>Cosine similarity</li><li>Chunk and query embeddings</li><li>Vector database concepts</li><li>Top-k retrieval and metadata filtering</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Choose one deeply</strong><p>FAISS, Chroma or Qdrant. Do not learn every vector database.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 13 — RAG",
+      "subtitle": "Ingestion → chunking → embeddings → retrieval → grounded generation",
+      "badge": "CORE JOB SKILL",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Must know</h4><ul class=\"checklist\">\n          <li>Document loading and chunking</li><li>Chunk size and overlap</li><li>Embeddings and vector storage</li><li>Retrieval and top-k</li><li>Metadata filtering</li><li>Prompt construction and context injection</li><li>RAG evaluation and hallucination</li><li>Retrieval failure analysis</li>\n        </ul></div><div><div class=\"mini-box\"><strong>PROJECT 1</strong><p>Production-style RAG assistant with upload, embeddings, vector DB, local LLM, citations, evaluation and API.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 14 — LangChain + LlamaIndex",
+      "subtitle": "Frameworks for models, prompts, retrieval and orchestration",
+      "badge": "TOOLS",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Models and prompts</li><li>Chains and retrievers</li><li>Tools and structured output</li><li>Document ingestion</li><li>Indexing and query engines</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Rule</strong><p>Understand the underlying architecture first. Frameworks are implementation tools, not the foundation.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 15 — Function Calling + Tools",
+      "subtitle": "Schemas · tool execution · structured arguments · failures",
+      "badge": "CORE",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Build</h4><ul class=\"checklist\">\n          <li>Tool calling and function schemas</li><li>Structured arguments</li><li>Tool execution and results</li><li>Error handling</li><li>Tool selection and permissions</li><li>Calculator, search, file and database tools</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Outcome</strong><p>Turn an LLM from a text generator into a system that can interact with external capabilities.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 16 — AI Agents",
+      "subtitle": "Reason → tool → observe → reason → act",
+      "badge": "CORE",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Must know</h4><ul class=\"checklist\">\n          <li>Agent concept</li><li>ReAct</li><li>Tool use</li><li>Planning</li><li>Observation</li><li>State and memory</li><li>Multi-step execution</li><li>Failure handling</li>\n        </ul></div><div><div class=\"mini-box\"><strong>PROJECT 2</strong><p>Build a research agent that searches, reads, calculates, summarizes and answers.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 17 — LangGraph",
+      "subtitle": "Stateful graphs · routing · loops · human-in-the-loop",
+      "badge": "ORCHESTRATION",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Nodes and edges</li><li>State</li><li>Conditional routing</li><li>Loops</li><li>Human-in-the-loop</li><li>Checkpointing</li><li>Agent orchestration</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Build</strong><p>Research → Analyze → Write → Review → Improve → Final Answer.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 18 — Multi-Agent Systems",
+      "subtitle": "Supervisor · router · parallel agents · shared state",
+      "badge": "ADVANCED",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Agent roles and communication</li><li>Shared state</li><li>Supervisor pattern</li><li>Router pattern</li><li>Hub-and-spoke architecture</li><li>Parallel agents</li><li>Failure handling</li>\n        </ul></div><div><div class=\"mini-box\"><strong>PROJECT 3</strong><p>Research Agent + Writer Agent + Reviewer Agent + Supervisor.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 19 — MCP",
+      "subtitle": "Servers · clients · tools · resources · discovery",
+      "badge": "MODERN AI",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Must know</h4><ul class=\"checklist\">\n          <li>MCP architecture</li><li>Client and server</li><li>Tools</li><li>Resources</li><li>Prompts</li><li>Tool discovery</li><li>Tool execution</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Build</strong><p>Custom MCP server exposing files, databases and custom APIs to a local LLM/agent.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 20 — LoRA / QLoRA / PEFT",
+      "subtitle": "Parameter-efficient fine-tuning on DGX Spark",
+      "badge": "DGX CORE",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Must know</h4><ul class=\"checklist\">\n          <li>Why fine-tuning</li><li>Pretraining vs fine-tuning</li><li>PEFT</li><li>LoRA and QLoRA</li><li>Adapters and rank</li><li>Trainable parameters</li><li>Dataset preparation</li><li>Training configuration and evaluation</li>\n        </ul></div><div><div class=\"mini-box\"><strong>PROJECT 4</strong><p>Fine-tune a domain LLM with LoRA/QLoRA, evaluate it, quantize it and serve it.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 21 — Quantization + Inference Optimization",
+      "subtitle": "Precision · memory · latency · throughput",
+      "badge": "OPTIMIZATION",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Why quantization</li><li>FP32, FP16/BF16, INT8 and 4-bit</li><li>Memory and accuracy tradeoffs</li><li>Latency and throughput</li><li>Batch size</li><li>KV cache</li><li>Quantized inference</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Benchmark</strong><p>Compare precision modes using memory, latency, tokens/sec and quality.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 22 — LLM Serving",
+      "subtitle": "FastAPI · streaming · batching · model servers",
+      "badge": "PRODUCTION",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>FastAPI and REST APIs</li><li>Request/response design</li><li>Streaming responses</li><li>Async basics</li><li>Batching and concurrency</li><li>GPU memory</li><li>Latency and throughput</li><li>vLLM / TGI / Ollama concepts</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Architecture</strong><p>Client → API → Model Server → GPU → Response.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 23 — Docker + MLOps / LLMOps",
+      "subtitle": "Containers · tracking · logging · monitoring · reproducibility",
+      "badge": "PRODUCTION",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Learn</h4><ul class=\"checklist\">\n          <li>Docker images and containers</li><li>Dockerfile, volumes and networks</li><li>Environment variables</li><li>Docker Compose basics</li><li>Experiment tracking</li><li>Model versioning</li><li>Logging and monitoring</li><li>Evaluation and reproducibility</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Tool</strong><p>Learn MLflow enough for practical experiment tracking and model workflows.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 24 — Cloud",
+      "subtitle": "Compute · storage · IAM · containers · GPU deployment",
+      "badge": "SUPPORTING",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>AWS fundamentals</h4><ul class=\"checklist\">\n          <li>Cloud compute</li><li>Storage</li><li>IAM</li><li>Networking basics</li><li>Containers</li><li>GPU instances</li><li>EC2</li><li>S3</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Rule</strong><p>Cloud supports the AI engineering path. Certification prep must not consume core GenAI time.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 25 — AI System Design",
+      "subtitle": "Architecture · scalability · tradeoffs · production decisions",
+      "badge": "INTERVIEW CORE",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Design</h4><ul class=\"checklist\">\n          <li>Production RAG systems</li><li>Agent systems</li><li>Model serving architecture</li><li>API gateways and application layers</li><li>Vector DB and database integration</li><li>Monitoring</li><li>Latency, cost and quality tradeoffs</li><li>RAG vs fine-tuning</li><li>Local model vs API</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Target</strong><p>Be able to draw and explain a production AI architecture from client to GPU and back.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 26 — AI Evaluation",
+      "subtitle": "Measure retrieval, generation, agents and production behavior",
+      "badge": "MUST KNOW",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Evaluate</h4><ul class=\"checklist\">\n          <li>Retrieval accuracy and context relevance</li><li>Answer correctness and faithfulness</li><li>Hallucination rate</li><li>Tool selection and task success</li><li>Agent failure rate</li><li>Latency and tokens/sec</li><li>Memory and cost</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Principle</strong><p>Do not build AI systems without a way to measure whether they work.</p></div></div></div>"
+    },
+    {
+      "title": "Phase 27 — Flagship Production AI System",
+      "subtitle": "RAG + Agents + MCP + Fine-tuning + Serving + Evaluation",
+      "badge": "FINAL BUILD",
+      "status": "planned",
+      "html": "<div class=\"phase-grid\"><div><h4>Combine everything</h4><ul class=\"checklist\">\n          <li>LLM</li><li>RAG and vector database</li><li>Tool calling</li><li>Agents and LangGraph</li><li>MCP</li><li>Fine-tuned model</li><li>Quantized inference</li><li>API and Docker</li><li>Evaluation and monitoring</li><li>DGX Spark deployment/benchmarking</li>\n        </ul></div><div><div class=\"mini-box\"><strong>Final proof</strong><p>The flagship system should demonstrate that the roadmap became engineering capability — not just a list of technologies.</p></div></div></div>"
+    }
+  ],
+  "extra": "<section id=\"focus\" class=\"reveal\">\n  <div class=\"container\">\n    <div class=\"section-label\">03 · Engineering Focus</div>\n    <h2 class=\"section-title\">What every topic must earn.</h2>\n    <p class=\"section-copy\">The roadmap protects time by forcing every important concept toward practical capability.</p>\n\n    <div class=\"focus-grid\">\n      <div class=\"focus-card\"><div class=\"icon\">01</div><h3>Learn</h3><p>Understand what the technology is, why it exists and where it fits in an AI system.</p></div>\n      <div class=\"focus-card\"><div class=\"icon\">02</div><h3>Build</h3><p>Turn the concept into working code instead of collecting passive knowledge.</p></div>\n      <div class=\"focus-card\"><div class=\"icon\">03</div><h3>Debug</h3><p>Understand common failures, bottlenecks, incorrect outputs and system behavior.</p></div>\n      <div class=\"focus-card\"><div class=\"icon\">04</div><h3>Explain</h3><p>Be able to communicate the concept clearly in technical discussions and interviews.</p></div>\n      <div class=\"focus-card\"><div class=\"icon\">05</div><h3>Optimize</h3><p>Measure memory, latency, throughput, quality and cost — then make tradeoffs.</p></div>\n      <div class=\"focus-card\"><div class=\"icon\">06</div><h3>Deploy</h3><p>Move from notebook experiments to APIs, containers, GPU inference and production architecture.</p></div>\n    </div>\n  </div>\n</section><section id=\"projects\" class=\"reveal\">\n  <div class=\"container\">\n    <div class=\"section-label\">04 · Portfolio</div>\n    <h2 class=\"section-title\">Five projects that prove the skill.</h2>\n    <p class=\"section-copy\">The portfolio grows with the roadmap instead of becoming a separate task at the end.</p>\n\n    <div class=\"projects\">\n      <div class=\"project\"><div class=\"project-num\">PROJECT 01</div><h3>Production RAG Assistant</h3><p>Document upload, chunking, embeddings, vector search, local LLM, citations, evaluation and API.</p><div class=\"tags\"><span class=\"tag\">RAG</span><span class=\"tag\">Embeddings</span><span class=\"tag\">Vector DB</span><span class=\"tag\">LLM</span><span class=\"tag\">API</span></div></div>\n      <div class=\"project\"><div class=\"project-num\">PROJECT 02</div><h3>Tool-Using AI Agent</h3><p>A multi-step research agent that searches, reads, calculates, summarizes and answers using tools.</p><div class=\"tags\"><span class=\"tag\">Agents</span><span class=\"tag\">Tool Calling</span><span class=\"tag\">ReAct</span></div></div>\n      <div class=\"project\"><div class=\"project-num\">PROJECT 03</div><h3>Multi-Agent + MCP System</h3><p>Researcher, writer, reviewer and supervisor agents connected to custom MCP capabilities.</p><div class=\"tags\"><span class=\"tag\">LangGraph</span><span class=\"tag\">Multi-Agent</span><span class=\"tag\">MCP</span></div></div>\n      <div class=\"project\"><div class=\"project-num\">PROJECT 04</div><h3>Fine-Tuned Domain LLM</h3><p>Dataset preparation, LoRA/QLoRA training on DGX Spark, evaluation, quantization and inference.</p><div class=\"tags\"><span class=\"tag\">LoRA</span><span class=\"tag\">QLoRA</span><span class=\"tag\">DGX Spark</span><span class=\"tag\">Quantization</span></div></div>\n      <div class=\"project\"><div class=\"project-num\">PROJECT 05</div><h3>Flagship Production AI System</h3><p>A complete system combining RAG, agents, MCP, fine-tuning, serving, Docker, evaluation and monitoring.</p><div class=\"tags\"><span class=\"tag\">RAG</span><span class=\"tag\">Agents</span><span class=\"tag\">MCP</span><span class=\"tag\">Fine-tuning</span><span class=\"tag\">Serving</span><span class=\"tag\">Docker</span></div></div>\n    </div>\n  </div>\n</section><section id=\"rules\" class=\"reveal\">\n  <div class=\"container\">\n    <div class=\"section-label\">05 · Depth Control</div>\n    <h2 class=\"section-title\">Know when to stop.</h2>\n    <p class=\"section-copy\">The goal is engineering mastery, not research-level depth in every interesting topic.</p>\n\n    <div class=\"depth\">\n      <div class=\"depth-card must\"><div class=\"depth-label\">MUST KNOW</div><p>Build + debug + explain + use. Examples: PyTorch, Transformers, LLMs, RAG, agents, MCP, LoRA/QLoRA, quantization, serving, Docker, evaluation and system design.</p></div>\n      <div class=\"depth-card good\"><div class=\"depth-label\">GOOD TO KNOW</div><p>Understand the concept and use it when a project requires it. Examples: advanced CNN variations, RNN/LSTM, OpenCV, object detection, MLflow and cloud services.</p></div>\n      <div class=\"depth-card optional\"><div class=\"depth-label\">OPTIONAL / RESEARCH</div><p>Do not spend roadmap time here unless a project needs it: advanced proofs, research-level Transformer theory, reproducing papers and designing new architectures.</p></div>\n    </div>\n\n    <div class=\"flow\">\n      <div class=\"flow-line\">\n        <span>LEARN</span><i>→</i><span>BUILD</span><i>→</i><span>DEBUG</span><i>→</i><span>EXPLAIN</span><i>→</i><span>OPTIMIZE</span><i>→</i><span>DEPLOY</span><i>→</i><span>INTERVIEW</span><i>→</i><span>JOB</span>\n      </div>\n    </div>\n  </div>\n</section>"
+}
