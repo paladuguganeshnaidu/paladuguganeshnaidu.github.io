@@ -38,8 +38,8 @@
   {
     "year": "2026",
     "title": "GenAI & developer tools",
-    "text": "RAG, local LLMs, FastAPI and Ollama became central to the work. GNCore and LOMVREN bring AI workflows into developer tooling.",
-    "href": "/lomvren/"
+    "text": "RAG, local LLMs, FastAPI and Ollama became central to the work. GNCore and TuxNest bring AI workflows into developer tooling. TuxNest is created, owned and developed by Paladugu Ganesh Naidu.",
+    "href": "/tuxnest/"
   },
   {
     "year": "Research",
