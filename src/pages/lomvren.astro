@@ -1,3 +1,12 @@
 ---
-return Astro.redirect('/tuxnest/', 301);
+import Layout from '../layouts/Layout.astro';
 ---
+<Layout title="TuxNest | Product page moved" description="The former product route has moved. TuxNest is created, owned and developed by Paladugu Ganesh Naidu." path="/tuxnest/">
+<script>window.location.replace('/tuxnest/');</script>
+<section class="wrap page-hero">
+  <div class="eyebrow">PRODUCT PAGE UPDATED</div>
+  <h1>The product is now <em>TuxNest.</em></h1>
+  <p class="lead">The current TuxNest page includes the product overview, owner/developer credit, official website and source repository.</p>
+  <div class="actions"><a class="button dark" href="/tuxnest/">Continue to TuxNest ↗</a><a class="button" href="https://tuxnest.pages.dev/">Official website ↗</a></div>
+</section>
+</Layout>
