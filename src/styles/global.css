@@ -31,3 +31,7 @@
 .product-actions{margin-top:22px;gap:12px}
 @media(max-width:1000px){.hero-profile-panel{min-height:530px}.hero-profile-frame{width:min(68%,300px)}}
 @media(max-width:700px){.home-hero{grid-template-columns:1fr;gap:5px;padding-top:45px}.hero-profile-panel{min-height:450px;max-width:470px;width:100%;margin:0 auto;padding:18px 12px 12px;gap:12px}.hero-profile-frame{width:min(68%,245px)}.hero-profile-panel:before{top:10%}.hero-profile-panel:after{inset:12% 1% 8%}.product-actions{gap:10px}.founder-credit{margin-top:18px}}
+
+/* Keep every displayed portrait image unfiltered and fully framed. */
+.hero-signature-mark{display:grid;place-items:center;width:44px;height:44px;border-radius:8px;border:1px solid var(--line);background:#e1ead8;color:#59684e;font:600 .8rem var(--display);letter-spacing:-.05em}
+.legacy .profile-showcase img{width:100%;max-height:420px;object-fit:contain;border-radius:10px;background:#fff;padding:5px;border:1px solid var(--line);box-shadow:none}
