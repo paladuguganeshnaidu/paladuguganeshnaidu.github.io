@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features=[
+  ['Ask · Plan · Agent','Ask for read-only repository understanding, Plan changes before mutation, and use Agent for reviewed edits, approved commands and verification.'],
+  ['Local-first model control','Connect to local Ollama, an explicitly configured compatible endpoint, or an Ollama runtime hosted on your own remote GPU through SSH.'],
+  ['Reviewed edits & recovery','Inspect proposed multi-file diffs, check snapshots before applying changes, and use recorded recovery data to undo accepted changes when available.'],
+  ['Approval-based execution','Keep edits, commands, internet access and sensitive or destructive actions behind explicit policy and review.'],
+  ['Evidence-based verification','Distinguish saved-file readback, real command results, tests and browser checks from model-generated statements.'],
+  ['Model management & diagnostics','Discover and manage models, check runtime health, run self-tests, and review diagnostics before scaling a task.']
+];
+---
+<Layout title="TuxNest | Created, Owned & Developed by Paladugu Ganesh Naidu" description="TuxNest is a local-first AI engineering environment for VS Code, created, owned and developed by Paladugu Ganesh Naidu. Explore its Ask, Plan and Agent workflows, reviewed edits, verification and local or remote Ollama model support." path="/tuxnest/">
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context':'https://schema.org',
+  '@type':'SoftwareApplication',
+  '@id':'https://tuxnest.pages.dev/#software',
+  name:'TuxNest',
+  url:'https://tuxnest.pages.dev/',
+  applicationCategory:'DeveloperApplication',
+  operatingSystem:'Windows, macOS, Linux',
+  description:'A local-first AI engineering environment for VS Code with Ask, Plan and Agent modes, reviewed edits, approvals, verification, local Ollama and user-managed remote GPU support.',
+  codeRepository:'https://github.com/paladuguganeshnaidu/tuxnest',
+  creator:{'@type':'Person','@id':'https://paladuguganeshnaidu.tech/#ganesh','name':'Paladugu Ganesh Naidu','url':'https://paladuguganeshnaidu.tech/','sameAs':['https://github.com/paladuguganeshnaidu','https://www.linkedin.com/in/paladuguganeshnaidu']},
+  author:{'@id':'https://paladuguganeshnaidu.tech/#ganesh'},
+  maintainer:{'@id':'https://paladuguganeshnaidu.tech/#ganesh'}
+})}/>
+<section class="wrap page-hero">
+  <div class="eyebrow">PRODUCT / CREATED AND DEVELOPED BY GANESH NAIDU</div>
+  <h1>Meet <em>TuxNest.</em><br/>Your models. Your code. Visible evidence.</h1>
+  <p class="lead">TuxNest is a local-first AI engineering environment for VS Code that helps developers understand repositories, plan changes, review edits, execute approved commands and verify results. I created it, own the product, and lead its ongoing development.</p>
+  <div class="actions">
+    <a class="button dark" href="https://tuxnest.pages.dev/">Visit the official TuxNest site ↗</a>
+    <a class="button" href="https://github.com/paladuguganeshnaidu/tuxnest">View source repository ↗</a>
+    <a class="text-link" href="https://tuxnest.pages.dev/download/">Install &amp; setup guide ↗</a>
+  </div>
+</section>
+<section class="wrap section">
+  <div class="callout">
+    <div class="eyebrow">FOUNDER / MAKER CREDIT</div>
+    <h2>Built by <em>Paladugu Ganesh Naidu.</em></h2>
+    <p>Creator · Owner · Lead Developer</p>
+    <p>I drive TuxNest’s product direction and engineering: the VS Code extension, local/remote model connections, reviewable edits, execution approvals, diagnostics and verification workflows. The product website and source repository are linked above so visitors can verify the project and inspect the code directly.</p>
+    <div class="actions">
+      <a class="button dark" href="https://github.com/paladuguganeshnaidu/tuxnest">Inspect the code ↗</a>
+      <a class="button" href="https://www.linkedin.com/in/paladuguganeshnaidu">Professional profile ↗</a>
+    </div>
+  </div>
+</section>
+<section class="wrap section">
+  <div class="section-head"><div><div class="eyebrow">CAPABILITIES</div><h2>From intent to reviewed, verified work.</h2></div><p class="lead">The goal is not just model chat; it is a visible engineering workflow.</p></div>
+  <div class="grid">{features.map(([title,desc])=><article class="card" data-reveal><div class="meta">TUXNEST</div><h2>{title}</h2><p>{desc}</p></article>)}</div>
+</section>
+<section class="wrap section">
+  <div class="callout">
+    <h2>Local-first. <em>Explicit destinations.</em></h2>
+    <p>Local inference uses the runtime you configure. Remote SSH mode sends prompts and included context to your selected host; API mode sends them to your configured endpoint. TuxNest does not operate a hosted inference service.</p>
+    <p>Terminal commands use your existing account permissions. Reviewed proposals and approvals support safer workflows, but they are not an operating-system sandbox.</p>
+    <a class="text-link" href="https://tuxnest.pages.dev/">Read the official product overview ↗</a>
+  </div>
+</section>
+</Layout>
